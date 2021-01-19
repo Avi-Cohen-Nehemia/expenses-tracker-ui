@@ -3,7 +3,7 @@ export const initialState = {
 	incomes: [],
 	totalIncomes: 0,
 	totalExpenses: 0,
-	currentBalance: 0,
+	balance: 0,
 	loaded: false
 };
 

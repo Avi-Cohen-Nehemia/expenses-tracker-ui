@@ -2,6 +2,12 @@ import React, { Component } from "react";
 
 class Header extends Component {
 
+    componentDidMount() {
+        if (!this.props.loaded) {
+            this.props.getBalance();
+        };
+    };
+
     render() {
         const { balance } = this.props;
 
@@ -11,8 +17,8 @@ class Header extends Component {
                 <p>{'Your Balance'}</p>
                 <h3>{ balance }</h3>
             </>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Header;
