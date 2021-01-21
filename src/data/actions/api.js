@@ -5,7 +5,7 @@ export const getBalance = () => {
     return (dispatch, getState) => {
         axios.get('/balance')
         .then(({ data }) => {
-            dispatch(updateBalance(data));
+            dispatch(updateBalance(data.data));
         });
     };
 };
