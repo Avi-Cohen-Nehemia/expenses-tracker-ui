@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import './App.css';
-import Container from 'react-bootstrap/Container'
-import Signup from './components/Signup';
+import "./App.css";
+import Container from "react-bootstrap/Container"
+import Signup from "./components/Signup";
+import LandingPage from "./components/LandingPage";
 
 const App = () => {
   return (
     <Router>
       <Container>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/signup">
           <Signup />
         </Route>
