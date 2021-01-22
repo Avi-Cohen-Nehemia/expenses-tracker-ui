@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import FormInput from '../FormInput';
 
 class Signup extends Component {
 
@@ -12,32 +13,23 @@ class Signup extends Component {
             <>
                 <h2 className="mt-5 text-center">{'Sign Up'}</h2>
                 <Form className="mt-5">
-                    <Row>
-                        <Col md={{ span: 6, offset: 3 }}>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>{'Username'}</Form.Label>
-                                <Form.Control type="text"/>
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                    <FormInput
+                        inputType='text'
+                        inputLabel='Username'
+                        controlId='signup-form-username'
+                    />
 
-                    <Row>
-                        <Col md={{ span: 6, offset: 3 }}>
-                            <Form.Group controlId="formBasicPassword" md="4">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password"/>
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                    <FormInput
+                        inputType='password'
+                        inputLabel='Password'
+                        controlId='signup-form-password'
+                    />
 
-                    <Row>
-                        <Col md={{ span: 6, offset: 3 }}>
-                            <Form.Group controlId="formBasicPassword" md="4">
-                                <Form.Label>{'Confirm Password'}</Form.Label>
-                                <Form.Control type="password"/>
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                    <FormInput
+                        inputType='password'
+                        inputLabel='Confirm Password'
+                        controlId='signup-form-confirm-password'
+                    />
 
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
