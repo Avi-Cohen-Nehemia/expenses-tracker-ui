@@ -58,7 +58,7 @@ class Signup extends Component {
 
                 <Row className="mt-4">
                     <Col md={{ span: 6, offset: 3 }}>
-                        <p>{'Already have an account? Sign in here'}</p>
+                        <p>{'Already have an account? Log in here'}</p>
                     </Col>
                 </Row>
             </>
