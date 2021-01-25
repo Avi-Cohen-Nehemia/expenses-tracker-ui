@@ -32,19 +32,23 @@ class TransactionsList extends Component {
                             variant={ transaction.type === "income" ? "success" : "danger" }
                             key={index}
                         >
-                            <span>{transaction.category}</span>
+                            <span className="text-capitalize">{transaction.category}</span>
                             <span>{transaction.amount}</span>
                         </ListGroup.Item>
                         : null
                     )) }
                 </ListGroup>
-                <p
-                    className="text-info mt-2 active"
-                    onClick={this.handleClick}
-                    style={{cursor: "pointer"}}
-                >
-                    {'Load more transactions'}
-                </p>
+                { this.state.transactionsToDisplay < this.props.transactions.length ?
+                    <p
+                        className="text-info mt-2 active"
+                        onClick={this.handleClick}
+                        style={{cursor: "pointer"}}
+                    >
+                        {'Load more transactions'}
+                    </p>
+                    : null
+                }
+                
             </>
         );
     };
