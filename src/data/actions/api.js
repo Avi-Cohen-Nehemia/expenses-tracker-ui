@@ -1,7 +1,7 @@
 import axios from "./../../axios";
-import { updateBalance } from "./state";
+import { updateUserStats } from "./state";
 
-export const getBalance = () => {
+export const getUserStats = () => {
 
     return (dispatch, getState) => {
 
@@ -9,7 +9,7 @@ export const getBalance = () => {
 
         axios.get(`users/${userID}`)
         .then(({ data }) => {
-            dispatch(updateBalance(data.data));
+            dispatch(updateUserStats(data.data));
         });
  
     };

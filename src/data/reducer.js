@@ -1,7 +1,9 @@
-const getBalance = (state, action) => {
+const getUserStats = (state, action) => {
     return {
         ...state,
+        username: action.username,
         balance: action.balance,
+        transactions: action.transactions,
         loaded: true,
     };
 };
@@ -15,7 +17,7 @@ const addExpense = (state, action) => {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "GET_BALANCE" : return getBalance(state, action)
+        case "GET_USER_STATS" : return getUserStats(state, action)
         case "ADD_EXPENSE" : return addExpense(state, action);
         default: return state;
     };

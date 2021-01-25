@@ -1,6 +1,6 @@
 export const initialState = {
-	username: '',
 	userID: null,
+	username: '',
 	balance: '',
 	transactions: [],
 	loaded: false

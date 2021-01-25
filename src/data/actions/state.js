@@ -1,6 +1,8 @@
-export const updateBalance = (data) => {
+export const updateUserStats = (data) => {
     return {
-        type: "GET_BALANCE",
-        balance: data.balance
+        type: "GET_USER_STATS",
+        username: data.username,
+        balance: data.balance,
+        transactions: data.transactions,
     };
 };
