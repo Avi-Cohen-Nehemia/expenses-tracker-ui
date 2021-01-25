@@ -9,9 +9,16 @@ class TransactionsList extends Component {
 
         this.state = {
             transactionsToDisplay: 5,
-        }
+        };
 
-    }
+        this.handleClick = this.handleClick.bind(this);
+    };
+
+    handleClick() {
+        this.setState({
+            transactionsToDisplay: this.state.transactionsToDisplay + 5,
+        });
+    };
 
     render() {
         return (
@@ -31,6 +38,7 @@ class TransactionsList extends Component {
                         : null
                     )) }
                 </ListGroup>
+                <p onClick={this.handleClick}>{'Load more transactions'}</p>
             </>
         );
     };
