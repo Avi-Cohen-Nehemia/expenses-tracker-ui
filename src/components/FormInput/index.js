@@ -8,14 +8,17 @@ class FormInput extends Component {
 
     render() {
 
-        const { inputType, inputLabel, controlId } = this.props;
+        const { inputType, inputLabel, controlId, inputPlaceholder } = this.props;
 
         return(
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form.Group controlId={ controlId }>
                         <Form.Label>{ inputLabel }</Form.Label>
-                        <Form.Control type={ inputType }/>
+                        <Form.Control
+                            placeholder={ inputPlaceholder ? inputPlaceholder : "" }
+                            type={ inputType }
+                        />
                     </Form.Group>
                 </Col>
             </Row>
@@ -27,6 +30,7 @@ FormInput.propTypes = {
     controlId: PropTypes.string,
     inputLabel: PropTypes.string,
     inputType: PropTypes.string,
+    inputPlaceholder: PropTypes.string
 };
 
 export default FormInput;

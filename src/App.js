@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container"
 import Signup from "./components/Signup";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
+import AddTransaction from "./components/Dashboard/AddTransaction";
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/add-transaction">
+          <AddTransaction />
         </Route>
       </Container>
     </Router>

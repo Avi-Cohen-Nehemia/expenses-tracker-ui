@@ -57,6 +57,6 @@ class TransactionsList extends Component {
 
 TransactionsList.propTypes = {
     transactions: PropTypes.array,
-}
+};
 
 export default TransactionsList;
