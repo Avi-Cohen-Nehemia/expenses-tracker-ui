@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Header from "./Header";
+import Dashboard from "./Dashboard";
 import { getUserStats } from "../../data/actions/api";
 
 // mapStateToProps is a function we use to fetch state from the
@@ -7,6 +7,7 @@ import { getUserStats } from "../../data/actions/api";
 const mapStateToProps = (state) => {
     return {
         balance: state.balance,
+        transactions: state.transactions,
     };
 };
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
