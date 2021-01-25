@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class Header extends Component {
 
@@ -14,8 +14,8 @@ class Header extends Component {
 
         return(
             <>
-                <h1>{'Expenses Tracker'}</h1>
-                <p>{'Your Balance'}</p>
+                <h1>{"Expenses Tracker"}</h1>
+                <p>{"Your Balance"}</p>
                 <h3>{ balance }</h3>
             </>
         );
@@ -24,6 +24,6 @@ class Header extends Component {
 
 Header.propTypes = {
     balance: PropTypes.string,
-}
+};
 
 export default Header;

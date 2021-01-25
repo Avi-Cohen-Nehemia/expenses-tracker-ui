@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 
 class FormInput extends Component {
 
@@ -20,6 +21,12 @@ class FormInput extends Component {
             </Row>
         )
     };
+};
+
+FormInput.propTypes = {
+    controlId: PropTypes.string,
+    inputLabel: PropTypes.string,
+    inputType: PropTypes.string,
 };
 
 export default FormInput;

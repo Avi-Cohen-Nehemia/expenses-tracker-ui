@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
-import ListGroup from 'react-bootstrap/ListGroup'
+import PropTypes from "prop-types";
+import ListGroup from "react-bootstrap/ListGroup"
 
 class TransactionsList extends Component {
 
@@ -45,7 +45,7 @@ class TransactionsList extends Component {
                         onClick={this.handleClick}
                         style={{cursor: "pointer"}}
                     >
-                        {'Load more transactions'}
+                        {"Load more transactions"}
                     </p>
                     : null
                 }
