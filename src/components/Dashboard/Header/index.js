@@ -4,7 +4,7 @@ class Header extends Component {
 
     componentDidMount() {
         if (!this.props.loaded) {
-            this.props.getBalance();
+            this.props.getUserStats();
         };
     };
 
