@@ -1,9 +1,7 @@
 export const initialState = {
-	expenses: [],
-	incomes: [],
-	totalIncomes: 0,
-	totalExpenses: 0,
-	balance: 0,
+	username: '',
+	balance: '',
+	transactions: [],
 	loaded: false
 };
 
