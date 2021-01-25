@@ -38,7 +38,13 @@ class TransactionsList extends Component {
                         : null
                     )) }
                 </ListGroup>
-                <p onClick={this.handleClick}>{'Load more transactions'}</p>
+                <p
+                    className="text-info mt-2 active"
+                    onClick={this.handleClick}
+                    style={{cursor: "pointer"}}
+                >
+                    {'Load more transactions'}
+                </p>
             </>
         );
     };
