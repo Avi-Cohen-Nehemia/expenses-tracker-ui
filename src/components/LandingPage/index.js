@@ -14,14 +14,14 @@ const LandingPage = () => {
             <Row className="mt-5">
                 <Col md={{ span: 6, offset: 3 }}>
                     <Link to="/signup">
-                        <Button variant="success" size="lg" block>{"Sign Up"}</Button>
+                        <Button variant="success" size="lg" block>{"Log In"}</Button>
                     </Link>
                 </Col>
             </Row>
             <Row className="mt-4">
                 <Col md={{ span: 6, offset: 3 }}>
                     <Link to="/login">
-                        <Button variant="primary" size="lg" block>{"Log In"}</Button>
+                        <Button variant="primary" size="lg" block>{"Sign Up"}</Button>
                     </Link>
                 </Col>
             </Row>
