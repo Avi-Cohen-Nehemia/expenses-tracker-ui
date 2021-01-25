@@ -1,5 +1,3 @@
-import initialState from "./initialState";
-
 const getBalance = (state, action) => {
     return {
         ...state,

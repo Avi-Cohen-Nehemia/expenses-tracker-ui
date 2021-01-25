@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FormInput from '../FormInput';
+import { Link } from "react-router-dom";
 
 class Signup extends Component {
 
@@ -50,7 +51,7 @@ class Signup extends Component {
 
                 <Row className="mt-4">
                     <Col md={{ span: 6, offset: 3 }}>
-                        <p>{'Already have an account? Log in here'}</p>
+                        <Link to="/login"><p>{'Already have an account? Log in here'}</p></Link>
                     </Col>
                 </Row>
             </>
