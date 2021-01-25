@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup'
 
 class TransactionsList extends Component {
@@ -53,5 +54,9 @@ class TransactionsList extends Component {
         );
     };
 };
+
+TransactionsList.propTypes = {
+    transactions: PropTypes.array,
+}
 
 export default TransactionsList;

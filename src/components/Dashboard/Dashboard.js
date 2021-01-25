@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Header from "./Header";
 import TransactionsList from "./TransactionsList";
 
@@ -19,5 +20,11 @@ class Dashboard extends Component {
         );
     };
 };
+
+Dashboard.propTypes = {
+    balance: PropTypes.string,
+    getUserStats: PropTypes.func,
+    transactions: PropTypes.array
+}
 
 export default Dashboard;
