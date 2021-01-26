@@ -9,17 +9,26 @@ class Dashboard extends Component {
 
 
     render() {
+
+        const { balance, getUserStats, transactions } = this.props;
+
         return (
             <>
                 <Header
-                    getUserStats={ this.props.getUserStats }
-                    balance={ this.props.balance }
+                    getUserStats={ getUserStats }
+                    balance={ balance }
                 />
                 <TransactionsList
-                    transactions={ this.props.transactions }
+                    transactions={ transactions }
                 />
                 <Link to="/add-transaction" className="text-decoration-none mt-2">
-                    <Button variant="primary" size="sm">{"Add New Transaction"}</Button>
+                    <Button
+                        className="my-2"
+                        variant="primary"
+                        size="sm"
+                    >
+                        {"Add New Transaction"}
+                    </Button>
                 </Link>
             </>
         );
