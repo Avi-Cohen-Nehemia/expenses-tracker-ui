@@ -33,8 +33,14 @@ class TransactionsList extends Component {
                             variant={ transaction.type === "income" ? "success" : "danger" }
                             key={index}
                         >
-                            <span className="text-capitalize">{transaction.category}</span>
-                            <span>{transaction.amount}</span>
+                            <div className="d-flex flex-column justify-content-between">
+                                <span className="text-capitalize">{transaction.category}</span>
+                                <span style={{fontSize: "0.8rem"}}>{transaction.created_at}</span>
+                            </div>
+                            <div className="d-flex flex-column justify-content-between">
+                                <span>{transaction.amount}</span>
+                                <span className="text-right" style={{fontSize: "0.8rem"}}>{transaction.balance_at_the_time}</span>
+                            </div>
                         </ListGroup.Item>
                         : null
                     )) }
