@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import history from "./history"
 import "./App.css";
 import Container from "react-bootstrap/Container"
 import Signup from "./components/Signup";
@@ -9,7 +10,7 @@ import AddTransaction from "./components/Dashboard/AddTransaction";
 
 const App = () => {
   return (
-    <Router>
+    <Router history={ history }>
       <Container>
         <Route exact path="/">
           <LandingPage />

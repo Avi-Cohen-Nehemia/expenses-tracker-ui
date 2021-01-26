@@ -1,5 +1,6 @@
 import axios from "./../../axios";
 import { updateUserStats } from "./state";
+import history from "../../history";
 
 export const getUserStats = () => {
 
@@ -25,6 +26,8 @@ export const addTransaction = (data) => {
             type: data.transactionType,
             category: data.transactionCategory,
             user_id: userID
+        }).then(() => {
+            history.push("/dashboard");
         });
     };
 };
