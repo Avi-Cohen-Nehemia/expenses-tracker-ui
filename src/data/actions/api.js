@@ -11,6 +11,20 @@ export const getUserStats = () => {
         .then(({ data }) => {
             dispatch(updateUserStats(data.data));
         });
- 
+    };
+};
+
+export const addTransaction = (data) => {
+
+    return (dispatch, getState) => {
+
+        const userID = getState().userID;
+
+        axios.post("transactions/create", {
+            amount: data.transactionAmount,
+            type: data.transactionType,
+            category: data.transactionCategory,
+            user_id: userID
+        });
     };
 };
