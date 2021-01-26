@@ -45,9 +45,10 @@ class AddTransaction extends Component {
 
     render() {
 
+        const { transactionAmount, transactionCategory, transactionType } = this.state;
         const incomeCategories = ["paycheck", "gift", "other"];
         const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "paycheck", "gift", "other"];
-        const displayedCategories = this.state.transactionType === "expense" ? expenseCategories : incomeCategories;
+        const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
 
         return(
             <>
@@ -57,7 +58,7 @@ class AddTransaction extends Component {
                         inputLabel="Amount"
                         inputPlaceholder="Enter Amount"
                         inputType="number"
-                        inputValue={this.state.transactionAmount}
+                        inputValue={transactionAmount}
                         controlId="add-transaction-amount"
                         onChange={(e) => this.handleChange(e, "transactionAmount")}
                     />
@@ -69,7 +70,7 @@ class AddTransaction extends Component {
                                 <Form.Control
                                     as="select"
                                     className="text-capitalize"
-                                    value={this.state.transactionType}
+                                    value={transactionType}
                                     onChange={(e) => this.handleChange(e, "transactionType")}
                                 >
                                     <option>{"income"}</option>
@@ -86,7 +87,7 @@ class AddTransaction extends Component {
                                 <Form.Control
                                     as="select"
                                     className="text-capitalize"
-                                    value={this.state.transactionCategory}
+                                    value={transactionCategory}
                                     onChange={(e) => this.handleChange(e, "transactionCategory")}
                                 >
                                     { displayedCategories.map((category, index) => (
