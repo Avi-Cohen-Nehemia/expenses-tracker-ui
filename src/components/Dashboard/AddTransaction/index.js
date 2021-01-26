@@ -13,19 +13,28 @@ class AddTransaction extends Component {
         super(props);
 
         this.state = {
+            transactionAmount: "",
             transactionType: "income",
+            transactionCategory: "paycheck",
         };
 
-        this.handleTransactionType = this.handleTransactionType.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
     };
 
-    handleTransactionType(e) {
+    handleCategoryChange(input, value) {
+        if (input === "transactionType") {
+            this.setState({
+                transactionCategory: value === "income" ? "paycheck" : "groceries"
+            });
+        };
+    };
 
-        let value = e.target.value;
-
-        this.setState({
-            transactionType: value === "income" ? "income" : "expense",
-        });
+    handleChange(e, input) {
+        let change = {};
+        change[input] = e.currentTarget.value;
+        this.setState(change);
+        this.handleCategoryChange(input, e.currentTarget.value);
     };
 
     render() {
@@ -39,10 +48,12 @@ class AddTransaction extends Component {
                 <h2 className="mt-5 text-center">{"Add New Transaction"}</h2>
                 <Form className="mt-5">
                     <FormInput
-                        inputType="number"
                         inputLabel="Amount"
                         inputPlaceholder="Enter Amount"
+                        inputType="number"
+                        inputValue={this.state.transactionAmount}
                         controlId="add-transaction-amount"
+                        onChange={(e) => this.handleChange(e, "transactionAmount")}
                     />
 
                     <Row>
@@ -53,7 +64,7 @@ class AddTransaction extends Component {
                                     as="select"
                                     className="text-capitalize"
                                     value={this.state.transactionType}
-                                    onChange={(e) => this.handleTransactionType(e)}
+                                    onChange={(e) => this.handleChange(e, "transactionType")}
                                 >
                                     <option>{"income"}</option>
                                     <option>{"expense"}</option>
@@ -65,10 +76,12 @@ class AddTransaction extends Component {
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
                             <Form.Group controlId="add-transaction-type">
-                                <Form.Label>{"Income or Expense"}</Form.Label>
+                                <Form.Label>{"Category"}</Form.Label>
                                 <Form.Control
                                     as="select"
                                     className="text-capitalize"
+                                    value={this.state.transactionCategory}
+                                    onChange={(e) => this.handleChange(e, "transactionCategory")}
                                 >
                                     { displayedCategories.map((category, index) => (
                                         <option key={ index }>

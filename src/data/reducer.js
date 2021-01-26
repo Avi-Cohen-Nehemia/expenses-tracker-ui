@@ -8,17 +8,20 @@ const getUserStats = (state, action) => {
     };
 };
 
-const addExpense = (state, action) => {
+const addTransaction = (state, action) => {
     return {
         ...state,
-        expenses: state.expenses.concat()
+        transactions: [
+            state.transactions,
+            action.transaction
+        ]
     };
 };
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "GET_USER_STATS" : return getUserStats(state, action)
-        case "ADD_EXPENSE" : return addExpense(state, action);
+        case "ADD_TRANSACTION" : return addTransaction(state, action);
         default: return state;
     };
 };
