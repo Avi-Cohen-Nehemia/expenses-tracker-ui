@@ -4,6 +4,7 @@ import history from "./history"
 import "./App.css";
 import Container from "react-bootstrap/Container"
 import Signup from "./components/Signup";
+import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import AddTransaction from "./components/Dashboard/AddTransaction";
@@ -17,6 +18,9 @@ const App = () => {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />

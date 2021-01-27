@@ -3,6 +3,21 @@ import { updateUserStats } from "./state";
 import { updateUserDetails } from "./state";
 import history from "../../history";
 
+export const login = (data) => {
+
+    return (dispatch) => {
+
+        axios.post("login", {
+            name: data.username,
+            password: data.password,
+        }).then(({ data }) => {
+            dispatch(updateUserDetails(data.data));
+        }).then(() => {
+            history.push("/dashboard");
+        });
+    };
+};
+
 export const getUserStats = () => {
 
     return (dispatch, getState) => {
@@ -22,7 +37,7 @@ export const addTransaction = (data) => {
 
         const userID = getState().userID;
 
-        axios.post("transactions/create", {
+        axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
             category: data.transactionCategory,
@@ -37,7 +52,7 @@ export const createNewUser = (data) => {
 
     return (dispatch) => {
 
-        axios.post("users/create", {
+        axios.post("users", {
             name: data.username,
             password: data.password,
         }).then(({ data }) => {
