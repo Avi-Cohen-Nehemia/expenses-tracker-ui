@@ -8,28 +8,59 @@ import { Link } from "react-router-dom";
 
 class Signup extends Component {
 
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            username: "",
+            password: "",
+            confirmPassword: "",
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
+
+    handleChange(e, input) {
+        let change = {};
+        change[input] = e.currentTarget.value;
+        this.setState(change);
+    };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.addTransaction(this.state);
+    }
+
     render() {
 
         return(
             <>
                 <h2 className="mt-5 text-center">{"Sign Up"}</h2>
-                <Form className="mt-5">
+                <Form className="mt-5" onSubmit={this.handleSubmit}>
                     <FormInput
-                        inputType="text"
-                        inputLabel="Username"
                         controlId="signup-form-username"
+                        inputLabel="Username"
+                        inputType="text"
+                        inputValue={this.state.username} 
+                        onChange={(e) => this.handleChange(e, "username")}
                     />
 
                     <FormInput
-                        inputType="password"
-                        inputLabel="Password"
                         controlId="signup-form-password"
+                        inputLabel="Password"
+                        inputType="password"
+                        inputValue={this.state.password}
+                        onChange={(e) => this.handleChange(e, "password")}
                     />
 
                     <FormInput
-                        inputType="password"
-                        inputLabel="Confirm Password"
                         controlId="signup-form-confirm-password"
+                        inputLabel="Confirm Password"
+                        inputType="password"
+                        inputValue={this.state.confirmPassword}
+                        onChange={(e) => this.handleChange(e, "confirmPassword")}
                     />
 
                     <Row>
