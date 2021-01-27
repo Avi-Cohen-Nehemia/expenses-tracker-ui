@@ -61,6 +61,7 @@ class AddTransaction extends Component {
                         inputValue={transactionAmount}
                         controlId="add-transaction-amount"
                         onChange={(e) => this.handleChange(e, "transactionAmount")}
+                        required
                     />
 
                     <Row>
@@ -72,6 +73,7 @@ class AddTransaction extends Component {
                                     className="text-capitalize"
                                     value={transactionType}
                                     onChange={(e) => this.handleChange(e, "transactionType")}
+                                    required
                                 >
                                     <option>{"income"}</option>
                                     <option>{"expense"}</option>
@@ -89,6 +91,7 @@ class AddTransaction extends Component {
                                     className="text-capitalize"
                                     value={transactionCategory}
                                     onChange={(e) => this.handleChange(e, "transactionCategory")}
+                                    required
                                 >
                                     { displayedCategories.map((category, index) => (
                                         <option key={ index }>
