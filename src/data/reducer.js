@@ -1,15 +1,16 @@
+import initialState from "./initialState";
+
 const updateUserDetails = (state, action) => {
     return {
-        ...state,
+        ...initialState,
+        userID: action.userID,
         username: action.username,
-        userID: action.id,
     };
 };
 
 const getUserStats = (state, action) => {
     return {
         ...state,
-        username: action.username,
         balance: action.balance,
         transactions: action.transactions,
         loaded: true,

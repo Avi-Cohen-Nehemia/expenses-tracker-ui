@@ -1,7 +1,6 @@
 export const updateUserStats = (data) => {
     return {
         type: "GET_USER_STATS",
-        username: data.username,
         balance: data.balance,
         transactions: data.transactions,
     };
@@ -11,6 +10,6 @@ export const updateUserDetails = (data) => {
     return {
         type: "UPDATE_USER_DETAILS",
         userID: data.id,
-        username: data.username,
+        username: data.name,
     };
 };

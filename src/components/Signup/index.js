@@ -4,7 +4,7 @@ import { createNewUser } from "../../data/actions/api";
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createNewUser: () => dispatch(createNewUser()),
+        createNewUser: (data) => dispatch(createNewUser(data)),
     };
 };
 

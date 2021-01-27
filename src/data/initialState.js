@@ -1,7 +1,7 @@
 export const initialState = {
-	userID: 1,
-	username: '',
-	balance: '',
+	userID: null,
+	username: "",
+	balance: "",
 	transactions: [],
 	loaded: false
 };

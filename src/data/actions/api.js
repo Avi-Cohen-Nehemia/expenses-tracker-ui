@@ -40,7 +40,7 @@ export const createNewUser = (data) => {
         axios.post("users/create", {
             name: data.username,
             password: data.password,
-        }).then(() => {
+        }).then(({ data }) => {
             dispatch(updateUserDetails(data.data));
         }).then(() => {
             history.push("/dashboard");
