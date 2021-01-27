@@ -8,7 +8,7 @@ class FormInput extends Component {
 
     render() {
 
-        const { inputValue, inputType, inputLabel, controlId, inputPlaceholder, onChange } = this.props;
+        const { description, descriptionID, inputValue, inputType, inputLabel, controlId, inputPlaceholder, onChange, required } = this.props;
 
         return(
             <Row>
@@ -19,8 +19,11 @@ class FormInput extends Component {
                             value={ inputValue }
                             onChange={ onChange }
                             placeholder={ inputPlaceholder ? inputPlaceholder : "" }
+                            required={required}
                             type={ inputType }
+                            aria-describedby={descriptionID}
                         />
+                        <Form.Text id={descriptionID} muted>{description}</Form.Text>
                     </Form.Group>
                 </Col>
             </Row>
@@ -32,6 +35,7 @@ FormInput.propTypes = {
     controlId: PropTypes.string.isRequired,
     inputLabel: PropTypes.string.isRequired,
     inputType: PropTypes.string.isRequired,
+    required: PropTypes.bool,
     inputPlaceholder: PropTypes.string
 };
 

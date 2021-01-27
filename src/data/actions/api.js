@@ -1,5 +1,6 @@
 import axios from "./../../axios";
 import { updateUserStats } from "./state";
+import { updateUserDetails } from "./state";
 import history from "../../history";
 
 export const getUserStats = () => {
@@ -26,6 +27,21 @@ export const addTransaction = (data) => {
             type: data.transactionType,
             category: data.transactionCategory,
             user_id: userID
+        }).then(() => {
+            history.push("/dashboard");
+        });
+    };
+};
+
+export const createNewUser = (data) => {
+
+    return (dispatch) => {
+
+        axios.post("users/create", {
+            name: data.username,
+            password: data.password,
+        }).then(() => {
+            dispatch(updateUserDetails(data.data));
         }).then(() => {
             history.push("/dashboard");
         });

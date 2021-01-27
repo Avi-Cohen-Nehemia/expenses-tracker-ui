@@ -6,3 +6,11 @@ export const updateUserStats = (data) => {
         transactions: data.transactions,
     };
 };
+
+export const updateUserDetails = (data) => {
+    return {
+        type: "UPDATE_USER_DETAILS",
+        userID: data.id,
+        username: data.username,
+    };
+};
