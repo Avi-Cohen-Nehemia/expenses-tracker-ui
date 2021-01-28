@@ -37,7 +37,7 @@ class Login extends Component {
 
         return(
             <>
-                <h2 className="mt-5 text-center">{"Sign Up"}</h2>
+                <h2 className="mt-5 text-center">{"Log In"}</h2>
                 <Form
                     className="mt-5"
                     onSubmit={this.handleSubmit}
