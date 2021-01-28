@@ -12,7 +12,7 @@ import AddTransaction from "./components/Dashboard/AddTransaction";
 const App = () => {
   return (
     <Router history={ history }>
-      <Container>
+    
         <Route exact path="/">
           <LandingPage />
         </Route>
@@ -28,7 +28,7 @@ const App = () => {
         <Route exact path="/add-transaction">
           <AddTransaction />
         </Route>
-      </Container>
+      
     </Router>
   );
 }
