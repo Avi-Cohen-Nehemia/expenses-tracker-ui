@@ -47,7 +47,7 @@ class AddTransaction extends Component {
 
         const { transactionAmount, transactionCategory, transactionType } = this.state;
         const incomeCategories = ["paycheck", "gift", "other"];
-        const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "paycheck", "gift", "other"];
+        const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "other"];
         const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
 
         return(
