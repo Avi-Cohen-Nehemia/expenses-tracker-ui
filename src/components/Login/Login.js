@@ -74,14 +74,6 @@ class Login extends Component {
 
                         <Row>
                             <Col md={{ span: 6, offset: 3 }}>
-                                <Form.Group controlId="formBasicCheckbox">
-                                    <Form.Check type="checkbox" label="Remember me"/>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
                                 <Button variant="primary" type="submit">
                                     {"Submit"}
                                 </Button>
