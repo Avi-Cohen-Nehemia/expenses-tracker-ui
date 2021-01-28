@@ -13,7 +13,7 @@ class Dashboard extends Component {
         const { balance, getUserStats, transactions } = this.props;
 
         return (
-            <>
+            <div className="mx-auto" style={{maxWidth: "450px"}}>
                 <Header
                     getUserStats={ getUserStats }
                     balance={ balance }
@@ -30,7 +30,7 @@ class Dashboard extends Component {
                         {"Add New Transaction"}
                     </Button>
                 </Link>
-            </>
+            </div>
         );
     };
 };

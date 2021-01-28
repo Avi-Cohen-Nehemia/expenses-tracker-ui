@@ -25,7 +25,7 @@ class TransactionsList extends Component {
         return (
             <>
                 <h4>{"Recent Transactions"}</h4>
-                <ListGroup style={{maxWidth: "400px"}}>
+                <ListGroup>
                     { this.props.transactions.map((transaction, index) => (
                         index < this.state.transactionsToDisplay ?
                         <ListGroup.Item
