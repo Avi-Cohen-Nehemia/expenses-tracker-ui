@@ -2,6 +2,7 @@ import React from "react";
 import { Router, Route } from "react-router-dom";
 import history from "./history"
 import "./App.css";
+import "./assets/css/landing-page.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
