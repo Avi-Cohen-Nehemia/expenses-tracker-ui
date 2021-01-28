@@ -11,5 +11,6 @@ export const updateUserDetails = (data) => {
         type: "UPDATE_USER_DETAILS",
         userID: data.id,
         username: data.name,
+        accessToken:data.access_token
     };
 };

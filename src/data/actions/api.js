@@ -11,7 +11,7 @@ export const login = (data) => {
             name: data.username,
             password: data.password,
         }).then(({ data }) => {
-            dispatch(updateUserDetails(data.data));
+            dispatch(updateUserDetails(data));
         }).then(() => {
             history.push("/dashboard");
         });
@@ -36,12 +36,15 @@ export const addTransaction = (data) => {
     return (dispatch, getState) => {
 
         const userID = getState().userID;
+        const accessToken = getState().accessToken;
 
         axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
             category: data.transactionCategory,
             user_id: userID
+        }, {
+            headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
             history.push("/dashboard");
         });

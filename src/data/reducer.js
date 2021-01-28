@@ -5,6 +5,7 @@ const updateUserDetails = (state, action) => {
         ...initialState,
         userID: action.userID,
         username: action.username,
+        accessToken: action.accessToken,
     };
 };
 
