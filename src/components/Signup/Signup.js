@@ -45,15 +45,15 @@ class Signup extends Component {
         const { username, password, confirmPassword } = this.state;
 
         return(
-            <div className="landing-page">
-                <div className="mx-3" style={{ marginTop: "15%" }}>
-                    <h2 className="mt-5 text-center">{"Sign Up"}</h2>
+            <div className="signup-page">
+                <div className="my-auto">
+                    <h2 className="text-center">{"Sign Up"}</h2>
                     <Form
-                        className="mt-5"
+                        className="mt-4"
                         onSubmit={this.handleSubmit}
                     >
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="signup-form-username">
                                     <Form.Label>{"Username"}</Form.Label>
                                     <Form.Control
@@ -75,7 +75,7 @@ class Signup extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="signup-form-password">
                                     <Form.Label>{"Password"}</Form.Label>
                                     <Form.Control
@@ -92,7 +92,7 @@ class Signup extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="signup-form-confirm-password">
                                     <Form.Label>{"Confirm Password"}</Form.Label>
                                     <Form.Control
@@ -107,7 +107,7 @@ class Signup extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Button variant="primary" type="submit">
                                     {"Submit"}
                                 </Button>
@@ -116,7 +116,7 @@ class Signup extends Component {
                     </Form>
 
                     <Row className="mt-4">
-                        <Col md={{ span: 6, offset: 3 }}>
+                        <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                             <Link to="/login"><p>{"Already have an account? Log in here"}</p></Link>
                         </Col>
                     </Row>
@@ -125,7 +125,7 @@ class Signup extends Component {
                     <img
                         src={ homeImage }
                         alt="person counting money"
-                        style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+                        className="cover-image"
                     />
                 </div>
             </div>
