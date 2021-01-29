@@ -1,3 +1,9 @@
+export const loginUser = () => {
+    return {
+        type: "LOGIN_USER",
+    }
+}
+
 export const updateUserStats = (data) => {
     return {
         type: "GET_USER_STATS",

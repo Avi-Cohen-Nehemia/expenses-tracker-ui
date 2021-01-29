@@ -1,6 +1,7 @@
 import axios from "./../../axios";
 import { updateUserStats } from "./state";
 import { updateUserDetails } from "./state";
+import { loginUser } from "./state";
 import history from "../../history";
 
 export const login = (data) => {
@@ -11,6 +12,7 @@ export const login = (data) => {
             name: data.username,
             password: data.password,
         }).then(({ data }) => {
+            dispatch(loginUser());
             dispatch(updateUserDetails(data));
         }).then(() => {
             history.push("/dashboard");
