@@ -37,15 +37,15 @@ class Login extends Component {
         const { username, password } = this.state;
 
         return(
-            <div className="landing-page">
-                <div className="mx-3" style={{ marginTop: "20%" }}>
-                    <h2 className="mt-5 text-center">{"Log In"}</h2>
+            <div className="login-page">
+                <div className="my-auto">
+                    <h2 className="text-center">{"Log In"}</h2>
                     <Form
-                        className="mt-5"
+                        className="mt-3"
                         onSubmit={this.handleSubmit}
                     >
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="login-form-username">
                                     <Form.Label>{"Username"}</Form.Label>
                                     <Form.Control
@@ -59,7 +59,7 @@ class Login extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="login-form-password">
                                     <Form.Label>{"Password"}</Form.Label>
                                     <Form.Control
@@ -73,7 +73,7 @@ class Login extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Button variant="primary" type="submit">
                                     {"Submit"}
                                 </Button>
@@ -82,7 +82,7 @@ class Login extends Component {
                     </Form>
 
                     <Row className="mt-4">
-                        <Col md={{ span: 6, offset: 3 }}>
+                        <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                             <Link to="/signup"><p>{"Don't have an account? Sign up here"}</p></Link>
                         </Col>
                     </Row>
@@ -91,7 +91,7 @@ class Login extends Component {
                     <img
                         src={ homeImage }
                         alt="person counting money"
-                        style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+                        className="cover-image"
                     />
                 </div>
             </div>
