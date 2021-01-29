@@ -1,3 +1,5 @@
+import initialState from "./initialState"
+
 const loginUser = (state, action) => {
     return {
         ...state,
@@ -26,6 +28,7 @@ const getUserStats = (state, action) => {
 const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER" : return loginUser(state, action);
+        case "LOGOUT_USER" : return initialState;
         case "UPDATE_USER_DETAILS" : return updateUserDetails(state, action);
         case "GET_USER_STATS" : return getUserStats(state, action);
         default: return state;

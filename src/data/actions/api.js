@@ -2,6 +2,7 @@ import axios from "./../../axios";
 import { updateUserStats } from "./state";
 import { updateUserDetails } from "./state";
 import { loginUser } from "./state";
+import { logoutUser } from "./state";
 import history from "../../history";
 
 export const login = (data) => {
@@ -65,5 +66,12 @@ export const createNewUser = (data) => {
         }).then(() => {
             history.push("/dashboard");
         });
+    };
+};
+
+export const logout = () => {
+
+    return (dispatch) => {
+        dispatch(logoutUser());
     };
 };

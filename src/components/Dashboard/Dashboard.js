@@ -7,6 +7,15 @@ import Button from "react-bootstrap/Button";
 
 class Dashboard extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.logoutUser();
+    }
 
     render() {
 
@@ -30,6 +39,14 @@ class Dashboard extends Component {
                         {"Add New Transaction"}
                     </Button>
                 </Link>
+                <Button
+                        className="my-2"
+                        variant="primary"
+                        size="sm"
+                        onClick={this.handleClick}
+                    >
+                        {"Logout"}
+                </Button>
             </div>
         );
     };
