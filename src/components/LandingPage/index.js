@@ -11,19 +11,19 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
-                <div className="mx-3" style={{ marginTop: "30%" }}>
-                    <h1 className="text-center mt-5">
+                <div className="my-auto">
+                    <h1 className="text-center">
                         {"Welcome to Expenses Tracker"}
                     </h1>
-                    <Row className="mt-5">
-                        <Col md={{ span: 6, offset: 3 }}>
+                    <Row className="mt-4">
+                        <Col xs={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }}>
                             <Link to="/login" className="text-decoration-none">
                                 <Button variant="success" size="lg" block>{"Log In"}</Button>
                             </Link>
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Col md={{ span: 6, offset: 3 }}>
+                        <Col xs={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }}>
                             <Link to="/signup" className="text-decoration-none">
                                 <Button variant="primary" size="lg" block>{"Sign Up"}</Button>
                             </Link>
@@ -34,7 +34,7 @@ class LandingPage extends Component {
                     <img
                         src={ homeImage }
                         alt="person counting money"
-                        style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+                        className="cover-image"
                     />
                 </div>
             </div>
