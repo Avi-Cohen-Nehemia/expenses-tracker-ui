@@ -2,11 +2,13 @@ import React from "react";
 import { Router, Route } from "react-router-dom";
 import history from "./history"
 import "./assets/css/landing-page.css";
+import "./assets/css/navbar.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import AddTransaction from "./components/Dashboard/AddTransaction";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
         </Route>
         <Route exact path="/add-transaction">
           <AddTransaction />
+        </Route>
+        <Route exact path="/navbar">
+          <Navbar />
         </Route>
     </Router>
   );
