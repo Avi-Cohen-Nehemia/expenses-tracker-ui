@@ -23,12 +23,12 @@ const Navbar = () => {
                 to="/profile"
                 className="side-navbar-link text-decoration-none"
             >
-                <p className="m-0">{"My Profile"}</p>
+                <p className="m-0">{"Profile"}</p>
                 <img
                     className="mt-2 mb-3"
                     src={ profile }
                     alt="profile logo"
-                    style={{ height: "50px", width: "55px" }}
+                    style={{ height: "45px", width: "50px" }}
                 />
             </Link>
             <Link
