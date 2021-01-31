@@ -18,14 +18,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #D3D8DE;
+    border-bottom: 2px solid #D3D8DE;
     width: 130px;
     margin-top: 0.8rem;
     color: #D3D8DE;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .side-navbar-link:hover {
     cursor: pointer;
     color: white;
+    font-weight: bold;
 }
