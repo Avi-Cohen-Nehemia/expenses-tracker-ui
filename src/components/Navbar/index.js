@@ -38,7 +38,7 @@ const Navbar = ({ selected }) => {
                 text="Logout"
                 altText="logout logo"
                 styling={{ height: "35px", width: "40px" }}
-                iconClasses="mt-2 mb-3 ml-2"
+                iconClasses="mt-2 mb-3 ml-1"
             />
         </nav>
     );
