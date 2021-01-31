@@ -8,7 +8,6 @@ import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import AddTransaction from "./components/Dashboard/AddTransaction";
-import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
@@ -27,9 +26,6 @@ const App = () => {
         </Route>
         <Route exact path="/add-transaction">
           <AddTransaction />
-        </Route>
-        <Route exact path="/navbar">
-          <Navbar />
         </Route>
     </Router>
   );

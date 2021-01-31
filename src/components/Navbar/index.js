@@ -1,4 +1,5 @@
 import React from "react";
+import NavbarLink from "./NavbarLink";
 import piggy from "../../assets/images/piggy.png"
 import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
@@ -8,17 +9,14 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav className="side-navbar">
-            <Link
-                to="/"
-                className="side-navbar-link text-decoration-none"
-            >
-                <p className="m-0">{"Expenses Tracker"}</p>
-                <img
-                    src={ piggy }
-                    alt="piggy bank logo"
-                    style={{ height: "70px", width: "70px" }}
-                />
-            </Link>
+            <NavbarLink
+                destination="/"
+                icon={ piggy }
+                text="Expenses Tracker"
+                altText="piggy bank logo"
+                styling={{height: "70px", width: "70px"}}
+            />
+
             <Link
                 to="/profile"
                 className="side-navbar-link text-decoration-none"
@@ -43,7 +41,8 @@ const Navbar = () => {
                     style={{ height: "50px", width: "50px" }}
                 />
             </Link>
-            <div
+            <Link
+                to="#"
                 className="side-navbar-link text-decoration-none"
             >
                 <p className="m-0">{"Logout"}</p>
@@ -53,7 +52,7 @@ const Navbar = () => {
                     alt="logout logo"
                     style={{ height: "35px", width: "40px" }}
                 />
-            </div>
+            </Link>
         </nav>
     );
 };
