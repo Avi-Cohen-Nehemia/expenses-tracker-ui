@@ -16,7 +16,7 @@ const Navbar = () => {
                 <img
                     src={ piggy }
                     alt="piggy bank logo"
-                    style={{ height: "80px", width: "80px" }}
+                    style={{ height: "75px", width: "75px" }}
                 />
             </Link>
             <Link
@@ -28,7 +28,7 @@ const Navbar = () => {
                     className="mt-2 mb-3"
                     src={ profile }
                     alt="profile logo"
-                    style={{ height: "45px", width: "50px" }}
+                    style={{ height: "40px", width: "45px" }}
                 />
             </Link>
             <Link
@@ -37,10 +37,10 @@ const Navbar = () => {
             >
                 <p className="m-0">{"Dashboard"}</p>
                 <img
-                    className="mb-1"
+                    className="mb-2"
                     src={ dashboard }
                     alt="dashboard logo"
-                    style={{ height: "65px", width: "65px" }}
+                    style={{ height: "55px", width: "55px" }}
                 />
             </Link>
             <div
@@ -51,7 +51,7 @@ const Navbar = () => {
                     className="mt-2 mb-3 ml-2"
                     src={ logout }
                     alt="logout logo"
-                    style={{ height: "50px", width: "55px" }}
+                    style={{ height: "40px", width: "45px" }}
                 />
             </div>
         </nav>
