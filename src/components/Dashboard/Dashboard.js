@@ -24,7 +24,7 @@ class Dashboard extends Component {
 
         return (
             <div className="mx-auto" style={{maxWidth: "450px"}}>
-                <Navbar />
+                <Navbar selected="dashboard"/>
                 <Header
                     getUserStats={ getUserStats }
                     balance={ balance }

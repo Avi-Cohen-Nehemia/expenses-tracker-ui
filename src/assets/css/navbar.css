@@ -18,9 +18,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid #D3D8DE;
-    width: 130px;
-    margin-top: 0.8rem;
+    width: 140px;
+    padding-top: 0.8rem;
     color: #D3D8DE;
     font-weight: 500;
 }
@@ -29,4 +28,17 @@
     cursor: pointer;
     color: white;
     font-weight: bold;
+    background-color: #2D5295;
+    border-radius: 5px;
+}
+
+.selected-link {
+    background-color: #2D5295;
+    border-radius: 5px;
+}
+
+hr {
+    margin: 0;
+    border-bottom: 1px solid #D3D8DE;
+    width: 90%;
 }

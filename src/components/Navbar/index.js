@@ -5,7 +5,7 @@ import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
 import logout from "../../assets/images/logout.png"
 
-const Navbar = () => {
+const Navbar = ({ selected }) => {
     return (
         <nav className="side-navbar">
             <NavbarLink
@@ -30,6 +30,7 @@ const Navbar = () => {
                 altText="dashboard logo"
                 styling={{ height: "50px", width: "50px" }}
                 iconClasses="mb-2"
+                selected={ selected === "dashboard"}
             />
             <NavbarLink
                 destination="#"
