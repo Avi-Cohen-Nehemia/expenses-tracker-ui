@@ -1,11 +1,31 @@
 .side-navbar {
     height: 100%;
-    width: 160px;
+    width: 150px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #0B2D65;
     overflow-x: hidden;
-    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.side-navbar-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #D3D8DE;
+    width: 130px;
+    margin-top: 0.8rem;
+    color: #D3D8DE;
+    font-weight: bold;
+}
+
+.side-navbar-link:hover {
+    cursor: pointer;
+    color: white;
 }
