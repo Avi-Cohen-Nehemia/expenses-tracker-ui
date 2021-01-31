@@ -22,18 +22,23 @@
     padding-top: 0.8rem;
     color: #D3D8DE;
     font-weight: 500;
+    opacity: 0.7;
+}
+
+.side-navbar-link:active {
+    background-color: #2D5295;
 }
 
 .side-navbar-link:hover {
     cursor: pointer;
     color: white;
     font-weight: bold;
-    background-color: #2D5295;
+    opacity: 1;
     border-radius: 5px;
 }
 
 .selected-link {
-    background-color: #2D5295;
+    opacity: 1;
     border-radius: 5px;
 }
 
