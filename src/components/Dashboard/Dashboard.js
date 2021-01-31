@@ -4,6 +4,7 @@ import Header from "./Header";
 import TransactionsList from "./TransactionsList";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Navbar from "../Navbar";
 
 class Dashboard extends Component {
 
@@ -23,6 +24,7 @@ class Dashboard extends Component {
 
         return (
             <div className="mx-auto" style={{maxWidth: "450px"}}>
+                <Navbar />
                 <Header
                     getUserStats={ getUserStats }
                     balance={ balance }
