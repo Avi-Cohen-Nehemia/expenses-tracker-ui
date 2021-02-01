@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import Header from "./Header";
 import TransactionsList from "./TransactionsList";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -8,20 +7,23 @@ import Navbar from "../Navbar";
 
 class Dashboard extends Component {
 
+    componentDidMount() {
+        if (!this.props.loaded) {
+            this.props.getUserStats();
+        };
+    };
+
     render() {
 
-        const { balance, getUserStats, transactions } = this.props;
+        const { transactions } = this.props;
 
         return (
-            <div className="dashboard-grid" style={{maxWidth: "450px"}}>
+            <div className="dashboard-grid">
                 <Navbar
                     selected="dashboard"
                     handleLogout={ this.props.logoutUser }
                 />
-                <Header
-                    getUserStats={ getUserStats }
-                    balance={ balance }
-                />
+                <h1 className="page-header display-3">{"Dashboard"}</h1>
                 <TransactionsList
                     transactions={ transactions }
                 />

@@ -1,0 +1,15 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+.side-navbar {
+    grid-column: 1/2;
+    grid-row: 1/10;
+}
+
+.page-header {
+    grid-column: 2/11;
+    grid-row: 1/2;
+}
