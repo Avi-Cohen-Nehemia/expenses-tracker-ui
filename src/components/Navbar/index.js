@@ -5,7 +5,7 @@ import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
 import logout from "../../assets/images/logout.png"
 
-const Navbar = ({ selected }) => {
+const Navbar = ({ selected, handleLogout }) => {
     return (
         <nav className="side-navbar">
             <NavbarLink
@@ -39,6 +39,7 @@ const Navbar = ({ selected }) => {
                 altText="logout logo"
                 styling={{ height: "35px", width: "40px" }}
                 iconClasses="mt-2 mb-3 ml-1"
+                handleClick={ handleLogout }
             />
         </nav>
     );

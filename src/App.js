@@ -3,6 +3,7 @@ import { Router, Route } from "react-router-dom";
 import history from "./history"
 import "./assets/css/landing-page.css";
 import "./assets/css/navbar.css";
+import "./assets/css/dashboard.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";

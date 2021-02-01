@@ -8,23 +8,16 @@ import Navbar from "../Navbar";
 
 class Dashboard extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.props.logoutUser();
-    }
-
     render() {
 
         const { balance, getUserStats, transactions } = this.props;
 
         return (
-            <div className="mx-auto" style={{maxWidth: "450px"}}>
-                <Navbar selected="dashboard"/>
+            <div className="dashboard-grid" style={{maxWidth: "450px"}}>
+                <Navbar
+                    selected="dashboard"
+                    handleLogout={ this.props.logoutUser }
+                />
                 <Header
                     getUserStats={ getUserStats }
                     balance={ balance }
@@ -41,14 +34,6 @@ class Dashboard extends Component {
                         {"Add New Transaction"}
                     </Button>
                 </Link>
-                <Button
-                        className="my-2"
-                        variant="primary"
-                        size="sm"
-                        onClick={this.handleClick}
-                    >
-                        {"Logout"}
-                </Button>
             </div>
         );
     };
