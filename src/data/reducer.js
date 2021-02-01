@@ -20,6 +20,8 @@ const getUserStats = (state, action) => {
     return {
         ...state,
         balance: action.balance,
+        totalIncome: action.totalIncome,
+        totalExpense: action.totalExpense,
         transactions: action.transactions,
         loaded: true,
     };

@@ -8,7 +8,9 @@ export const updateUserStats = (data) => {
     return {
         type: "GET_USER_STATS",
         balance: data.balance,
-        transactions: data.transactions,
+        totalIncome: data.total_income,
+        totalExpense: data.total_expense,
+        transactions: data.transactions
     };
 };
 

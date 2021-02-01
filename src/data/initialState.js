@@ -4,6 +4,8 @@ export const initialState = {
 	accessToken: null,
 	isLoggedIn: false,
 	balance: "",
+	totalIncome: "",
+	totalExpense: "",
 	transactions: [],
 	loaded: false
 };
