@@ -9,6 +9,8 @@ import history from "../../history";
 const mapStateToProps = (state) => {
     return {
         balance: state.balance,
+        totalIncome: state.totalIncome,
+        totalExpense: state.totalExpense,
         transactions: state.transactions,
     };
 };
