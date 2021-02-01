@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
         totalIncome: state.totalIncome,
         totalExpense: state.totalExpense,
         transactions: state.transactions,
+        loaded: state.loaded
     };
 };
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TransactionsList from "./TransactionsList";
 import DashboardCard from "./DashboardCard";
 import Card from 'react-bootstrap/Card'
+import Spinner from "../Spinner"
 // import { Link } from "react-router-dom";
 // import Button from "react-bootstrap/Button";
 import Navbar from "../Navbar";
@@ -37,9 +38,10 @@ class Dashboard extends Component {
 
     render() {
 
-        const { balance, transactions, totalExpense, totalIncome } = this.props;
+        const { balance, transactions, totalExpense, totalIncome, loaded } = this.props;
 
         return (
+            loaded ?
             <div className="dashboard-grid">
                 <Navbar
                     selected="dashboard"
@@ -48,7 +50,7 @@ class Dashboard extends Component {
                 <h1 className="page-header display-3">{"Dashboard"}</h1>
                 <DashboardCard
                     cardClass="balance-card"
-                    content={balance}
+                    content={ balance }
                     icon="fas fa-balance-scale fa-lg"
                     title="Balance"
                 />
@@ -63,7 +65,7 @@ class Dashboard extends Component {
                         <div className="d-flex" style={{width: "100%"}}>
                             <h6 className="m-0 text-center" style={{width: "45%"}}>{"Total Income:"}</h6>
                             <div className="d-flex ml-2 align-items-center" style={{width: "55%"}}>
-                                <h6 className="m-0" style={{width: "40%"}}>{totalIncome}</h6>
+                                <h6 className="m-0" style={{width: "40%"}}>{ totalIncome }</h6>
                                 <div style={{width: "60%"}}>
                                     <div
                                         className="ml-2"
@@ -79,7 +81,7 @@ class Dashboard extends Component {
                         <div className="d-flex" style={{width: "100%"}}>
                             <h6 className="m-0 text-center" style={{width: "45%"}}>{"Total Expense:"}</h6>
                             <div className="d-flex ml-2 align-items-center" style={{width: "55%"}}>
-                                <h6 className="m-0" style={{width: "40%"}}>{totalExpense}</h6>
+                                <h6 className="m-0" style={{width: "40%"}}>{ totalExpense }</h6>
                                 <div style={{width: "60%"}}>
                                     <div
                                         className="ml-2"
@@ -96,7 +98,7 @@ class Dashboard extends Component {
                 </Card>
                 <DashboardCard
                     cardClass="transaction-card"
-                    content={this.props.transactions[0].amount}
+                    content={ transactions[0].amount }
                     icon="fas fa-exchange-alt fa-lg"
                     title="Last Transaction"
                 />
@@ -123,6 +125,7 @@ class Dashboard extends Component {
                     </Button>
                 </Link> */}
             </div>
+            : <Spinner />
         );
     };
 };
