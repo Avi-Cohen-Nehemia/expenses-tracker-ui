@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import homeImage from "../../assets/images/home-picture2.jpg"
+import history from "../../history";
 
 class Login extends Component {
 
@@ -19,6 +20,12 @@ class Login extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    };
+
+    componentDidMount() {
+        if (this.props.isLoggedIn) {
+            history.push("/dashboard");
+        };
     };
 
     handleChange(e, input) {
