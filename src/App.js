@@ -5,6 +5,7 @@ import "./assets/css/landing-page.css";
 import "./assets/css/navbar.css";
 import "./assets/css/dashboard.css";
 import "./assets/css/spinner.css";
+import "./assets/css/compare-card.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";

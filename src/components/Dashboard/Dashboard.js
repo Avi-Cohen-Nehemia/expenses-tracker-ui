@@ -61,14 +61,12 @@ class Dashboard extends Component {
                         <span className="dashboard-card-header">{"Compare"}</span>  
                         <i className={"fas fa-chart-bar fa-lg"}/>
                     </Card.Header>
-                    <Card.Body className="d-flex flex-column justify-content-around align-items-start pl-2">
-                        <div className="d-flex" style={{width: "100%"}}>
-                            <h6 className="m-0 text-center" style={{width: "45%"}}>{"Total Income:"}</h6>
-                            <div className="d-flex ml-2 align-items-center" style={{width: "55%"}}>
-                                <h6 className="m-0" style={{width: "40%"}}>{ totalIncome }</h6>
-                                <div style={{width: "60%"}}>
+                    <Card.Body className="comparison-card-grid p-3">
+                            <h6 className="total-income-header m-0">{"Total Income:"}</h6>
+                            <div className="total-income-stats">
+                                <h6 className="m-0">{ totalIncome }</h6>
+                                <div className="income-bar">
                                     <div
-                                        className="ml-2"
                                         style={{
                                             width: this.calculateBarWidth(totalExpense, totalIncome, totalIncome),
                                             height: "0.5rem",
@@ -77,14 +75,11 @@ class Dashboard extends Component {
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div className="d-flex" style={{width: "100%"}}>
-                            <h6 className="m-0 text-center" style={{width: "45%"}}>{"Total Expense:"}</h6>
-                            <div className="d-flex ml-2 align-items-center" style={{width: "55%"}}>
-                                <h6 className="m-0" style={{width: "40%"}}>{ totalExpense }</h6>
-                                <div style={{width: "60%"}}>
+                            <h6 className="total-expense-header m-0">{"Total Expense:"}</h6>
+                            <div className="total-expense-stats">
+                                <h6 className="m-0">{ totalExpense }</h6>
+                                <div className="expense-bar">
                                     <div
-                                        className="ml-2"
                                         style={{
                                             width: this.calculateBarWidth(totalExpense, totalIncome, totalExpense),
                                             height: "0.5rem",
@@ -93,7 +88,6 @@ class Dashboard extends Component {
                                     />
                                 </div>
                             </div>
-                        </div>
                     </Card.Body>
                 </Card>
                 <DashboardCard

@@ -1,0 +1,44 @@
+.comparison-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+}
+
+.total-income-header {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.total-income-stats {
+    grid-column: 2/4;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.income-bar {
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
+
+.total-expense-header {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.total-expense-stats {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.expense-bar {
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
