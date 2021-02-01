@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import TransactionsList from "./TransactionsList";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import DashboardCard from "./DashboardCard";
+// import { Link } from "react-router-dom";
+// import Button from "react-bootstrap/Button";
 import Navbar from "../Navbar";
 
 class Dashboard extends Component {
@@ -24,10 +25,15 @@ class Dashboard extends Component {
                     handleLogout={ this.props.logoutUser }
                 />
                 <h1 className="page-header display-3">{"Dashboard"}</h1>
+                <DashboardCard cardClass="balance-card"/>
+                <DashboardCard cardClass="comparison-card"/>
+                <DashboardCard cardClass="transaction-card"/>
+                <DashboardCard cardClass="category-card"/>
+                <DashboardCard cardClass="pie-card"/>
                 <TransactionsList
                     transactions={ transactions }
                 />
-                <Link to="/add-transaction" className="text-decoration-none mt-2">
+                {/* <Link to="/add-transaction" className="text-decoration-none mt-2">
                     <Button
                         className="my-2"
                         variant="primary"
@@ -35,7 +41,7 @@ class Dashboard extends Component {
                     >
                         {"Add New Transaction"}
                     </Button>
-                </Link>
+                </Link> */}
             </div>
         );
     };

@@ -1,9 +1,9 @@
 import React from "react";
 import Card from 'react-bootstrap/Card'
 
-const DashboardCard = () => {
+const DashboardCard = ({ cardClass }) => {
     return (
-        <Card>
+        <Card className={"shadow " + cardClass}>
             <Card.Header>Header</Card.Header>
             <Card.Body>
             <Card.Title>Card Title</Card.Title>
