@@ -23,7 +23,7 @@ class TransactionsList extends Component {
 
     render() {
         return (
-            <>
+            <div className="transactions-table">
                 <h4>{"Recent Transactions"}</h4>
                 <ListGroup>
                     { this.props.transactions.map((transaction, index) => (
@@ -56,7 +56,7 @@ class TransactionsList extends Component {
                     : null
                 }
                 
-            </>
+            </div>
         );
     };
 };
