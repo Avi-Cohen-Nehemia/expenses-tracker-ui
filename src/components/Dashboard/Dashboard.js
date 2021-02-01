@@ -45,7 +45,7 @@ class Dashboard extends Component {
                 <DashboardCard
                     cardClass="category-card"
                     icon="fas fa-search-dollar fa-lg"
-                    title="Category Most Spent On"
+                    title="Most Spent On"
                 />
                 <DashboardCard
                     cardClass="pie-card"
