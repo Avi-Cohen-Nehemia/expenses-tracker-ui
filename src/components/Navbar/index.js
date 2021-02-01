@@ -16,14 +16,6 @@ const Navbar = ({ selected, handleLogout }) => {
                 styling={{height: "70px", width: "70px"}}
             />
             <NavbarLink
-                destination="/profile"
-                icon={ profile }
-                text="Profile"
-                altText="profile logo"
-                styling={{ height: "35px", width: "40px" }}
-                iconClasses="mt-1 mb-3"
-            />
-            <NavbarLink
                 destination="/dashboard"
                 icon={ dashboard }
                 text="Dashboard"
@@ -31,6 +23,14 @@ const Navbar = ({ selected, handleLogout }) => {
                 styling={{ height: "50px", width: "50px" }}
                 iconClasses="mb-2"
                 selected={ selected === "dashboard"}
+            />
+            <NavbarLink
+                destination="/profile"
+                icon={ profile }
+                text="Profile"
+                altText="profile logo"
+                styling={{ height: "35px", width: "40px" }}
+                iconClasses="mt-1 mb-3"
             />
             <NavbarLink
                 destination="#"

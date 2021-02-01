@@ -27,27 +27,29 @@ class Dashboard extends Component {
                 <h1 className="page-header display-3">{"Dashboard"}</h1>
                 <DashboardCard
                     cardClass="balance-card"
-                    icon={<i className="fas fa-balance-scale fa-lg"/>}
+                    content={this.props.balance}
+                    icon="fas fa-balance-scale fa-lg"
                     title="Balance"
                 />
                 <DashboardCard
                     cardClass="comparison-card"
-                    icon={<i className="fas fa-chart-bar fa-lg"/>}
+                    icon="fas fa-chart-bar fa-lg"
                     title="Compare"
                 />
                 <DashboardCard
                     cardClass="transaction-card"
-                    icon={<i className="fas fa-exchange-alt fa-lg"/>}
+                    content={this.props.transactions[0].amount}
+                    icon="fas fa-exchange-alt fa-lg"
                     title="Last Transaction"
                 />
                 <DashboardCard
                     cardClass="category-card"
-                    icon={<i className="fas fa-search-dollar fa-lg"/>}
+                    icon="fas fa-search-dollar fa-lg"
                     title="Category Most Spent On"
                 />
                 <DashboardCard
                     cardClass="pie-card"
-                    icon={<i className="fas fa-chart-pie fa-lg"/>}
+                    icon="fas fa-chart-pie fa-lg"
                     title="Categories Chart"
                 />
                 <TransactionsList

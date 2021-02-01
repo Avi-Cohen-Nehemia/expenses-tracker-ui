@@ -45,3 +45,8 @@
     grid-column: 2/11;
     grid-row: 6/10;
 }
+
+.dashboard-card-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
