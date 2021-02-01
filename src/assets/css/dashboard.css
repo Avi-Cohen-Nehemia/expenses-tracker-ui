@@ -3,7 +3,7 @@
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
     grid-gap: 0.5rem;
-    background-color: #D3D8DE;
+    background-color: #f2f3f5;
 }
 
 .side-navbar {

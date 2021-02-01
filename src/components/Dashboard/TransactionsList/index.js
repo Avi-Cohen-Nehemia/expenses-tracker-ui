@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ListGroup from "react-bootstrap/ListGroup"
+import Table from 'react-bootstrap/Table'
 
 class TransactionsList extends Component {
 
@@ -25,7 +25,31 @@ class TransactionsList extends Component {
         return (
             <div className="transactions-table">
                 <h4>{"Recent Transactions"}</h4>
-                <ListGroup>
+                <Table striped bordered hover className="text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Balance</th>
+                            <th>Transaction Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { this.props.transactions.map((transaction, index) => (
+                            index < this.state.transactionsToDisplay ?
+                                <tr key={index}>
+                                    <td>{ index + 1 }</td>
+                                    <td>{ transaction.created_at }</td>
+                                    <td className="text-capitalize">{ transaction.category }</td>
+                                    <td>{ transaction.balance_at_the_time }</td>
+                                    <td>{ transaction.amount }</td>
+                                </tr>
+                            : null
+                        )) }
+                    </tbody>
+                </Table>
+                {/* <ListGroup>
                     { this.props.transactions.map((transaction, index) => (
                         index < this.state.transactionsToDisplay ?
                         <ListGroup.Item
@@ -44,7 +68,7 @@ class TransactionsList extends Component {
                         </ListGroup.Item>
                         : null
                     )) }
-                </ListGroup>
+                </ListGroup> */}
                 { this.state.transactionsToDisplay < this.props.transactions.length ?
                     <p
                         className="text-info mt-2 active"
