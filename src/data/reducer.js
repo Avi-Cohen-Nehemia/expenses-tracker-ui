@@ -27,11 +27,19 @@ const getUserStats = (state, action) => {
     };
 };
 
+const reloadDashboard = (state, action) => {
+    return {
+        ...state,
+        loaded: false,
+    };
+};
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER" : return loginUser(state, action);
         case "UPDATE_USER_DETAILS" : return updateUserDetails(state, action);
         case "GET_USER_STATS" : return getUserStats(state, action);
+        case "RELOAD_DASHBOARD" : return reloadDashboard(state, action);
         case "LOGOUT_USER" : return initialState;
         default: return state;
     };

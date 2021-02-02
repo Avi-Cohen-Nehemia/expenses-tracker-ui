@@ -3,6 +3,7 @@ import { updateUserStats } from "./state";
 import { updateUserDetails } from "./state";
 import { loginUser } from "./state";
 import { logoutUser } from "./state";
+import { reloadDashboard } from "./state";
 import history from "../../history";
 
 export const login = (data) => {
@@ -49,6 +50,7 @@ export const addTransaction = (data) => {
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
+            dispatch(reloadDashboard())
             history.push("/dashboard");
         });
     };
