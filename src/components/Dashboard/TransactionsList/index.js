@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Table from 'react-bootstrap/Table'
+import Card from 'react-bootstrap/Card'
 
 class TransactionsList extends Component {
 
@@ -23,32 +24,33 @@ class TransactionsList extends Component {
 
     render() {
         return (
-            <div className="transactions-table">
-                <h4>{"Recent Transactions"}</h4>
-                <Table striped bordered hover className="text-center">
-                    <thead>
-                        <tr>
-                            <th>{"#"}</th>
-                            <th>{"Date"}</th>
-                            <th>{"Category"}</th>
-                            <th>{"Balance"}</th>
-                            <th>{"Transaction Amount"}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.props.transactions.map((transaction, index) => (
-                            index < this.state.transactionsToDisplay ?
-                                <tr key={index}>
-                                    <td>{ index + 1 }</td>
-                                    <td>{ transaction.created_at }</td>
-                                    <td className="text-capitalize">{ transaction.category }</td>
-                                    <td>{ transaction.balance_at_the_time }</td>
-                                    <td>{ transaction.amount }</td>
-                                </tr>
-                            : null
-                        )) }
-                    </tbody>
-                </Table>
+            <Card className="shadow transactions-table">
+                <Card.Header className="dashboard-card-header">{"Recent Transactions"}</Card.Header>
+                <Card.Body className="p-0">
+                    <Table striped hover className="text-center m-0">
+                        <thead>
+                            <tr>
+                                <th>{"#"}</th>
+                                <th>{"Date"}</th>
+                                <th>{"Category"}</th>
+                                <th>{"Balance"}</th>
+                                <th>{"Transaction Amount"}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { this.props.transactions.map((transaction, index) => (
+                                index < this.state.transactionsToDisplay ?
+                                    <tr key={index}>
+                                        <td>{ index + 1 }</td>
+                                        <td>{ transaction.created_at }</td>
+                                        <td className="text-capitalize">{ transaction.category }</td>
+                                        <td>{ transaction.balance_at_the_time }</td>
+                                        <td>{ transaction.amount }</td>
+                                    </tr>
+                                : null
+                            )) }
+                        </tbody>
+                    </Table>
                 {/* <ListGroup>
                     { this.props.transactions.map((transaction, index) => (
                         index < this.state.transactionsToDisplay ?
@@ -79,8 +81,8 @@ class TransactionsList extends Component {
                     </p>
                     : null
                 }
-                
-            </div>
+                </Card.Body>
+            </Card>
         );
     };
 };

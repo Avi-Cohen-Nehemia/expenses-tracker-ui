@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
-    grid-gap: 0.5rem;
+    grid-gap: 1rem;
     background-color: #f2f3f5;
 }
 
@@ -42,8 +42,9 @@
 }
 
 .transactions-table {
-    grid-column: 2/11;
+    grid-column: 2/10;
     grid-row: 6/10;
+    margin-bottom: auto;
 }
 
 .dashboard-card-header {
