@@ -2,8 +2,9 @@
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 0.8rem;
     background-color: #f2f3f5;
+    min-height: 100vh;
 }
 
 .side-navbar {
@@ -39,12 +40,14 @@
 .pie-card {
     grid-column: 6/10;
     grid-row: 2/6;
+    margin-right: 3.5%;
 }
 
 .transactions-table {
     grid-column: 2/10;
     grid-row: 6/10;
     margin-bottom: auto;
+    margin-right: 1.7%;
 }
 
 .dashboard-card-header {

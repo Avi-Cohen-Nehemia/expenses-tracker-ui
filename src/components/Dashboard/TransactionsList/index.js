@@ -27,7 +27,10 @@ class TransactionsList extends Component {
         return (
             <div className="transactions-table">
                 <Card className="shadow mb-3">
-                    <Card.Header className="dashboard-card-header">{"Transaction History"}</Card.Header>
+                    <Card.Header className="d-flex justify-content-between align-items-center">
+                        <span className="dashboard-card-header">{"Transaction History"}</span>  
+                        <i className="fas fa-table fa-lg"/>
+                    </Card.Header>
                     <Card.Body className="p-0">
                         <Table striped hover className="text-center m-0">
                             <thead>
@@ -53,26 +56,6 @@ class TransactionsList extends Component {
                                 )) }
                             </tbody>
                         </Table>
-                    {/* <ListGroup>
-                        { this.props.transactions.map((transaction, index) => (
-                            index < this.state.transactionsToDisplay ?
-                            <ListGroup.Item
-                                className="d-flex justify-content-between"
-                                variant={ transaction.type === "income" ? "success" : "danger" }
-                                key={index}
-                            >
-                                <div className="d-flex flex-column justify-content-between">
-                                    <span className="text-capitalize">{transaction.category}</span>
-                                    <span style={{fontSize: "0.8rem"}}>{transaction.created_at}</span>
-                                </div>
-                                <div className="d-flex flex-column justify-content-between">
-                                    <span>{transaction.amount}</span>
-                                    <span className="text-right" style={{fontSize: "0.8rem"}}>{transaction.balance_at_the_time}</span>
-                                </div>
-                            </ListGroup.Item>
-                            : null
-                        )) }
-                    </ListGroup> */}
                     </Card.Body>
                 </Card>
                 { this.state.transactionsToDisplay < this.props.transactions.length ?
