@@ -28,11 +28,11 @@ class TransactionsList extends Component {
                 <Table striped bordered hover className="text-center">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Date</th>
-                            <th>Category</th>
-                            <th>Balance</th>
-                            <th>Transaction Amount</th>
+                            <th>{"#"}</th>
+                            <th>{"Date"}</th>
+                            <th>{"Category"}</th>
+                            <th>{"Balance"}</th>
+                            <th>{"Transaction Amount"}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,8 +72,8 @@ class TransactionsList extends Component {
                 { this.state.transactionsToDisplay < this.props.transactions.length ?
                     <p
                         className="text-info mt-2 active"
-                        onClick={this.handleClick}
-                        style={{cursor: "pointer"}}
+                        onClick={ this.handleClick }
+                        style={{ cursor: "pointer" }}
                     >
                         {"Load more transactions"}
                     </p>
