@@ -40,6 +40,7 @@ const Navbar = ({ selected, handleLogout }) => {
                 altText="add transaction logo"
                 styling={{ height: "40px", width: "45px" }}
                 iconClasses="mt-2 mb-3"
+                selected={ selected === "add-transaction"}
             />
             <NavbarLink
                 destination="#"

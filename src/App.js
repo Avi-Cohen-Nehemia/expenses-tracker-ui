@@ -7,6 +7,7 @@ import "./assets/css/dashboard.css";
 import "./assets/css/spinner.css";
 import "./assets/css/compare-card.css";
 import "./assets/css/misc.css";
+import "./assets/css/add-transaction.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
