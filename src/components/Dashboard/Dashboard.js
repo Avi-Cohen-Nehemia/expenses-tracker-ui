@@ -4,9 +4,8 @@ import TransactionsList from "./TransactionsList";
 import DashboardCard from "./DashboardCard";
 import Card from 'react-bootstrap/Card'
 import Spinner from "../Spinner"
-// import { Link } from "react-router-dom";
-// import Button from "react-bootstrap/Button";
 import Navbar from "../Navbar";
+import PieChartCard from "./PieChartCard";
 
 class Dashboard extends Component {
 
@@ -38,7 +37,7 @@ class Dashboard extends Component {
 
     render() {
 
-        const { balance, transactions, totalExpense, mostSpentOnCategory, totalIncome, loaded } = this.props;
+        const { balance, transactions, totalExpense, totalExpenseByCategory, mostSpentOnCategory, totalIncome, loaded } = this.props;
 
         return (
             loaded ?
@@ -70,7 +69,8 @@ class Dashboard extends Component {
                                         style={{
                                             width: this.calculateBarWidth(totalExpense, totalIncome, totalIncome),
                                             height: "0.5rem",
-                                            backgroundColor: "green"
+                                            backgroundColor: "green",
+                                            marginLeft: "3px"
                                         }}
                                     />
                                 </div>
@@ -83,7 +83,8 @@ class Dashboard extends Component {
                                         style={{
                                             width: this.calculateBarWidth(totalExpense, totalIncome, totalExpense),
                                             height: "0.5rem",
-                                            backgroundColor: "red"
+                                            backgroundColor: "red",
+                                            marginLeft: "3px"
                                         }}
                                     />
                                 </div>
@@ -102,8 +103,9 @@ class Dashboard extends Component {
                     icon="fas fa-search-dollar fa-lg"
                     title="Most Spent On"
                 />
-                <DashboardCard
+                <PieChartCard
                     cardClass="pie-card"
+                    data={ totalExpenseByCategory }
                     icon="fas fa-chart-pie fa-lg"
                     title="Categories Chart"
                 />
