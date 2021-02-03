@@ -23,7 +23,7 @@ class Login extends Component {
     };
 
     componentDidMount() {
-        if (this.props.isLoggedIn) {
+        if (this.props.isLoggedIn && this.props.accessToken) {
             history.push("/dashboard");
         };
     };

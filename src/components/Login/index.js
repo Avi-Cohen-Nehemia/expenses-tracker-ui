@@ -5,6 +5,7 @@ import { login } from "../../data/actions/api";
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.isLoggedIn,
+        accessToken: state.accessToken,
     };
 };
 
