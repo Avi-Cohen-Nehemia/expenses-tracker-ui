@@ -16,13 +16,16 @@ const updateUserDetails = (state, action) => {
     };
 };
 
-const mostSpentOnCategory = (totalExpenseByCategory) => {
+const mostSpentOnCategory = (state, action) => {
 
-    const mostSpentOn = totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
+    const mostSpentOn = state.totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
         return prevCategory.amount > currentCategory.amount ? prevCategory : currentCategory
     });
 
-    return mostSpentOn.category;
+    return {
+        ...state,
+        mostSpentOnCategory: mostSpentOn.category
+    }
 };
 
 const getUserStats = (state, action) => {
@@ -32,7 +35,6 @@ const getUserStats = (state, action) => {
         totalIncome: action.totalIncome,
         totalExpense: action.totalExpense,
         transactions: action.transactions,
-        mostSpentOnCategory: mostSpentOnCategory(action.totalExpenseByCategory),
         totalExpenseByCategory: action.totalExpenseByCategory,
         loaded: true,
     };
@@ -48,7 +50,7 @@ const reloadDashboard = (state, action) => {
 const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER" : return loginUser(state, action);
-        case "UPDATE_USER_DETAILS" : return updateUserDetails(state, action);
+        case "UPDATE_USER_DETAILS" : return mostSpentOnCategory(updateUserDetails(state, action));
         case "GET_USER_STATS" : return getUserStats(state, action);
         case "RELOAD_DASHBOARD" : return reloadDashboard(state, action);
         case "LOGOUT_USER" : return initialState;
