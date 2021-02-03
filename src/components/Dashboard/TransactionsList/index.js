@@ -38,8 +38,8 @@ class TransactionsList extends Component {
                                     <th>{"#"}</th>
                                     <th>{"Date"}</th>
                                     <th>{"Category"}</th>
-                                    <th>{"Balance"}</th>
                                     <th>{"Transaction Amount"}</th>
+                                    <th>{"Balance"}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,8 +49,8 @@ class TransactionsList extends Component {
                                             <td>{ index + 1 }</td>
                                             <td>{ transaction.created_at }</td>
                                             <td className="text-capitalize">{ transaction.category }</td>
-                                            <td>{ transaction.balance_at_the_time }</td>
                                             <td>{ transaction.amount }</td>
+                                            <td>{ transaction.balance_at_the_time }</td>
                                         </tr>
                                     : null
                                 )) }
