@@ -4,6 +4,7 @@ import piggy from "../../assets/images/piggy.png"
 import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
 import logout from "../../assets/images/logout.png"
+import receipt from "../../assets/images/receipt.png"
 
 const Navbar = ({ selected, handleLogout }) => {
     return (
@@ -31,6 +32,14 @@ const Navbar = ({ selected, handleLogout }) => {
                 altText="profile logo"
                 styling={{ height: "35px", width: "40px" }}
                 iconClasses="mt-1 mb-3"
+            />
+            <NavbarLink
+                destination="/add-transaction"
+                icon={ receipt }
+                text="Add Transaction"
+                altText="add transaction logo"
+                styling={{ height: "40px", width: "45px" }}
+                iconClasses="mt-2 mb-3"
             />
             <NavbarLink
                 destination="#"
