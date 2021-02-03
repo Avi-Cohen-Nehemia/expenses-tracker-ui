@@ -38,7 +38,7 @@ class Dashboard extends Component {
 
     render() {
 
-        const { balance, transactions, totalExpense, totalIncome, loaded } = this.props;
+        const { balance, transactions, totalExpense, mostSpentOnCategory, totalIncome, loaded } = this.props;
 
         return (
             loaded ?
@@ -98,6 +98,7 @@ class Dashboard extends Component {
                 />
                 <DashboardCard
                     cardClass="category-card"
+                    content={ mostSpentOnCategory }
                     icon="fas fa-search-dollar fa-lg"
                     title="Most Spent On"
                 />

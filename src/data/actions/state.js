@@ -10,7 +10,8 @@ export const updateUserStats = (data) => {
         balance: data.balance,
         totalIncome: data.total_income,
         totalExpense: data.total_expense,
-        transactions: data.transactions
+        transactions: data.transactions,
+        totalExpenseByCategory: data.total_expense_by_category
     };
 };
 

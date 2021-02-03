@@ -11,7 +11,7 @@ const DashboardCard = ({ cardClass, content, title, icon }) => {
                 <i className={ icon }/>
             </Card.Header>
             <Card.Body className="d-flex justify-content-center align-items-center">
-                <h2 className="text-center">{ content }</h2>
+                <h2 className="text-center text-capitalize">{ content }</h2>
             </Card.Body>
         </Card>
     );

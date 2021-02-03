@@ -16,6 +16,15 @@ const updateUserDetails = (state, action) => {
     };
 };
 
+const mostSpentOnCategory = (totalExpenseByCategory) => {
+
+    const mostSpentOn = totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
+        return prevCategory.amount > currentCategory.amount ? prevCategory : currentCategory
+    });
+
+    return mostSpentOn.category;
+};
+
 const getUserStats = (state, action) => {
     return {
         ...state,
@@ -23,6 +32,8 @@ const getUserStats = (state, action) => {
         totalIncome: action.totalIncome,
         totalExpense: action.totalExpense,
         transactions: action.transactions,
+        mostSpentOnCategory: mostSpentOnCategory(action.totalExpenseByCategory),
+        totalExpenseByCategory: action.totalExpenseByCategory,
         loaded: true,
     };
 };

@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
         balance: state.balance,
         totalIncome: state.totalIncome,
         totalExpense: state.totalExpense,
+        totalExpenseByCategory: state.totalExpenseByCategory,
+        mostSpentOnCategory: state.mostSpentOnCategory,
         transactions: state.transactions,
         loaded: state.loaded
     };

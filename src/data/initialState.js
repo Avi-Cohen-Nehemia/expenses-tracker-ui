@@ -6,6 +6,8 @@ export const initialState = {
 	balance: "",
 	totalIncome: "",
 	totalExpense: "",
+	mostSpentOnCategory: "",
+	totalExpenseByCategory: [],
 	transactions: [],
 	loaded: false
 };
