@@ -36,17 +36,22 @@ const PieChartCard = ({ cardClass, title, icon, data }) => {
                                 marginRight: "0.5rem",
                                 borderRadius: "50%"
                             }}/>
-                            <span>{`${dataPoint.title}`}</span>
+                            <span>{ dataPoint.title }</span>
                         </span>
                     ))}
                 </div>
                 <PieChart
                     animate
-                    animationDuration={800}
+                    animationDuration={ 800 }
                     data={ chartData }
-                    label={({ dataEntry }) => `£${dataEntry.value}`}
-                    labelStyle={{color: "black", fontSize: "0.5rem", fontWeight: "bold", textTransform: "capitalize"}}
-                    style={{maxWidth: "40%"}}
+                    label={({ dataEntry }) => `£${ dataEntry.value }`}
+                    labelPosition={ 60 }
+                    labelStyle={{color: "black",
+                        fontSize: "0.5rem",
+                        fontWeight: "bold",
+                        textTransform: "capitalize"
+                    }}
+                    style={{ maxWidth: "40%" }}
                 />
             </Card.Body>
         </Card>
