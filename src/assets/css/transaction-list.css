@@ -1,6 +1,11 @@
+.full-table {
+    margin: 0;
+    text-align: center;
+}
+
 @media screen and (max-width: 610px){
     .full-table {
-        display: none;
+        display: none; 
     }
 }
 
