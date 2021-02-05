@@ -32,7 +32,7 @@ class TransactionsList extends Component {
                         <i className="fas fa-table fa-lg"/>
                     </Card.Header>
                     <Card.Body className="p-0">
-                        <Table striped hover className="text-center m-0">
+                        <Table striped hover className="text-center m-0 full-table">
                             <thead>
                                 <tr>
                                     <th>{"#"}</th>
@@ -51,6 +51,36 @@ class TransactionsList extends Component {
                                             <td className="text-capitalize">{ transaction.category }</td>
                                             <td>{ transaction.amount }</td>
                                             <td>{ transaction.balance_at_the_time }</td>
+                                        </tr>
+                                    : null
+                                )) }
+                            </tbody>
+                        </Table>
+                        <Table striped hover className="text-center m-0 compact-table">
+                            <thead>
+                                <tr className="">
+                                    <th className="text-left">
+                                        <div>{"Category"}</div>
+                                        <div>{"Date"}</div>
+                                    </th>
+                                    <th className="text-right">
+                                        <div>{"Transaction Amount"}</div>
+                                        <div>{"Balance"}</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.props.transactions.map((transaction, index) => (
+                                    index < this.state.transactionsToDisplay ?
+                                        <tr key={index} className="">
+                                            <td className="text-left">
+                                                <div className="text-capitalize">{ transaction.category }</div>
+                                                <div style={{fontSize: "0.8rem"}}>{ transaction.created_at }</div>      
+                                            </td>
+                                            <td className="text-right">
+                                                <div>{ transaction.amount }</div>
+                                                <div style={{fontSize: "0.8rem"}}>{ transaction.balance_at_the_time }</div>      
+                                            </td>
                                         </tr>
                                     : null
                                 )) }

@@ -1,0 +1,21 @@
+@media screen and (max-width: 610px){
+    .full-table {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 610px){
+    .compact-table {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .table td {
+        padding: 0.75rem 2.5rem;
+    }
+
+    .table th {
+        padding: 0.75rem 2.5rem;
+    }
+}
