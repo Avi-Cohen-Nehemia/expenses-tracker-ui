@@ -112,15 +112,6 @@ class Dashboard extends Component {
                 <TransactionsList
                     transactions={ transactions }
                 />
-                {/* <Link to="/add-transaction" className="text-decoration-none mt-2">
-                    <Button
-                        className="my-2"
-                        variant="primary"
-                        size="sm"
-                    >
-                        {"Add New Transaction"}
-                    </Button>
-                </Link> */}
             </div>
             : <Spinner />
         );
