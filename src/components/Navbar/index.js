@@ -9,6 +9,9 @@ import receipt from "../../assets/images/receipt.png"
 const Navbar = ({ selected, handleLogout }) => {
     return (
         <nav className="side-navbar">
+            <div className="burger">
+                <i className="d-sm-block d-md-none fas fa-bars fa-2x text-white mr-3"/>
+            </div>
             <NavbarLink
                 destination="/"
                 icon={ piggy }

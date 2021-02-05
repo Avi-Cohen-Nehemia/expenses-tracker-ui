@@ -43,3 +43,18 @@ hr {
     border-bottom: 1px solid #D3D8DE;
     width: 90%;
 }
+
+@media screen and (max-width: 768px){
+    .burger {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+    }
+
+    .burger .fa-bars {
+        cursor: pointer;
+    }
+}

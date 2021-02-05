@@ -5,11 +5,11 @@ const NavbarLink = ({ destination, icon, text, altText, styling, iconClasses, se
     return (
         <>
             <Link
-                to={destination}
-                className={"side-navbar-link text-decoration-none" + (selected ? " font-weight-bold text-white selected-link" : "")}
+                to={ destination }
+                className={"side-navbar-link text-decoration-none d-none d-md-flex" + (selected ? " font-weight-bold text-white selected-link" : "")}
                 onClick={ handleClick }
             >
-                <p className="m-0">{text}</p>
+                <p className="m-0">{ text }</p>
                 <img
                     className={ iconClasses }
                     src={ icon }
@@ -17,7 +17,7 @@ const NavbarLink = ({ destination, icon, text, altText, styling, iconClasses, se
                     style={ styling }
                 />
             </Link>
-            <hr/>
+            <hr className="d-none d-md-block"/>
         </>
     );
 };
