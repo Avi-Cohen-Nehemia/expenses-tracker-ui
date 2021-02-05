@@ -48,6 +48,7 @@ hr {
 
     #mobile-side-navbar {
         height: auto;
+        padding-bottom: 0.5rem;
     }
 
     .burger {
