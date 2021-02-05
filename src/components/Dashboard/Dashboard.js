@@ -27,7 +27,7 @@ class Dashboard extends Component {
         //remove £ symbol and convert string to float
         let totalIncomeNumber = parseFloat(totalIncome.replace("£", ""));
         let totalExpenseNumber = parseFloat(totalExpense.replace("£", ""));
-        let amountNumber = parseFloat(amount.replace("£", ""));
+        let amountNumber = parseFloat(amount.replace("£", "").replace('-', ''));
 
         // calculate relative % of the bars
         let total = totalIncomeNumber + totalExpenseNumber;

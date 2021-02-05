@@ -4,16 +4,13 @@ import { PieChart } from 'react-minimal-pie-chart';
 
 const PieChartCard = ({ cardClass, title, icon, data }) => {
 
-    const generateColor = () => {
-        let n = (Math.random() * 0xfffff * 1000000).toString(16);
-        return '#' + n.slice(0, 6);
-    };
+    let colors = ["#c23127", "#c27727", "#c2b827", "#27c253", "#27c2b5", "#2772c2", "#6527c2", "#b527c2", "#751226", "#125275"];
 
-    let chartData = data.map((dataPoint) => {
+    let chartData = data.map((dataPoint, index) => {
         return {
             title: dataPoint.category,
             value: dataPoint.amount,
-            color: generateColor()
+            color: colors[index]
         };
     });
 
@@ -44,10 +41,10 @@ const PieChartCard = ({ cardClass, title, icon, data }) => {
                     animate
                     animationDuration={ 800 }
                     data={ chartData }
-                    label={({ dataEntry }) => `£${ dataEntry.value }`}
+                    label={({ dataEntry }) => `£${ dataEntry.value.toFixed(2) }`}
                     labelPosition={ 60 }
                     labelStyle={{color: "black",
-                        fontSize: "0.5rem",
+                        fontSize: chartData.length > 5 ? "0.4rem" : "0.5rem",
                         fontWeight: "bold",
                         textTransform: "capitalize"
                     }}
