@@ -63,6 +63,7 @@ class Navbar extends Component {
                     altText="profile logo"
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-1 mb-3"
+                    selected={ selected === "profile"}
                     isVisible={ this.state.showMobileNavbar }
                 />
                 <NavbarLink
