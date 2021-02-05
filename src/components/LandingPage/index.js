@@ -11,7 +11,7 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page">
-                <div className="my-auto">
+                <div className="my-auto welcome">
                     <h1 className="text-center">
                         {"Welcome to Expenses Tracker"}
                     </h1>
@@ -30,7 +30,7 @@ class LandingPage extends Component {
                         </Col>
                     </Row>
                 </div>
-                <div>
+                <div className="blah2">
                     <img
                         src={ homeImage }
                         alt="person counting money"

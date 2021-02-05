@@ -46,7 +46,7 @@ class Signup extends Component {
 
         return(
             <div className="signup-page">
-                <div className="my-auto">
+                <div className="my-auto signup-form">
                     <h2 className="text-center">{"Sign Up"}</h2>
                     <Form
                         className="mt-4"
@@ -125,7 +125,7 @@ class Signup extends Component {
                     <img
                         src={ homeImage }
                         alt="person counting money"
-                        className="cover-image"
+                        className="signup-cover-image"
                     />
                 </div>
             </div>

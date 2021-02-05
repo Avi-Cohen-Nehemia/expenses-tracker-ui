@@ -45,7 +45,7 @@ class Login extends Component {
 
         return(
             <div className="login-page">
-                <div className="my-auto">
+                <div className="my-auto login-form">
                     <h2 className="text-center">{"Log In"}</h2>
                     <Form
                         className="mt-3"
