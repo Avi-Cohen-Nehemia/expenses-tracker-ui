@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavbarLink = ({ destination, icon, text, altText, styling, iconClasses, selected, handleClick }) => {
+const NavbarLink = ({ destination, icon, isVisible, text, altText, styling, iconClasses, selected, handleClick }) => {
     return (
         <>
             <Link
                 to={ destination }
-                className={"side-navbar-link text-decoration-none d-none d-md-flex" + (selected ? " font-weight-bold text-white selected-link" : "")}
+                className={
+                    "side-navbar-link text-decoration-none d-none d-md-flex"
+                    + (selected ? " font-weight-bold text-white selected-link" : "")
+                    + (isVisible ? " d-flex" : "")
+                }
                 onClick={ handleClick }
             >
                 <p className="m-0">{ text }</p>
@@ -17,7 +21,7 @@ const NavbarLink = ({ destination, icon, text, altText, styling, iconClasses, se
                     style={ styling }
                 />
             </Link>
-            <hr className="d-none d-md-block"/>
+            <hr className={"d-none d-md-block" + (isVisible ? " d-flex" : "")}/>
         </>
     );
 };
