@@ -59,11 +59,11 @@ class TransactionsList extends Component {
                         <Table striped hover className="text-center m-0 compact-table">
                             <thead>
                                 <tr>
-                                    <th className="text-left">
+                                    <th className="text-left pr-0">
                                         <div>{"Category"}</div>
                                         <div>{"Date"}</div>
                                     </th>
-                                    <th className="text-right">
+                                    <th className="text-right text-nowrap pl-0">
                                         <div>{"Transaction Amount"}</div>
                                         <div>{"Balance"}</div>
                                     </th>
@@ -73,11 +73,11 @@ class TransactionsList extends Component {
                                 { this.props.transactions.map((transaction, index) => (
                                     index < this.state.transactionsToDisplay ?
                                         <tr key={index}>
-                                            <td className="text-left">
+                                            <td className="text-left pr-0">
                                                 <div className="text-capitalize">{ transaction.category }</div>
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.created_at }</div>      
                                             </td>
-                                            <td className="text-right">
+                                            <td className="text-right pl-0">
                                                 <div>{ transaction.amount }</div>
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.balance_at_the_time }</div>      
                                             </td>
