@@ -1,0 +1,40 @@
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    background-color: #f2f3f5;
+    grid-gap: 0.8rem;
+    min-height: 100vh;
+}
+
+.profile-grid .page-header{
+    grid-column: 2/10;
+    grid-row: 1/2;
+}
+
+.username-card {
+    grid-column: 2/6;
+    grid-row: 2/4;
+}
+
+@media screen and (max-width: 768px){
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: 3rem 6rem repeat(7, 1fr);
+        background-color: #f2f3f5;
+        grid-gap: 0.8rem;
+        min-height: 100vh;
+    }
+
+    .profile-grid .page-header{
+        grid-column: 1/10;
+        grid-row: 2/3;
+    }
+
+    .username-card {
+        grid-column: 2/9;
+        grid-row: 3/5;
+    }
+}
