@@ -16,6 +16,7 @@ import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import AddTransaction from "./components/Dashboard/AddTransaction";
 import Profile from './components/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   return (
@@ -30,13 +31,13 @@ const App = () => {
           <Login />
         </Route>
         <Route exact path="/dashboard">
-          <Dashboard />
+          <ProtectedRoute Component={ Dashboard } />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <ProtectedRoute Component={ Profile } />
         </Route>
         <Route exact path="/add-transaction">
-          <AddTransaction />
+          <ProtectedRoute Component={ AddTransaction } />
         </Route>
     </Router>
   );
