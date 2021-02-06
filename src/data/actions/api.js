@@ -27,9 +27,11 @@ export const getUserStats = () => {
     return (dispatch, getState) => {
 
         const userID = getState().userID;
+        const accessToken = getState().accessToken;
 
-        axios.get(`users/${userID}`)
-        .then(({ data }) => {
+        axios.get(`users/${userID}`, {
+            headers: { Authorization: `Bearer ${accessToken}`}
+        }).then(({ data }) => {
             dispatch(updateUserStats(data.data));
         });
     };
