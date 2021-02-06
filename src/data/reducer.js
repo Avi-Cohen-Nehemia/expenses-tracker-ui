@@ -18,11 +18,14 @@ const updateUserDetails = (state, action) => {
 
 const mostSpentOnCategory = (totalExpenseByCategory) => {
 
-    const mostSpentOn = totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
-        return prevCategory.amount > currentCategory.amount ? prevCategory : currentCategory
-    });
+    if (totalExpenseByCategory.length) {
 
-    return mostSpentOn.category;
+        const mostSpentOn = totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
+            return prevCategory.amount > currentCategory.amount ? prevCategory : currentCategory
+        });
+    
+        return mostSpentOn.category;   
+    }
 };
 
 const getUserStats = (state, action) => {

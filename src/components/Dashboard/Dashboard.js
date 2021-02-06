@@ -32,7 +32,7 @@ class Dashboard extends Component {
         // calculate relative % of the bars
         let total = totalIncomeNumber + totalExpenseNumber;
 
-        return `${amountNumber / total * 100}%`;
+        return total ? `${amountNumber / total * 100}%` : "1%";
     }
 
     render() {
@@ -93,13 +93,13 @@ class Dashboard extends Component {
                 </Card>
                 <DashboardCard
                     cardClass="transaction-card"
-                    content={ transactions[0].amount }
+                    content={ transactions.length ? transactions[0].amount : "N/A" }
                     icon="fas fa-exchange-alt fa-lg"
                     title="Last Transaction"
                 />
                 <DashboardCard
                     cardClass="category-card"
-                    content={ mostSpentOnCategory }
+                    content={ mostSpentOnCategory ? mostSpentOnCategory : "N/A" }
                     icon="fas fa-search-dollar fa-lg"
                     title="Most Spent On"
                 />

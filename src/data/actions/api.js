@@ -64,6 +64,7 @@ export const createNewUser = (data) => {
             name: data.username,
             password: data.password,
         }).then(({ data }) => {
+            dispatch(loginUser());
             dispatch(updateUserDetails(data.data));
         }).then(() => {
             history.push("/dashboard");
