@@ -3,3 +3,31 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.pie-chart-card-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pie-chart-categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-transform: capitalize;
+    font-weight: 700;
+    height: 100%;
+}
+
+.pie-chart-category-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.pie-chart-category-dot {
+    height: 10px;
+    width: 10px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}

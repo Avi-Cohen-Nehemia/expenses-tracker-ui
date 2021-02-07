@@ -20,17 +20,13 @@ const PieChartCard = ({ data }) => {
                 <span className="dashboard-card-header">{ "Categories Chart" }</span>  
                 <i className="fas fa-chart-pie fa-lg"/>
             </Card.Header>
-            <Card.Body className="d-flex justify-content-around align-items-center">
-                <div className="d-flex flex-column justify-content-around text-capitalize font-weight-bold" style={{height: "100%"}}>
+            <Card.Body className="pie-chart-card-body">
+                <div className="pie-chart-categories">
                     {chartData.map((dataPoint, index) => (
-                        <span className="d-flex justify-content-start align-items-center" key={index}>
-                            <div style={{
-                                height: "10px",
-                                width: "10px",
-                                backgroundColor: dataPoint.color,
-                                marginRight: "0.5rem",
-                                borderRadius: "50%"
-                            }}/>
+                        <span className="pie-chart-category-container" key={index}>
+                            <div
+                                className="pie-chart-category-dot"
+                                style={{ backgroundColor: dataPoint.color }}/>
                             <span>{ dataPoint.title }</span>
                         </span>
                     ))}
@@ -41,7 +37,8 @@ const PieChartCard = ({ data }) => {
                     data={ chartData }
                     label={({ dataEntry }) => `£${ dataEntry.value.toFixed(2) }`}
                     labelPosition={ 60 }
-                    labelStyle={{color: "black",
+                    labelStyle={{
+                        color: "black",
                         fontSize: chartData.length > 5 ? "0.4rem" : "0.5rem",
                         fontWeight: "bold",
                         textTransform: "capitalize"
