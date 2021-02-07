@@ -34,6 +34,8 @@ class PieChartCard extends Component {
             };
         });
 
+        let sortedData = chartData.sort((a, b) => b.value - a.value);
+
         return (
             <Card className="shadow pie-card">
                 <Card.Header className="pie-chart-card-header">
@@ -50,7 +52,7 @@ class PieChartCard extends Component {
                 </Card.Header>
                 <Card.Body className="pie-chart-card-body">
                     <div className="pie-chart-categories">
-                        {chartData.map((dataPoint, index) => (
+                        {sortedData.map((dataPoint, index) => (
                             <span className="pie-chart-category-container" key={index}>
                                 <div
                                     className="pie-chart-category-dot"
