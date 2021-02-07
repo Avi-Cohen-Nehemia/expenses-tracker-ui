@@ -22,7 +22,9 @@ class Dashboard extends Component {
         };
     };
 
-    calculateBarWidth(totalIncome, totalExpense, amount) {
+    calculateBarWidth(amount) {
+
+        const { totalIncome, totalExpense } = this.props;
 
         // make sure number is absolute
         let absoluteAmount = Math.abs(amount);
@@ -75,7 +77,7 @@ class Dashboard extends Component {
                                 <div className="income-bar">
                                     <div
                                         style={{
-                                            width: this.calculateBarWidth(totalExpense, totalIncome, totalIncome),
+                                            width: this.calculateBarWidth(totalIncome),
                                             height: "0.5rem",
                                             backgroundColor: "green",
                                             marginLeft: "3px"
@@ -89,7 +91,7 @@ class Dashboard extends Component {
                                 <div className="expense-bar">
                                     <div
                                         style={{
-                                            width: this.calculateBarWidth(totalExpense, totalIncome, totalExpense),
+                                            width: this.calculateBarWidth(totalExpense),
                                             height: "0.5rem",
                                             backgroundColor: "red",
                                             marginLeft: "3px"
