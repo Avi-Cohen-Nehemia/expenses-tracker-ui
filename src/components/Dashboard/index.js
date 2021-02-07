@@ -8,9 +8,11 @@ import history from "../../history";
 // global state file and pass it down to a component as a prop
 const mapStateToProps = (state) => {
     return {
-        balance: state.balance,
+        balanceWithCurrency: state.balanceWithCurrency,
         totalIncome: state.totalIncome,
+        totalIncomeWithCurrency: state.totalIncomeWithCurrency,
         totalExpense: state.totalExpense,
+        totalExpenseWithCurrency: state.totalExpenseWithCurrency,
         totalExpenseByCategory: state.totalExpenseByCategory,
         mostSpentOnCategory: state.mostSpentOnCategory,
         transactions: state.transactions,

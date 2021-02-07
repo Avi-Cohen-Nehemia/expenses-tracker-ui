@@ -24,20 +24,28 @@ class Dashboard extends Component {
 
     calculateBarWidth(totalIncome, totalExpense, amount) {
 
-        //remove £ symbol and convert string to float
-        let totalIncomeNumber = parseFloat(totalIncome.replace("£", ""));
-        let totalExpenseNumber = parseFloat(totalExpense.replace("£", ""));
-        let amountNumber = parseFloat(amount.replace("£", "").replace('-', ''));
+        // make sure number is absolute
+        let absoluteAmount = Math.abs(amount);
 
         // calculate relative % of the bars
-        let total = totalIncomeNumber + totalExpenseNumber;
+        let total = totalIncome + totalExpense;
 
-        return total ? `${amountNumber / total * 100}%` : "1%";
+        return total ? `${absoluteAmount / total * 100}%` : "1%";
     }
 
     render() {
 
-        const { balance, transactions, totalExpense, totalExpenseByCategory, mostSpentOnCategory, totalIncome, loaded } = this.props;
+        const {
+            balanceWithCurrency,
+            transactions,
+            totalExpense,
+            totalExpenseWithCurrency,
+            totalExpenseByCategory,
+            mostSpentOnCategory,
+            totalIncome,
+            totalIncomeWithCurrency,
+            loaded
+        } = this.props;
 
         return (
             loaded ?
@@ -49,7 +57,7 @@ class Dashboard extends Component {
                 <h1 className="page-header display-3">{"Dashboard"}</h1>
                 <DashboardCard
                     cardClass="balance-card"
-                    content={ balance }
+                    content={ balanceWithCurrency }
                     icon="fas fa-balance-scale fa-lg"
                     title="Balance"
                 />
@@ -63,7 +71,7 @@ class Dashboard extends Component {
                     <Card.Body className="comparison-card-grid p-3">
                             <h6 className="total-income-header m-0">{"Total Income:"}</h6>
                             <div className="total-income-stats">
-                                <h6 className="m-0">{ totalIncome }</h6>
+                                <h6 className="m-0">{ totalIncomeWithCurrency }</h6>
                                 <div className="income-bar">
                                     <div
                                         style={{
@@ -77,7 +85,7 @@ class Dashboard extends Component {
                             </div>
                             <h6 className="total-expense-header m-0">{"Total Expense:"}</h6>
                             <div className="total-expense-stats">
-                                <h6 className="m-0">{ totalExpense }</h6>
+                                <h6 className="m-0">{ totalExpenseWithCurrency }</h6>
                                 <div className="expense-bar">
                                     <div
                                         style={{
@@ -120,7 +128,7 @@ class Dashboard extends Component {
 };
 
 Dashboard.propTypes = {
-    balance: PropTypes.string,
+    balanceWithCurrency: PropTypes.string,
     getUserStats: PropTypes.func,
     transactions: PropTypes.array
 };

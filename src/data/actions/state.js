@@ -8,8 +8,11 @@ export const updateUserStats = (data) => {
     return {
         type: "GET_USER_STATS",
         balance: data.balance,
+        balanceWithCurrency: data.balance_with_currency,
         totalIncome: data.total_income,
+        totalIncomeWithCurrency: data.total_income_with_currency,
         totalExpense: data.total_expense,
+        totalExpenseWithCurrency: data.total_expense_with_currency,
         transactions: data.transactions,
         totalExpenseByCategory: data.total_expense_by_category
     };

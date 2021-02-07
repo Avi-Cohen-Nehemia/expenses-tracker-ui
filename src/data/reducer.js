@@ -32,8 +32,11 @@ const getUserStats = (state, action) => {
     return {
         ...state,
         balance: action.balance,
+        balanceWithCurrency: action.balanceWithCurrency,
         totalIncome: action.totalIncome,
+        totalIncomeWithCurrency: action.totalIncomeWithCurrency,
         totalExpense: action.totalExpense,
+        totalExpenseWithCurrency: action.totalExpenseWithCurrency,
         transactions: action.transactions,
         mostSpentOnCategory: mostSpentOnCategory(action.totalExpenseByCategory),
         totalExpenseByCategory: action.totalExpenseByCategory,
