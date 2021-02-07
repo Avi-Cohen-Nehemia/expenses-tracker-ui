@@ -5,6 +5,15 @@ import { PieChart } from 'react-minimal-pie-chart';
 
 class PieChartCard extends Component {
 
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            showPercentValues: false
+        };
+    };
+
     render() {
 
         let colors = ["#c23127", "#c27727", "#c2b827", "#27c253", "#27c2b5", "#2772c2", "#6527c2", "#b527c2", "#751226", "#125275"];
