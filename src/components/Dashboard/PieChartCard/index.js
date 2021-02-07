@@ -2,7 +2,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card'
 import { PieChart } from 'react-minimal-pie-chart';
 
-const PieChartCard = ({ cardClass, title, icon, data }) => {
+const PieChartCard = ({ data }) => {
 
     let colors = ["#c23127", "#c27727", "#c2b827", "#27c253", "#27c2b5", "#2772c2", "#6527c2", "#b527c2", "#751226", "#125275"];
 
@@ -15,12 +15,10 @@ const PieChartCard = ({ cardClass, title, icon, data }) => {
     });
 
     return (
-        <Card className={"shadow " + cardClass}>
-            <Card.Header
-                className="d-flex justify-content-between align-items-center"
-            >
-                <span className="dashboard-card-header">{ title }</span>  
-                <i className={ icon }/>
+        <Card className="shadow pie-card">
+            <Card.Header className="pie-chart-card-header">
+                <span className="dashboard-card-header">{ "Categories Chart" }</span>  
+                <i className="fas fa-chart-pie fa-lg"/>
             </Card.Header>
             <Card.Body className="d-flex justify-content-around align-items-center">
                 <div className="d-flex flex-column justify-content-around text-capitalize font-weight-bold" style={{height: "100%"}}>

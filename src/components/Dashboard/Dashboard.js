@@ -91,24 +91,25 @@ class Dashboard extends Component {
                             </div>
                     </Card.Body>
                 </Card>
+
                 <DashboardCard
                     cardClass="transaction-card"
                     content={ transactions.length ? transactions[0].amount : "N/A" }
                     icon="fas fa-exchange-alt fa-lg"
                     title="Last Transaction"
                 />
+
                 <DashboardCard
                     cardClass="category-card"
                     content={ mostSpentOnCategory ? mostSpentOnCategory : "N/A" }
                     icon="fas fa-search-dollar fa-lg"
                     title="Most Spent On"
                 />
+
                 <PieChartCard
-                    cardClass="pie-card"
                     data={ totalExpenseByCategory }
-                    icon="fas fa-chart-pie fa-lg"
-                    title="Categories Chart"
                 />
+
                 <TransactionsList
                     transactions={ transactions }
                 />
