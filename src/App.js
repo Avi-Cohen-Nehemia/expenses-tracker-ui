@@ -11,6 +11,7 @@ import "./assets/css/add-transaction.css";
 import "./assets/css/profile.css";
 import "./assets/css/transaction-list.css";
 import "./assets/css/four-oh-four.css";
+import "./assets/css/pie-chart.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
