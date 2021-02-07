@@ -12,11 +12,17 @@ class PieChartCard extends Component {
         this.state = {
             showPercentValues: false
         };
+
+        this.handleClick = this.handleClick.bind(this);
     };
+
+    handleClick() {
+        this.setState({showPercentValues: !this.state.showPercentValues})
+    }
 
     render() {
 
-        let colors = ["#c23127", "#c27727", "#c2b827", "#27c253", "#27c2b5", "#2772c2", "#6527c2", "#b527c2", "#751226", "#125275"];
+        let colors = ["#c23127", "#c27727", "#c2b827", "#27c253", "#27c2b5", "#2772c2", "#6527c2", "#b527c2"];
 
         const { data } = this.props;
 
@@ -32,13 +38,13 @@ class PieChartCard extends Component {
             <Card className="shadow pie-card">
                 <Card.Header className="pie-chart-card-header">
                     <span className="dashboard-card-header">{ "Categories Chart" }</span>
-                    <div className="d-flex justify-content-start align-items-center">
-                        <Form className="mr-3">
-                            <Form.Check 
-                                type="switch"
-                                id="pie-chart-switch"
+                    <div className="pie-chart-category-container">
+                        <Form.Check 
+                            type="switch"
+                            id="pie-chart-switch"
+                            className="mr-2"
+                            onClick={ this.handleClick }
                         />
-                        </Form>
                         <i className="fas fa-chart-pie fa-lg"/>
                     </div>
                 </Card.Header>
@@ -58,7 +64,7 @@ class PieChartCard extends Component {
                         animate
                         animationDuration={ 800 }
                         data={ chartData }
-                        label={({ dataEntry }) => `£${ dataEntry.value.toFixed(2) }`}
+                        label={({ dataEntry }) => this.state.showPercentValues ? `${Math.round(dataEntry.percentage)}%` : `£${ dataEntry.value.toFixed(2) }`}
                         labelPosition={ 60 }
                         labelStyle={{
                             color: "black",
