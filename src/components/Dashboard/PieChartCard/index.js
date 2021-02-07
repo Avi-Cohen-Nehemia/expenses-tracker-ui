@@ -1,5 +1,6 @@
-import React from "react";
-import Card from 'react-bootstrap/Card'
+import React, { Component } from "react";
+import Card from 'react-bootstrap/Card';
+import Form from "react-bootstrap/Form";
 import { PieChart } from 'react-minimal-pie-chart';
 
 const PieChartCard = ({ data }) => {
@@ -17,8 +18,16 @@ const PieChartCard = ({ data }) => {
     return (
         <Card className="shadow pie-card">
             <Card.Header className="pie-chart-card-header">
-                <span className="dashboard-card-header">{ "Categories Chart" }</span>  
-                <i className="fas fa-chart-pie fa-lg"/>
+                <span className="dashboard-card-header">{ "Categories Chart" }</span>
+                <div className="d-flex justify-content-start align-items-center">
+                    <Form className="mr-3">
+                        <Form.Check 
+                            type="switch"
+                            id="pie-chart-switch"
+                    />
+                    </Form>
+                    <i className="fas fa-chart-pie fa-lg"/>
+                </div>
             </Card.Header>
             <Card.Body className="pie-chart-card-body">
                 <div className="pie-chart-categories">
@@ -26,7 +35,8 @@ const PieChartCard = ({ data }) => {
                         <span className="pie-chart-category-container" key={index}>
                             <div
                                 className="pie-chart-category-dot"
-                                style={{ backgroundColor: dataPoint.color }}/>
+                                style={{ backgroundColor: dataPoint.color }}
+                            />
                             <span>{ dataPoint.title }</span>
                         </span>
                     ))}
