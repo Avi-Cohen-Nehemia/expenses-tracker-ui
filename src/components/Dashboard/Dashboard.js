@@ -80,7 +80,8 @@ class Dashboard extends Component {
                                             width: this.calculateBarWidth(totalIncome),
                                             height: "0.5rem",
                                             backgroundColor: "green",
-                                            marginLeft: "3px"
+                                            marginLeft: "3px",
+                                            borderRadius: "5px"
                                         }}
                                     />
                                 </div>
@@ -94,7 +95,8 @@ class Dashboard extends Component {
                                             width: this.calculateBarWidth(totalExpense),
                                             height: "0.5rem",
                                             backgroundColor: "red",
-                                            marginLeft: "3px"
+                                            marginLeft: "3px",
+                                            borderRadius: "5px"
                                         }}
                                     />
                                 </div>
