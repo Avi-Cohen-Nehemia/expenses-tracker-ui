@@ -5,6 +5,7 @@ import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
 import logout from "../../assets/images/logout.png"
 import receipt from "../../assets/images/receipt.png"
+import Swal from "sweetalert2";
 
 class Navbar extends Component {
 
@@ -17,11 +18,27 @@ class Navbar extends Component {
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.logoutUser = this.logoutUser.bind(this);
     };
 
     handleClick() {
         this.setState({ showMobileNavbar: !this.state.showMobileNavbar })
     }
+
+    logoutUser() {
+        Swal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.props.handleLogout();
+            };
+        });
+    };
 
     render() {
 
@@ -83,7 +100,7 @@ class Navbar extends Component {
                     altText="logout logo"
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-2 mb-3 ml-1"
-                    handleClick={ handleLogout }
+                    handleClick={ this.logoutUser }
                     isVisible={ this.state.showMobileNavbar }
                 />
             </nav>
