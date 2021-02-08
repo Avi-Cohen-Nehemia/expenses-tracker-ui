@@ -4,6 +4,7 @@ import { updateUserDetails } from "./state";
 import { loginUser } from "./state";
 import { logoutUser } from "./state";
 import { reloadDashboard } from "./state";
+import { submittingForm } from "./state";
 import history from "../../history";
 import Swal from "sweetalert2";
 
@@ -51,6 +52,8 @@ export const addTransaction = (data) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        dispatch(submittingForm());
+
         axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
@@ -59,12 +62,15 @@ export const addTransaction = (data) => {
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
+            dispatch(submittingForm());
             dispatch(reloadDashboard());
             Swal.fire({
                 icon: 'success',
                 title: 'Transaction saved successfully',
                 showConfirmButton: true,
             });
+        }).catch(() => {
+            dispatch(submittingForm());
         });
     };
 };

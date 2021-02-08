@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FormInput from "../../FormInput";
 import Navbar from "../../Navbar";
+import Spinner from "../../Spinner";
 
 class AddTransaction extends Component {
 
@@ -16,12 +17,19 @@ class AddTransaction extends Component {
             transactionAmount: "",
             transactionType: "income",
             transactionCategory: "paycheck",
+            submittingForm: props.submittingForm
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     };
+
+    componentDidUpdate(prevProps) {
+        if (this.props.submittingForm !== prevProps.submittingForm) {
+            this.setState({ submittingForm: this.props.submittingForm });
+        }
+    }
 
     handleCategoryChange(input, value) {
         if (input === "transactionType") {
@@ -45,7 +53,7 @@ class AddTransaction extends Component {
 
     render() {
 
-        const { transactionAmount, transactionCategory, transactionType } = this.state;
+        const { transactionAmount, transactionCategory, transactionType, submittingForm } = this.state;
         const incomeCategories = ["paycheck", "gift", "other"];
         const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "other"];
         const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
@@ -57,7 +65,8 @@ class AddTransaction extends Component {
                     handleLogout={ this.props.logoutUser }
                 />
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
-                <div className="add-transaction-form">
+                { submittingForm ? <Spinner /> :
+                    <div className="add-transaction-form">
                     <Form onSubmit={this.handleSubmit}>
                         <FormInput
                             inputLabel="Amount"
@@ -119,7 +128,7 @@ class AddTransaction extends Component {
                             </Col>
                         </Row>
                     </Form>
-                </div>
+                </div> }
             </div>
         )
     };

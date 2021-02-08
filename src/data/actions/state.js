@@ -33,6 +33,12 @@ export const reloadDashboard = () => {
     };
 };
 
+export const submittingForm = () => {
+    return {
+        type: "SUBMITTING_FORM",
+    };
+};
+
 export const logoutUser = () => {
     return {
         type: "LOGOUT_USER",

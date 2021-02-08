@@ -12,7 +12,8 @@ export const initialState = {
 	mostSpentOnCategory: "",
 	totalExpenseByCategory: [],
 	transactions: [],
-	loaded: false
+	loaded: false,
+	submittingForm: false
 };
 
 export default initialState;

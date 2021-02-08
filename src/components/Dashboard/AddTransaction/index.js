@@ -4,6 +4,12 @@ import { addTransaction } from "../../../data/actions/api";
 import { logout } from "../../../data/actions/api";
 import history from "../../../history";
 
+const mapStateToProps = (state) => {
+    return {
+        submittingForm: state.submittingForm,
+    };
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         addTransaction: (data) => dispatch(addTransaction(data)),
@@ -14,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(AddTransaction);
+export default connect(mapStateToProps, mapDispatchToProps)(AddTransaction);
