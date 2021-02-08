@@ -65,11 +65,17 @@ export const createNewUser = (data) => {
         axios.post("users", {
             name: data.username,
             password: data.password,
-        }).then(({ data }) => {
-            dispatch(loginUser());
-            dispatch(updateUserDetails(data.data));
         }).then(() => {
-            history.push("/dashboard");
+            axios.post("login", {
+                name: data.username,
+                password: data.password,
+            }).then(({ data }) => {
+                dispatch(loginUser());
+                dispatch(updateUserDetails(data));
+            }).then(() => {
+                dispatch(reloadDashboard())
+                history.push("/dashboard");
+            });
         });
     };
 };
