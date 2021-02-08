@@ -42,12 +42,13 @@ class Navbar extends Component {
 
     render() {
 
-        const { selected, handleLogout } = this.props;
+        const { selected } = this.props;
+        const { showMobileNavbar } = this.state;
 
         return (
             <nav
                 className="side-navbar"
-                id={ this.state.showMobileNavbar ? "mobile-side-navbar" : "" }
+                id={ showMobileNavbar ? "mobile-side-navbar" : "" }
             >
                 <div className="burger">
                     <i
@@ -60,8 +61,8 @@ class Navbar extends Component {
                     icon={ piggy }
                     text="Expenses Tracker"
                     altText="piggy bank logo"
-                    styling={{height: "70px", width: "70px"}}
-                    isVisible={ this.state.showMobileNavbar }
+                    styling={{ height: "70px", width: "70px" }}
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/dashboard"
@@ -71,7 +72,7 @@ class Navbar extends Component {
                     styling={{ height: "50px", width: "50px" }}
                     iconClasses="mb-2"
                     selected={ selected === "dashboard"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/profile"
@@ -81,7 +82,7 @@ class Navbar extends Component {
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-1 mb-3"
                     selected={ selected === "profile"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/add-transaction"
@@ -91,7 +92,7 @@ class Navbar extends Component {
                     styling={{ height: "40px", width: "45px" }}
                     iconClasses="mt-2 mb-3"
                     selected={ selected === "add-transaction"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="#"
@@ -101,7 +102,7 @@ class Navbar extends Component {
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-2 mb-3 ml-1"
                     handleClick={ this.logoutUser }
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
             </nav>
         );
