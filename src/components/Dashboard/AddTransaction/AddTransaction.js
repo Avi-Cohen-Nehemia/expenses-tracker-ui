@@ -89,7 +89,7 @@ class AddTransaction extends Component {
 
                         <Row>
                             <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-                                <Form.Group controlId="add-transaction-type">
+                                <Form.Group controlId="add-transaction-category">
                                     <Form.Label>{"Category"}</Form.Label>
                                     <Form.Control
                                         as="select"
