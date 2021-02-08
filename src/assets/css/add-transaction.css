@@ -1,9 +1,14 @@
 .add-transaction-grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(9, 1fr);
     background-color: #f2f3f5;
+    grid-gap: 0.8rem;
     min-height: 100vh;
+}
+
+.add-transaction-page-header {
+    grid-column: 2/10;
+    grid-row: 1/2;
 }
 
 .add-transaction-form {
@@ -12,8 +17,32 @@
 }
 
 @media screen and (max-width: 768px){
+    .add-transaction-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 3rem 6rem repeat(8, 1fr);
+        grid-gap: 0.8rem;
+        background-color: #f2f3f5;
+        min-height: 100vh;
+    }
+
+    .add-transaction-page-header {
+        grid-column: 1/3;
+        grid-row: 2/3;
+        margin: 0 2rem;
+        text-align: center;
+    }
+
     .add-transaction-form {
-        grid-column: 2/9;
-        grid-row: 2/10;
+        grid-column: 1/3;
+        grid-row: 3/10;
+    }
+}
+
+@media screen and (max-width: 545px){
+    .add-transaction-form {
+        grid-column: 1/3;
+        grid-row: 3/10;
+        margin-top: 5rem;
     }
 }

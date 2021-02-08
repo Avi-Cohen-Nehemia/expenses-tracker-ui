@@ -1,7 +1,6 @@
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: minmax(repeat(9, 1fr));
     grid-gap: 0.8rem;
     background-color: #f2f3f5;
     min-height: 100vh;
@@ -59,7 +58,6 @@
     .dashboard-grid {
         display: grid;
         grid-template-columns: repeat(9, 1fr);
-        grid-template-rows: minmax(repeat(13, 1fr));
         grid-gap: 0.8rem;
         background-color: #f2f3f5;
         min-height: 100vh;
@@ -115,7 +113,6 @@
     .dashboard-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: minmax(3rem 6rem repeat(8, 1fr));
         grid-gap: 0.8rem;
         background-color: #f2f3f5;
         min-height: 100vh;

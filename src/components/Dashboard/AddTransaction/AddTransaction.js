@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FormInput from "../../FormInput";
 import Navbar from "../../Navbar";
-import { Link } from "react-router-dom";
 
 class AddTransaction extends Component {
 
@@ -57,9 +56,9 @@ class AddTransaction extends Component {
                     selected="add-transaction"
                     handleLogout={ this.props.logoutUser }
                 />
+                <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
                 <div className="add-transaction-form">
-                    <h2 className="mt-5 text-center">{"Add New Transaction"}</h2>
-                    <Form className="mt-5" onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit}>
                         <FormInput
                             inputLabel="Amount"
                             inputPlaceholder="Enter Amount"
@@ -71,7 +70,7 @@ class AddTransaction extends Component {
                         />
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="add-transaction-type">
                                     <Form.Label>{"Income or Expense"}</Form.Label>
                                     <Form.Control
@@ -89,7 +88,7 @@ class AddTransaction extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Form.Group controlId="add-transaction-type">
                                     <Form.Label>{"Category"}</Form.Label>
                                     <Form.Control
@@ -110,7 +109,7 @@ class AddTransaction extends Component {
                         </Row>
 
                         <Row>
-                            <Col md={{ span: 6, offset: 3 }}>
+                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                                 <Button
                                     variant="primary"
                                     type="submit"
@@ -120,12 +119,6 @@ class AddTransaction extends Component {
                             </Col>
                         </Row>
                     </Form>
-
-                    <Row className="mt-3">
-                        <Col md={{ span: 6, offset: 3 }}>
-                            <Link to="/Dashboard"><p>{"Back to Dashboard"}</p></Link>
-                        </Col>
-                    </Row>
                 </div>
             </div>
         )

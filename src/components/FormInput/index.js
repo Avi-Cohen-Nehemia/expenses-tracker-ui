@@ -12,7 +12,7 @@ class FormInput extends Component {
 
         return(
             <Row>
-                <Col md={{ span: 6, offset: 3 }}>
+                <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                     <Form.Group controlId={ controlId }>
                         <Form.Label>{ inputLabel }</Form.Label>
                         <Form.Control
