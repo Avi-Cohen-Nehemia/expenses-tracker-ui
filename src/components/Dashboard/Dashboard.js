@@ -76,12 +76,10 @@ class Dashboard extends Component {
                                 <h6 className="m-0">{ totalIncomeWithCurrency }</h6>
                                 <div className="income-bar">
                                     <div
+                                        className="expense-bar"
                                         style={{
                                             width: this.calculateBarWidth(totalIncome),
-                                            height: "0.5rem",
                                             backgroundColor: "green",
-                                            marginLeft: "3px",
-                                            borderRadius: "5px"
                                         }}
                                     />
                                 </div>
@@ -89,14 +87,12 @@ class Dashboard extends Component {
                             <h6 className="total-expense-header m-0">{"Total Expense:"}</h6>
                             <div className="total-expense-stats">
                                 <h6 className="m-0">{ totalExpenseWithCurrency }</h6>
-                                <div className="expense-bar">
+                                <div className="expense-bar-container">
                                     <div
+                                        className="expense-bar"
                                         style={{
                                             width: this.calculateBarWidth(totalExpense),
-                                            height: "0.5rem",
                                             backgroundColor: "red",
-                                            marginLeft: "3px",
-                                            borderRadius: "5px"
                                         }}
                                     />
                                 </div>

@@ -38,7 +38,13 @@
     align-items: center;
 }
 
-.expense-bar {
+.expense-bar-container {
     grid-column: 2/4;
     grid-row: 1/2;
+}
+
+.expense-bar {
+    height: 0.5rem;
+    margin-left: 3px;
+    border-radius: 5px;
 }
