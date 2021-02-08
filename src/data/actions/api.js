@@ -5,6 +5,7 @@ import { loginUser } from "./state";
 import { logoutUser } from "./state";
 import { reloadDashboard } from "./state";
 import history from "../../history";
+import Swal from "sweetalert2";
 
 export const login = (data) => {
 
@@ -16,6 +17,12 @@ export const login = (data) => {
         }).then(({ data }) => {
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
+        }).catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Incorrect credentials',
+                text: 'Please try again',
+            });
         }).then(() => {
             history.push("/dashboard");
         });
