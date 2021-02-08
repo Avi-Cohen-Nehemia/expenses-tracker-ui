@@ -59,8 +59,12 @@ export const addTransaction = (data) => {
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
-            dispatch(reloadDashboard())
-            history.push("/dashboard");
+            dispatch(reloadDashboard());
+            Swal.fire({
+                icon: 'success',
+                title: 'Transaction saved successfully',
+                showConfirmButton: true,
+            });
         });
     };
 };
