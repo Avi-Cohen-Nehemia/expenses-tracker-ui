@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import homeImage from "../../assets/images/home-picture2.jpg"
+import homeImage from "../../assets/images/home-picture2.jpg";
 
 class Signup extends Component {
 
@@ -20,13 +21,13 @@ class Signup extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    };
+    }
 
     handleChange(e, input) {
         let change = {};
         change[input] = e.currentTarget.value;
         this.setState(change);
-    };
+    }
 
     handleSubmit(e) {
 
@@ -47,44 +48,44 @@ class Signup extends Component {
         return(
             <div className="signup-page">
                 <div className="my-auto signup-form">
-                    <h2 className="text-center">{"Sign Up"}</h2>
+                    <h2 className="text-center">{ "Sign Up" }</h2>
                     <Form
                         className="mt-4"
-                        onSubmit={this.handleSubmit}
+                        onSubmit={ this.handleSubmit }
                     >
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="signup-form-username">
-                                    <Form.Label>{"Username"}</Form.Label>
+                                    <Form.Label>{ "Username" }</Form.Label>
                                     <Form.Control
                                         aria-describedby="password-description"
-                                        onChange={(e) => this.handleChange(e, "username")}
+                                        onChange={ (e) => this.handleChange(e, "username") }
                                         required
-                                        value={username}
-                                        type="text"
                                         style={{border: username.length >= 3 ? "2px solid green" : ""}}
+                                        type="text"
+                                        value={ username }
                                     />
                                     <Form.Text
                                         id="password-description"
                                         muted
                                     >
-                                        {"Username must be at least 3 characters long"}
+                                        { "Username must be at least 3 characters long" }
                                     </Form.Text>
                                 </Form.Group>
                             </Col>
                         </Row>
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="signup-form-password">
                                     <Form.Label>{"Password"}</Form.Label>
                                     <Form.Control
                                         aria-describedby="password-description"
-                                        onChange={(e) => this.handleChange(e, "password")}
+                                        onChange={ (e) => this.handleChange(e, "password") }
                                         required
-                                        value={password}
-                                        type="password"
                                         style={{border: password.length > 7 && password.length < 21 ? "2px solid green" : ""}}
+                                        type="password"
+                                        value={ password }
                                     />
                                     <Form.Text id="password-description" muted>{"Password length must be between 8-20 characters"}</Form.Text>
                                 </Form.Group>
@@ -92,45 +93,51 @@ class Signup extends Component {
                         </Row>
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="signup-form-confirm-password">
-                                    <Form.Label>{"Confirm Password"}</Form.Label>
+                                    <Form.Label>{ "Confirm Password" }</Form.Label>
                                     <Form.Control
-                                        onChange={(e) => this.handleChange(e, "confirmPassword")}
+                                        onChange={ (e) => this.handleChange(e, "confirmPassword") }
                                         required
-                                        value={this.state.confirmPassword}
-                                        type="password"
                                         style={{border: confirmPassword.length > 0 && confirmPassword === password ? "2px solid green" : ""}}
+                                        type="password"
+                                        value={ confirmPassword }
                                     />
                                 </Form.Group>
                             </Col>
                         </Row>
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-                                <Button variant="primary" type="submit">
-                                    {"Submit"}
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                                <Button type="submit" variant="primary">
+                                    { "Submit" }
                                 </Button>
                             </Col>
                         </Row>
                     </Form>
 
                     <Row className="mt-4">
-                        <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-                            <Link to="/login"><p>{"Already have an account? Log in here"}</p></Link>
+                        <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                            <Link to="/login">
+                                <p>{ "Already have an account? Log in here" }</p>
+                            </Link>
                         </Col>
                     </Row>
                 </div>
                 <div>
                     <img
-                        src={ homeImage }
                         alt="person counting money"
                         className="signup-cover-image"
+                        src={ homeImage }
                     />
                 </div>
             </div>
         )
-    };
+    }
+}
+
+Signup.propTypes = {
+    createNewUser: PropTypes.string.isRequired,
 };
 
 export default Signup;
