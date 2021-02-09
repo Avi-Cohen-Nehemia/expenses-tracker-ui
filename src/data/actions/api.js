@@ -98,6 +98,12 @@ export const createNewUser = (data) => {
                 dispatch(reloadDashboard())
                 history.push("/dashboard");
             });
+        }).catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Username already taken.',
+                text: 'Please try a different username',
+            });
         });
     };
 };
