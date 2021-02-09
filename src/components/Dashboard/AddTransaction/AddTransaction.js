@@ -49,6 +49,11 @@ class AddTransaction extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.addTransaction(this.state);
+        this.setState({
+            transactionAmount: "",
+            transactionType: "income",
+            transactionCategory: "paycheck",
+        });
     }
 
     render() {
