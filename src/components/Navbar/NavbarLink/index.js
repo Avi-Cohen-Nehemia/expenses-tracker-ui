@@ -33,7 +33,7 @@ NavbarLink.propTypes = {
     isVisible: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
     altText: PropTypes.string.isRequired,
-    styling: PropTypes.string,
+    styling: PropTypes.object,
     iconClasses: PropTypes.string,
     selected: PropTypes.bool,
     handleClick: PropTypes.func
