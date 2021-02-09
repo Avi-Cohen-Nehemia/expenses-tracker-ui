@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -26,8 +27,11 @@ class AddTransaction extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.submittingForm !== prevProps.submittingForm) {
-            this.setState({ submittingForm: this.props.submittingForm });
+
+        const { submittingForm } = this.props;
+
+        if (submittingForm !== prevProps.submittingForm) {
+            this.setState({ submittingForm: submittingForm });
         }
     }
 
@@ -138,5 +142,12 @@ class AddTransaction extends Component {
         )
     }
 }
+
+AddTransaction.propTypes = {
+    addTransaction: PropTypes.func.isRequired,
+    getUserStats: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
+};
 
 export default AddTransaction;
