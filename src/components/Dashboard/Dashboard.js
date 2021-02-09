@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import TransactionsList from "./TransactionsList";
 import DashboardCard from "./DashboardCard";
-import Card from 'react-bootstrap/Card'
-import Spinner from "../Spinner"
+import Card from 'react-bootstrap/Card';
+import Spinner from "../Spinner";
 import Navbar from "../Navbar";
 import PieChartCard from "./PieChartCard";
 
@@ -14,13 +14,16 @@ class Dashboard extends Component {
         super(props);
 
         this.calculateBarWidth = this.calculateBarWidth.bind(this);
-    };
+    }
 
     componentDidMount() {
-        if (!this.props.loaded) {
-            this.props.getUserStats();
-        };
-    };
+
+        const { getUserStats, loaded } = this.props;
+
+        if (!loaded) {
+            getUserStats();
+        }
+    }
 
     calculateBarWidth(amount) {
 
@@ -46,32 +49,33 @@ class Dashboard extends Component {
             mostSpentOnCategory,
             totalIncome,
             totalIncomeWithCurrency,
-            loaded
+            loaded,
+            logoutUser
         } = this.props;
 
         return (
             loaded ?
             <div className="dashboard-grid">
                 <Navbar
+                    handleLogout={ logoutUser }
                     selected="dashboard"
-                    handleLogout={ this.props.logoutUser }
                 />
-                <h1 className="page-header display-3">{"Dashboard"}</h1>
+                <h1 className="page-header display-3">{ "Dashboard" }</h1>
                 <DashboardCard
                     cardClass="balance-card"
                     content={ balanceWithCurrency }
                     icon="fas fa-balance-scale fa-lg"
                     title="Balance"
                 />
-                <Card className={"shadow comparison-card"}>
+                <Card className={ "shadow comparison-card" }>
                     <Card.Header
                         className="d-flex justify-content-between align-items-center"
                     >
-                        <span className="dashboard-card-header">{"Compare"}</span>  
-                        <i className={"fas fa-chart-bar fa-lg"}/>
+                        <span className="dashboard-card-header">{ "Compare" }</span>
+                        <i className={ "fas fa-chart-bar fa-lg" }/>
                     </Card.Header>
                     <Card.Body className="comparison-card-grid p-3">
-                            <h6 className="total-income-header m-0">{"Total Income:"}</h6>
+                            <h6 className="total-income-header m-0">{ "Total Income:" }</h6>
                             <div className="total-income-stats">
                                 <h6 className="m-0">{ totalIncomeWithCurrency }</h6>
                                 <div className="income-bar">
@@ -84,7 +88,7 @@ class Dashboard extends Component {
                                     />
                                 </div>
                             </div>
-                            <h6 className="total-expense-header m-0">{"Total Expense:"}</h6>
+                            <h6 className="total-expense-header m-0">{ "Total Expense:" }</h6>
                             <div className="total-expense-stats">
                                 <h6 className="m-0">{ totalExpenseWithCurrency }</h6>
                                 <div className="expense-bar-container">
@@ -124,13 +128,21 @@ class Dashboard extends Component {
             </div>
             : <Spinner stylingClasses="dashboard-spinner"/>
         );
-    };
-};
+    }
+}
 
 Dashboard.propTypes = {
-    balanceWithCurrency: PropTypes.string,
-    getUserStats: PropTypes.func,
-    transactions: PropTypes.array
+    balanceWithCurrency: PropTypes.string.isRequired,
+    getUserStats: PropTypes.func.isRequired,
+    transactions: PropTypes.array.isRequired,
+    totalExpense: PropTypes.number.isRequired,
+    totalExpenseWithCurrency: PropTypes.string.isRequired,
+    totalExpenseByCategory: PropTypes.string.isRequired,
+    mostSpentOnCategory: PropTypes.string.isRequired,
+    totalIncome: PropTypes.number.isRequired,
+    totalIncomeWithCurrency: PropTypes.string.isRequired,
+    loaded: PropTypes.bool.isRequired,
+    logoutUser: PropTypes.func.isRequired
 };
 
 export default Dashboard;
