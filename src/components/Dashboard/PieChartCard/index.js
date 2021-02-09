@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Form from "react-bootstrap/Form";
 import { PieChart } from 'react-minimal-pie-chart';
@@ -14,10 +15,10 @@ class PieChartCard extends Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
-    };
+    }
 
     handleClick() {
-        this.setState({showPercentValues: !this.state.showPercentValues})
+        this.setState({ showPercentValues: !this.state.showPercentValues })
     }
 
     render() {
@@ -41,11 +42,11 @@ class PieChartCard extends Component {
                 <Card.Header className="pie-chart-card-header">
                     <span className="dashboard-card-header">{ "Categories Chart" }</span>
                     <div className="pie-chart-category-container">
-                        <Form.Check 
-                            type="switch"
-                            id="pie-chart-switch"
+                        <Form.Check
                             className="mr-2"
+                            id="pie-chart-switch"
                             onClick={ this.handleClick }
+                            type="switch"
                         />
                         <i className="fas fa-chart-pie fa-lg"/>
                     </div>
@@ -53,7 +54,7 @@ class PieChartCard extends Component {
                 <Card.Body className="pie-chart-card-body">
                     <div className="pie-chart-categories">
                         {sortedData.map((dataPoint, index) => (
-                            <span className="pie-chart-category-container" key={index}>
+                            <span className="pie-chart-category-container" key={ index }>
                                 <div
                                     className="pie-chart-category-dot"
                                     style={{ backgroundColor: dataPoint.color }}
@@ -66,7 +67,7 @@ class PieChartCard extends Component {
                         animate
                         animationDuration={ 800 }
                         data={ chartData }
-                        label={({ dataEntry }) => this.state.showPercentValues ? `${Math.round(dataEntry.percentage)}%` : `£${ dataEntry.value.toFixed(2) }`}
+                        label={({ dataEntry }) => this.state.showPercentValues ? `${ Math.round(dataEntry.percentage) }%` : `£${ dataEntry.value.toFixed(2) }`}
                         labelPosition={ 60 }
                         labelStyle={{
                             color: "black",
@@ -79,7 +80,11 @@ class PieChartCard extends Component {
                 </Card.Body>
             </Card>
         );
-    };
+    }
+}
+
+PieChartCard.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default PieChartCard;
