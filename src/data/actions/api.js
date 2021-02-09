@@ -71,6 +71,11 @@ export const addTransaction = (data) => {
             });
         }).catch(() => {
             dispatch(submittingForm());
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again.',
+            });
         });
     };
 };
