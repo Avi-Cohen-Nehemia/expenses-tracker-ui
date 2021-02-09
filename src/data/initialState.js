@@ -1,7 +1,7 @@
 export const initialState = {
 	userID: null,
 	username: "",
-	accessToken: null,
+	accessToken: "",
 	isLoggedIn: false,
 	balance: 0,
 	balanceWithCurrency: "",

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Spinner = ({ stylingClasses }) => {
     return (
@@ -19,6 +20,10 @@ const Spinner = ({ stylingClasses }) => {
             </div>
         </div>
     );
+};
+
+Spinner.propTypes = {
+    stylingClasses: PropTypes.string.isRequired,
 };
 
 export default Spinner;

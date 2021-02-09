@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -23,11 +24,14 @@ class AddTransaction extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    };
+    }
 
     componentDidUpdate(prevProps) {
-        if (this.props.submittingForm !== prevProps.submittingForm) {
-            this.setState({ submittingForm: this.props.submittingForm });
+
+        const { submittingForm } = this.props;
+
+        if (submittingForm !== prevProps.submittingForm) {
+            this.setState({ submittingForm: submittingForm });
         }
     }
 
@@ -36,15 +40,15 @@ class AddTransaction extends Component {
             this.setState({
                 transactionCategory: value === "income" ? "paycheck" : "groceries"
             });
-        };
-    };
+        }
+    }
 
     handleChange(e, input) {
         let change = {};
         change[input] = e.currentTarget.value;
         this.setState(change);
         this.handleCategoryChange(input, e.currentTarget.value);
-    };
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -66,51 +70,51 @@ class AddTransaction extends Component {
         return(
             <div className="add-transaction-grid">
                 <Navbar
-                    selected="add-transaction"
                     handleLogout={ this.props.logoutUser }
+                    selected="add-transaction"
                 />
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
                 { submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
                     <div className="add-transaction-form">
-                    <Form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={ this.handleSubmit }>
                         <FormInput
+                            controlId="add-transaction-amount"
                             inputLabel="Amount"
                             inputPlaceholder="Enter Amount"
                             inputType="number"
-                            inputValue={transactionAmount}
-                            controlId="add-transaction-amount"
-                            onChange={(e) => this.handleChange(e, "transactionAmount")}
+                            inputValue={ transactionAmount }
+                            onChange={ (e) => this.handleChange(e, "transactionAmount") }
                             required
                         />
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="add-transaction-type">
                                     <Form.Label>{"Income or Expense"}</Form.Label>
                                     <Form.Control
                                         as="select"
                                         className="text-capitalize"
-                                        value={transactionType}
-                                        onChange={(e) => this.handleChange(e, "transactionType")}
+                                        onChange={ (e) => this.handleChange(e, "transactionType") }
                                         required
+                                        value={ transactionType }
                                     >
-                                        <option>{"income"}</option>
-                                        <option>{"expense"}</option>
+                                        <option>{ "income" }</option>
+                                        <option>{ "expense" }</option>
                                     </Form.Control>
                                 </Form.Group>
                             </Col>
                         </Row>
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="add-transaction-category">
-                                    <Form.Label>{"Category"}</Form.Label>
+                                    <Form.Label>{ "Category" }</Form.Label>
                                     <Form.Control
                                         as="select"
                                         className="text-capitalize"
-                                        value={transactionCategory}
-                                        onChange={(e) => this.handleChange(e, "transactionCategory")}
+                                        onChange={ (e) => this.handleChange(e, "transactionCategory") }
                                         required
+                                        value={transactionCategory}
                                     >
                                         { displayedCategories.map((category, index) => (
                                             <option key={ index }>
@@ -123,12 +127,12 @@ class AddTransaction extends Component {
                         </Row>
 
                         <Row>
-                            <Col xs={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Button
-                                    variant="primary"
                                     type="submit"
+                                    variant="primary"
                                 >
-                                    {"Submit"}
+                                    { "Submit" }
                                 </Button>
                             </Col>
                         </Row>
@@ -136,7 +140,13 @@ class AddTransaction extends Component {
                 </div> }
             </div>
         )
-    };
+    }
+}
+
+AddTransaction.propTypes = {
+    addTransaction: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
 };
 
 export default AddTransaction;

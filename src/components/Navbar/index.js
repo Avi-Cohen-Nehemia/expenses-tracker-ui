@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import NavbarLink from "./NavbarLink";
-import piggy from "../../assets/images/piggy.png"
-import profile from "../../assets/images/profile-avatar.png"
-import dashboard from "../../assets/images/dashboard.png"
-import logout from "../../assets/images/logout.png"
-import receipt from "../../assets/images/receipt.png"
+import piggy from "../../assets/images/piggy.png";
+import profile from "../../assets/images/profile-avatar.png";
+import dashboard from "../../assets/images/dashboard.png";
+import logout from "../../assets/images/logout.png";
+import receipt from "../../assets/images/receipt.png";
 import Swal from "sweetalert2";
 
 class Navbar extends Component {
@@ -19,7 +20,7 @@ class Navbar extends Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.logoutUser = this.logoutUser.bind(this);
-    };
+    }
 
     handleClick() {
         this.setState({ showMobileNavbar: !this.state.showMobileNavbar })
@@ -36,9 +37,9 @@ class Navbar extends Component {
         }).then((result) => {
             if (result.isConfirmed) {
                 this.props.handleLogout();
-            };
+            }
         });
-    };
+    }
 
     render() {
 
@@ -57,56 +58,61 @@ class Navbar extends Component {
                     />
                 </div>
                 <NavbarLink
+                    altText="piggy bank logo"
                     destination="/"
                     icon={ piggy }
-                    text="Expenses Tracker"
-                    altText="piggy bank logo"
-                    styling={{ height: "70px", width: "70px" }}
                     isVisible={ showMobileNavbar }
+                    styling={{ height: "70px", width: "70px" }}
+                    text="Expenses Tracker"
                 />
                 <NavbarLink
+                    altText="dashboard logo"
                     destination="/dashboard"
                     icon={ dashboard }
-                    text="Dashboard"
-                    altText="dashboard logo"
-                    styling={{ height: "50px", width: "50px" }}
                     iconClasses="mb-2"
-                    selected={ selected === "dashboard"}
                     isVisible={ showMobileNavbar }
+                    selected={ selected === "dashboard"}
+                    styling={{ height: "50px", width: "50px" }}
+                    text="Dashboard"
                 />
                 <NavbarLink
+                    altText="profile logo"
                     destination="/profile"
                     icon={ profile }
-                    text="Profile"
-                    altText="profile logo"
-                    styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-1 mb-3"
-                    selected={ selected === "profile"}
                     isVisible={ showMobileNavbar }
+                    selected={ selected === "profile"}
+                    styling={{ height: "35px", width: "40px" }}
+                    text="Profile"
                 />
                 <NavbarLink
+                    altText="add transaction logo"
                     destination="/add-transaction"
                     icon={ receipt }
-                    text="Add Transaction"
-                    altText="add transaction logo"
-                    styling={{ height: "40px", width: "45px" }}
                     iconClasses="mt-2 mb-3"
-                    selected={ selected === "add-transaction"}
                     isVisible={ showMobileNavbar }
+                    selected={ selected === "add-transaction"}
+                    styling={{ height: "40px", width: "45px" }}
+                    text="Add Transaction"
                 />
                 <NavbarLink
-                    destination="#"
-                    icon={ logout }
-                    text="Logout"
                     altText="logout logo"
-                    styling={{ height: "35px", width: "40px" }}
-                    iconClasses="mt-2 mb-3 ml-1"
+                    destination="#"
                     handleClick={ this.logoutUser }
+                    icon={ logout }
+                    iconClasses="mt-2 mb-3 ml-1"
                     isVisible={ showMobileNavbar }
+                    styling={{ height: "35px", width: "40px" }}
+                    text="Logout"
                 />
             </nav>
         );
     }
 }
+
+Navbar.propTypes = {
+    handleLogout: PropTypes.func.isRequired,
+    selected: PropTypes.string
+};
 
 export default Navbar;
