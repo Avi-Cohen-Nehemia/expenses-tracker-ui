@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,7 +15,7 @@ class LandingPage extends Component {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
-    };
+    }
 
     handleClick() {
 
@@ -38,12 +39,12 @@ class LandingPage extends Component {
                         title: 'You were logged out successfully',
                         showConfirmButton: true,
                     });
-                };
+                }
             });
         } else {
             history.push("/signup");
-        };
-    };
+        }
+    }
 
     render() {
 
@@ -54,12 +55,12 @@ class LandingPage extends Component {
                         {"Welcome to Expenses Tracker"}
                     </h1>
                     <Row className="mt-4">
-                        <Col xs={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }}>
-                            <Link to="/login" className="text-decoration-none">
+                        <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                            <Link className="text-decoration-none" to="/login">
                                 <Button
                                     block
-                                    variant="success"
                                     size="lg"
+                                    variant="success"
                                 >
                                     {"Log In"}
                                 </Button>
@@ -67,12 +68,12 @@ class LandingPage extends Component {
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Col xs={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }}>
+                        <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                             <Button
                                     block
                                     onClick={ this.handleClick }
-                                    variant="primary"
                                     size="lg"
+                                    variant="primary"
                                 >
                                     {"Sign Up"}
                             </Button>
@@ -81,14 +82,21 @@ class LandingPage extends Component {
                 </div>
                 <div className="blah2">
                     <img
-                        src={ homeImage }
                         alt="person counting money"
                         className="cover-image"
+                        src={ homeImage }
                     />
                 </div>
             </div>
         );
     }
+}
+
+LandingPage.propTypes = {
+    accessToken: PropTypes.string.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    username: PropTypes.string.isRequired,
+    logoutUser: PropTypes.func.isRequired
 };
 
 export default LandingPage;
