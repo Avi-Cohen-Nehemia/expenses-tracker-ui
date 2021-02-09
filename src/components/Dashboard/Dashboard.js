@@ -137,7 +137,7 @@ Dashboard.propTypes = {
     transactions: PropTypes.array.isRequired,
     totalExpense: PropTypes.number.isRequired,
     totalExpenseWithCurrency: PropTypes.string.isRequired,
-    totalExpenseByCategory: PropTypes.string.isRequired,
+    totalExpenseByCategory: PropTypes.array.isRequired,
     mostSpentOnCategory: PropTypes.string.isRequired,
     totalIncome: PropTypes.number.isRequired,
     totalIncomeWithCurrency: PropTypes.string.isRequired,
