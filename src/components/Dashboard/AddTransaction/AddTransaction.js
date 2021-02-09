@@ -23,7 +23,7 @@ class AddTransaction extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    };
+    }
 
     componentDidUpdate(prevProps) {
         if (this.props.submittingForm !== prevProps.submittingForm) {
@@ -36,15 +36,15 @@ class AddTransaction extends Component {
             this.setState({
                 transactionCategory: value === "income" ? "paycheck" : "groceries"
             });
-        };
-    };
+        }
+    }
 
     handleChange(e, input) {
         let change = {};
         change[input] = e.currentTarget.value;
         this.setState(change);
         this.handleCategoryChange(input, e.currentTarget.value);
-    };
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -136,7 +136,7 @@ class AddTransaction extends Component {
                 </div> }
             </div>
         )
-    };
-};
+    }
+}
 
 export default AddTransaction;
