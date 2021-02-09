@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Table from 'react-bootstrap/Table'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 class TransactionsList extends Component {
 
@@ -15,31 +15,33 @@ class TransactionsList extends Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
-    };
+    }
 
     handleClick() {
-        this.setState({
-            transactionsToDisplay: this.state.transactionsToDisplay + 5,
-        });
-    };
+        this.setState({ transactionsToDisplay: this.state.transactionsToDisplay + 5 });
+    }
 
     render() {
         return (
             <div className="transactions-table">
                 <Card className="shadow mb-3">
                     <Card.Header className="d-flex justify-content-between align-items-center">
-                        <span className="dashboard-card-header">{"Transaction History"}</span>  
+                        <span className="dashboard-card-header">{ "Transaction History" }</span>
                         <i className="fas fa-table fa-lg"/>
                     </Card.Header>
                     <Card.Body className="p-0">
-                        <Table striped hover className="full-table">
+                        <Table
+                            className="full-table"
+                            hover
+                            striped
+                        >
                             <thead>
                                 <tr>
-                                    <th>{"#"}</th>
-                                    <th>{"Date"}</th>
-                                    <th>{"Category"}</th>
-                                    <th>{"Transaction Amount"}</th>
-                                    <th>{"Balance"}</th>
+                                    <th>{ "#" }</th>
+                                    <th>{ "Date" }</th>
+                                    <th>{ "Category" }</th>
+                                    <th>{ "Transaction Amount" }</th>
+                                    <th>{ "Balance" }</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,16 +58,20 @@ class TransactionsList extends Component {
                                 )) }
                             </tbody>
                         </Table>
-                        <Table striped hover className="text-center m-0 compact-table">
+                        <Table
+                            className="text-center m-0 compact-table"
+                            hover
+                            striped
+                        >
                             <thead>
                                 <tr>
                                     <th className="text-left pr-0">
-                                        <div>{"Category"}</div>
-                                        <div>{"Date"}</div>
+                                        <div>{ "Category" }</div>
+                                        <div>{ "Date" }</div>
                                     </th>
                                     <th className="text-right text-nowrap pl-0">
-                                        <div>{"Transaction Amount"}</div>
-                                        <div>{"Balance"}</div>
+                                        <div>{ "Transaction Amount" }</div>
+                                        <div>{ "Balance" }</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -75,11 +81,11 @@ class TransactionsList extends Component {
                                         <tr key={index}>
                                             <td className="text-left pr-0">
                                                 <div className="text-capitalize">{ transaction.category }</div>
-                                                <div style={{ fontSize: "0.8rem" }}>{ transaction.created_at }</div>      
+                                                <div style={{ fontSize: "0.8rem" }}>{ transaction.created_at }</div>
                                             </td>
                                             <td className="text-right pl-0">
                                                 <div>{ transaction.amount }</div>
-                                                <div style={{ fontSize: "0.8rem" }}>{ transaction.balance_at_the_time }</div>      
+                                                <div style={{ fontSize: "0.8rem" }}>{ transaction.balance_at_the_time }</div>
                                             </td>
                                         </tr>
                                     : null
@@ -94,14 +100,14 @@ class TransactionsList extends Component {
                         onClick={ this.handleClick }
                         size="sm"
                     >
-                        {"Load more transactions"}
+                        { "Load more transactions" }
                     </Button>
                     : null
                 }
             </div>
         );
-    };
-};
+    }
+}
 
 TransactionsList.propTypes = {
     transactions: PropTypes.array,
