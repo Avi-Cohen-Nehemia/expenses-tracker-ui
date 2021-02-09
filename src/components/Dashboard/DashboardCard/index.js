@@ -1,5 +1,6 @@
 import React from "react";
-import Card from 'react-bootstrap/Card'
+import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
 
 const DashboardCard = ({ cardClass, content, title, icon }) => {
     return (
@@ -15,6 +16,13 @@ const DashboardCard = ({ cardClass, content, title, icon }) => {
             </Card.Body>
         </Card>
     );
+};
+
+DashboardCard.propTypes = {
+    cardClass: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
 };
 
 export default DashboardCard;
