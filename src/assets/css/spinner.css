@@ -154,3 +154,28 @@
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; } 
 }
+
+.dashboard-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+.add-transaction-spinner {
+  	position: absolute;
+	top: 32%;
+	left: 56%;
+	transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px){
+
+    .add-transaction-spinner {
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+  }
+
+}

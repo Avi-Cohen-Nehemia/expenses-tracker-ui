@@ -4,7 +4,9 @@ import { updateUserDetails } from "./state";
 import { loginUser } from "./state";
 import { logoutUser } from "./state";
 import { reloadDashboard } from "./state";
+import { submittingForm } from "./state";
 import history from "../../history";
+import Swal from "sweetalert2";
 
 export const login = (data) => {
 
@@ -16,6 +18,12 @@ export const login = (data) => {
         }).then(({ data }) => {
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
+        }).catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Incorrect credentials',
+                text: 'Please try again',
+            });
         }).then(() => {
             history.push("/dashboard");
         });
@@ -44,6 +52,8 @@ export const addTransaction = (data) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        dispatch(submittingForm());
+
         axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
@@ -52,8 +62,20 @@ export const addTransaction = (data) => {
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
-            dispatch(reloadDashboard())
-            history.push("/dashboard");
+            dispatch(submittingForm());
+            dispatch(reloadDashboard());
+            Swal.fire({
+                icon: 'success',
+                title: 'Transaction saved successfully',
+                showConfirmButton: true,
+            });
+        }).catch(() => {
+            dispatch(submittingForm());
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again.',
+            });
         });
     };
 };
@@ -75,6 +97,12 @@ export const createNewUser = (data) => {
             }).then(() => {
                 dispatch(reloadDashboard())
                 history.push("/dashboard");
+            });
+        }).catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Username already taken.',
+                text: 'Please try a different username',
             });
         });
     };

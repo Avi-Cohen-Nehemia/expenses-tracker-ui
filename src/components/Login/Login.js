@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import homeImage from "../../assets/images/home-picture2.jpg"
 import history from "../../history";
+import Spinner from "../Spinner";
 
 class Login extends Component {
 
@@ -16,6 +17,7 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
+            loggingIn: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -37,13 +39,15 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.login(this.state);
+        this.setState({ loggingIn: true });
     }
 
     render() {
 
-        const { username, password } = this.state;
+        const { username, password, loggingIn } = this.state;
 
         return(
+            loggingIn ? <Spinner stylingClasses="dashboard-spinner"/> :
             <div className="login-page">
                 <div className="my-auto login-form">
                     <h2 className="text-center">{"Log In"}</h2>

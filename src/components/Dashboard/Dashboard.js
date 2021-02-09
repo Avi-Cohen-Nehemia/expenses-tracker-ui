@@ -122,7 +122,7 @@ class Dashboard extends Component {
                     transactions={ transactions }
                 />
             </div>
-            : <Spinner />
+            : <Spinner stylingClasses="dashboard-spinner"/>
         );
     };
 };

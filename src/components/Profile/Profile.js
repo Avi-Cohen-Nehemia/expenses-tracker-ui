@@ -23,7 +23,7 @@ class Profile extends Component {
                     selected="profile"
                     handleLogout={ this.props.logoutUser }
                 />
-                <h1 className="page-header display-3">{ "Profile" }</h1>
+                <h1 className="page-header display-3 p-0">{ "Profile" }</h1>
                 <DashboardCard
                     cardClass="username-card"
                     content={ username }

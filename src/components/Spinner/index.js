@@ -1,8 +1,8 @@
 import React from "react";
 
-const Spinner = () => {
+const Spinner = ({ stylingClasses }) => {
     return (
-        <div className="d-flex justify-content-center align-items-center" style={{height: "95vh"}}>
+        <div className={ stylingClasses }>
             <div className="sk-fading-circle">
                 <div className="sk-circle1 sk-circle"></div>
                 <div className="sk-circle2 sk-circle"></div>

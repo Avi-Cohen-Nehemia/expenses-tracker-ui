@@ -5,6 +5,7 @@ import profile from "../../assets/images/profile-avatar.png"
 import dashboard from "../../assets/images/dashboard.png"
 import logout from "../../assets/images/logout.png"
 import receipt from "../../assets/images/receipt.png"
+import Swal from "sweetalert2";
 
 class Navbar extends Component {
 
@@ -17,20 +18,37 @@ class Navbar extends Component {
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.logoutUser = this.logoutUser.bind(this);
     };
 
     handleClick() {
         this.setState({ showMobileNavbar: !this.state.showMobileNavbar })
     }
 
+    logoutUser() {
+        Swal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.props.handleLogout();
+            };
+        });
+    };
+
     render() {
 
-        const { selected, handleLogout } = this.props;
+        const { selected } = this.props;
+        const { showMobileNavbar } = this.state;
 
         return (
             <nav
                 className="side-navbar"
-                id={ this.state.showMobileNavbar ? "mobile-side-navbar" : "" }
+                id={ showMobileNavbar ? "mobile-side-navbar" : "" }
             >
                 <div className="burger">
                     <i
@@ -43,8 +61,8 @@ class Navbar extends Component {
                     icon={ piggy }
                     text="Expenses Tracker"
                     altText="piggy bank logo"
-                    styling={{height: "70px", width: "70px"}}
-                    isVisible={ this.state.showMobileNavbar }
+                    styling={{ height: "70px", width: "70px" }}
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/dashboard"
@@ -54,7 +72,7 @@ class Navbar extends Component {
                     styling={{ height: "50px", width: "50px" }}
                     iconClasses="mb-2"
                     selected={ selected === "dashboard"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/profile"
@@ -64,7 +82,7 @@ class Navbar extends Component {
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-1 mb-3"
                     selected={ selected === "profile"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="/add-transaction"
@@ -74,7 +92,7 @@ class Navbar extends Component {
                     styling={{ height: "40px", width: "45px" }}
                     iconClasses="mt-2 mb-3"
                     selected={ selected === "add-transaction"}
-                    isVisible={ this.state.showMobileNavbar }
+                    isVisible={ showMobileNavbar }
                 />
                 <NavbarLink
                     destination="#"
@@ -83,8 +101,8 @@ class Navbar extends Component {
                     altText="logout logo"
                     styling={{ height: "35px", width: "40px" }}
                     iconClasses="mt-2 mb-3 ml-1"
-                    handleClick={ handleLogout }
-                    isVisible={ this.state.showMobileNavbar }
+                    handleClick={ this.logoutUser }
+                    isVisible={ showMobileNavbar }
                 />
             </nav>
         );
