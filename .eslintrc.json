@@ -17,13 +17,17 @@
         "react"
     ],
     "rules": {
-        // "react/jsx-sort-props": ["warn", {
-        //     "callbacksLast": false,
-        //     "shorthandFirst": false,
-        //     "shorthandLast": false,
-        //     "ignoreCase": true,
-        //     "noSortAlphabetically": false,
-        //     "reservedFirst": false
-        // }]
+        "react/jsx-sort-props": ["warn", {
+            "callbacksLast": false,
+            "shorthandFirst": false,
+            "shorthandLast": false,
+            "ignoreCase": true,
+            "noSortAlphabetically": false,
+            "reservedFirst": false
+        }],
+        "no-trailing-spaces": ["warn", {
+            "skipBlankLines": false,
+            "ignoreComments": false
+        }]
     }
 }

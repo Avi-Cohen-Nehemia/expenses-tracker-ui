@@ -130,7 +130,7 @@ class AddTransaction extends Component {
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Button
                                     type="submit"
-                                    variant="primary"   
+                                    variant="primary"
                                 >
                                     { "Submit" }
                                 </Button>

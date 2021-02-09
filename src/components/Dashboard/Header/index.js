@@ -4,10 +4,13 @@ import PropTypes from "prop-types";
 class Header extends Component {
 
     componentDidMount() {
-        if (!this.props.loaded) {
-            this.props.getUserStats();
-        };
-    };
+
+        const { getUserStats, loaded } = this.props;
+
+        if (!loaded) {
+            getUserStats();
+        }
+    }
 
     render() {
         const { balance } = this.props;
@@ -19,8 +22,8 @@ class Header extends Component {
                 <h3>{ balance }</h3>
             </>
         );
-    };
-};
+    }
+}
 
 Header.propTypes = {
     balance: PropTypes.string,
