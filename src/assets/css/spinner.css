@@ -161,3 +161,21 @@
     align-items: center;
     height: 95vh;
 }
+
+.add-transaction-spinner {
+  	position: absolute;
+	top: 32%;
+	left: 56%;
+	transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px){
+
+    .add-transaction-spinner {
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+  }
+
+}

@@ -70,7 +70,7 @@ class AddTransaction extends Component {
                     handleLogout={ this.props.logoutUser }
                 />
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
-                { submittingForm ? <Spinner /> :
+                { submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
                     <div className="add-transaction-form">
                     <Form onSubmit={this.handleSubmit}>
                         <FormInput
