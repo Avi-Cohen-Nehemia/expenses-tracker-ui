@@ -10,12 +10,12 @@ const FourOhFour = () => {
             <h2 className="display-4">{ "We can't seem to find the page you are looking for." }</h2>
             <div className="four-oh-four">
                 <img
-                    src={ fourOfFour }
                     alt="404 error"
+                    src={ fourOfFour }
                     style={{maxWidth: "100%"}}
                 />
             </div>
-            <Link to="/"><p>{"Navigate back to safety"}</p></Link>
+            <Link to="/"><p>{ "Navigate back to safety" }</p></Link>
         </Container>
     );
 };
