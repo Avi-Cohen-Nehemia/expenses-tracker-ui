@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import Spinner from "../Spinner"
+import Spinner from "../Spinner";
 import Navbar from "../Navbar";
 import DashboardCard from "../Dashboard/DashboardCard";
 
@@ -9,19 +9,19 @@ class Profile extends Component {
     componentDidMount() {
         if (!this.props.loaded) {
             this.props.getUserStats();
-        };
-    };
+        }
+    }
 
     render() {
 
-        const { username, loaded } = this.props;
+        const { username, loaded, logoutUser } = this.props;
 
         return (
             loaded ?
             <div className="profile-grid">
                 <Navbar
+                    handleLogout={ logoutUser }
                     selected="profile"
-                    handleLogout={ this.props.logoutUser }
                 />
                 <h1 className="page-header display-3 p-0">{ "Profile" }</h1>
                 <DashboardCard
@@ -33,11 +33,14 @@ class Profile extends Component {
             </div>
             : <Spinner />
         );
-    };
-};
+    }
+}
 
 Profile.propTypes = {
-    getUserStats: PropTypes.func,
+    getUserStats: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired,
+    loaded: PropTypes.bool.isRequired,
+    logoutUser: PropTypes.func.isRequired
 };
 
 export default Profile;
