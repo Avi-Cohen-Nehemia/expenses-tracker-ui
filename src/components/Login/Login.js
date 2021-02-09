@@ -47,7 +47,7 @@ class Login extends Component {
         const { username, password, loggingIn } = this.state;
 
         return(
-            loggingIn ? <Spinner /> :
+            loggingIn ? <Spinner stylingClasses="dashboard-spinner"/> :
             <div className="login-page">
                 <div className="my-auto login-form">
                     <h2 className="text-center">{"Log In"}</h2>

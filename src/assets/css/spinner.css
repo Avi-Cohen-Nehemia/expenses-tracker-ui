@@ -154,3 +154,10 @@
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; } 
 }
+
+.dashboard-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
