@@ -12,6 +12,7 @@ class TransactionsList extends Component {
         super(props);
 
         this.state = {
+            transactions: props.transactions,
             transactionsToDisplay: 5,
             sortBy: "date",
             direction: "desc"
@@ -26,7 +27,27 @@ class TransactionsList extends Component {
     }
 
     handleTableOrder(column) {
+        const orderedTransactions = this.state.transactions.sort((a, b) => {
+            if (column === "date") {
+                let aa = a.created_at.split('-').reverse().join();
+                let bb = b.created_at.split('-').reverse().join();
+
+                if (this.state.direction === "asc") {
+                    return new Date(bb) - new Date(aa);
+                } else {
+                    return new Date(aa) - new Date(bb);
+                }
+            } else {
+                if (this.state.direction === "asc") {
+                    return b.amount - a.amount;
+                } else {
+                    return a.amount - b.amount;
+                }
+            }
+        });
+
         this.setState({
+            transactions: orderedTransactions,
             sortBy: column,
             direction: this.state.direction === "desc" ? "asc" : "desc"
         });
@@ -78,7 +99,7 @@ class TransactionsList extends Component {
                                             <td>{ index + 1 }</td>
                                             <td>{ transaction.created_at }</td>
                                             <td className="text-capitalize">{ transaction.category }</td>
-                                            <td>{ transaction.amount }</td>
+                                            <td>{ transaction.amount_with_currency }</td>
                                             <td>{ transaction.balance_at_the_time }</td>
                                         </tr>
                                     : null
@@ -111,7 +132,7 @@ class TransactionsList extends Component {
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.created_at }</div>
                                             </td>
                                             <td className="text-right pl-0">
-                                                <div>{ transaction.amount }</div>
+                                                <div>{ transaction.amount_with_currency }</div>
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.balance_at_the_time }</div>
                                             </td>
                                         </tr>
