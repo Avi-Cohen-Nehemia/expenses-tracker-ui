@@ -29,6 +29,9 @@
         "no-trailing-spaces": ["warn", {
             "skipBlankLines": false,
             "ignoreComments": false
+        }],
+        "react/prop-types": ["warn", {
+            "skipUndeclared": false
         }]
     }
 }

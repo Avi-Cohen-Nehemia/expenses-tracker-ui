@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Table from 'react-bootstrap/Table';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Carets from "./Carets";
 
 class TransactionsList extends Component {
 
@@ -12,6 +13,8 @@ class TransactionsList extends Component {
 
         this.state = {
             transactionsToDisplay: 5,
+            sortBy: "date",
+            direction: "desc"
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -38,9 +41,25 @@ class TransactionsList extends Component {
                             <thead>
                                 <tr>
                                     <th>{ "#" }</th>
-                                    <th>{ "Date" }</th>
+                                    <th>
+                                        <span>{ "Date" }</span>
+                                        <div>
+                                            <Carets
+                                                direction={this.state.direction}
+                                                sortBy={this.state.sortBy === "date"}
+                                            />
+                                        </div>
+                                    </th>
                                     <th>{ "Category" }</th>
-                                    <th>{ "Transaction Amount" }</th>
+                                    <th>
+                                        <span>{ "Transaction Amount" }</span>
+                                        <div>
+                                            <Carets
+                                                direction={this.state.direction}
+                                                sortBy={this.state.sortBy === "amount"}
+                                            />
+                                        </div>
+                                    </th>
                                     <th>{ "Balance" }</th>
                                 </tr>
                             </thead>
