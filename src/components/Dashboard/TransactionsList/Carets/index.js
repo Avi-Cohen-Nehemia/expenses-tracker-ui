@@ -5,10 +5,9 @@ const Carets = ({ direction, sortBy }) => {
     return (
         <div
             style={{
-                position: "absolute",
                 display: "flex",
+                justifyContent: "center",
                 top: "4px",
-                left: "48%"
             }}
         >
             {

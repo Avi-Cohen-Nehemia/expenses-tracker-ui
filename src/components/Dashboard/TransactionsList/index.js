@@ -18,10 +18,18 @@ class TransactionsList extends Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleTableOrder = this.handleTableOrder.bind(this);
     }
 
     handleClick() {
         this.setState({ transactionsToDisplay: this.state.transactionsToDisplay + 5 });
+    }
+
+    handleTableOrder(column) {
+        this.setState({
+            sortBy: column,
+            direction: this.state.direction === "desc" ? "asc" : "desc"
+        });
     }
 
     render() {
@@ -41,7 +49,7 @@ class TransactionsList extends Component {
                             <thead>
                                 <tr>
                                     <th>{ "#" }</th>
-                                    <th>
+                                    <th onClick={ () => this.handleTableOrder("date") }>
                                         <span>{ "Date" }</span>
                                         <div>
                                             <Carets
@@ -51,7 +59,7 @@ class TransactionsList extends Component {
                                         </div>
                                     </th>
                                     <th>{ "Category" }</th>
-                                    <th>
+                                    <th onClick={ () => this.handleTableOrder("amount") }>
                                         <span>{ "Transaction Amount" }</span>
                                         <div>
                                             <Carets
