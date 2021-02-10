@@ -27,18 +27,22 @@ class TransactionsList extends Component {
     }
 
     handleTableOrder(column) {
-        const orderedTransactions = this.state.transactions.sort((a, b) => {
+        const { direction, transactions } = this.state;
+        const orderedTransactions = transactions.sort((a, b) => {
             if (column === "date") {
+
                 let aa = a.created_at.split('-').reverse().join();
                 let bb = b.created_at.split('-').reverse().join();
 
-                if (this.state.direction === "asc") {
+                if (direction === "asc") {
                     return new Date(bb) - new Date(aa);
                 } else {
                     return new Date(aa) - new Date(bb);
                 }
+
             } else {
-                if (this.state.direction === "asc") {
+
+                if (direction === "asc") {
                     return b.amount - a.amount;
                 } else {
                     return a.amount - b.amount;
@@ -54,6 +58,9 @@ class TransactionsList extends Component {
     }
 
     render() {
+
+        const { direction, transactions, transactionsToDisplay, sortBy } = this.state;
+
         return (
             <div className="transactions-table">
                 <Card className="shadow mb-3">
@@ -74,8 +81,8 @@ class TransactionsList extends Component {
                                         <span>{ "Date" }</span>
                                         <div>
                                             <Carets
-                                                direction={this.state.direction}
-                                                sortBy={this.state.sortBy === "date"}
+                                                direction={direction}
+                                                sortBy={sortBy === "date"}
                                             />
                                         </div>
                                     </th>
@@ -84,8 +91,8 @@ class TransactionsList extends Component {
                                         <span>{ "Transaction Amount" }</span>
                                         <div>
                                             <Carets
-                                                direction={this.state.direction}
-                                                sortBy={this.state.sortBy === "amount"}
+                                                direction={direction}
+                                                sortBy={sortBy === "amount"}
                                             />
                                         </div>
                                     </th>
@@ -93,8 +100,8 @@ class TransactionsList extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.props.transactions.map((transaction, index) => (
-                                    index < this.state.transactionsToDisplay ?
+                                { transactions.map((transaction, index) => (
+                                    index < transactionsToDisplay ?
                                         <tr key={index}>
                                             <td>{ index + 1 }</td>
                                             <td>{ transaction.created_at }</td>
@@ -124,8 +131,8 @@ class TransactionsList extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.props.transactions.map((transaction, index) => (
-                                    index < this.state.transactionsToDisplay ?
+                                { transactions.map((transaction, index) => (
+                                    index < transactionsToDisplay ?
                                         <tr key={index}>
                                             <td className="text-left pr-0">
                                                 <div className="text-capitalize">{ transaction.category }</div>
@@ -142,7 +149,7 @@ class TransactionsList extends Component {
                         </Table>
                     </Card.Body>
                 </Card>
-                { this.state.transactionsToDisplay < this.props.transactions.length ?
+                { transactionsToDisplay < transactions.length ?
                     <Button
                         className="et-button"
                         onClick={ this.handleClick }
