@@ -1,6 +1,6 @@
 import initialState from "./initialState"
 
-const loginUser = (state, action) => {
+const loginUser = (state) => {
     return {
         ...state,
         isLoggedIn: true
@@ -23,8 +23,8 @@ const mostSpentOnCategory = (totalExpenseByCategory) => {
         const mostSpentOn = totalExpenseByCategory.reduce((prevCategory, currentCategory) => {
             return prevCategory.amount > currentCategory.amount ? prevCategory : currentCategory
         });
-    
-        return mostSpentOn.category;   
+
+        return mostSpentOn.category;
     }
 };
 
@@ -44,14 +44,14 @@ const getUserStats = (state, action) => {
     };
 };
 
-const reloadDashboard = (state, action) => {
+const reloadDashboard = (state) => {
     return {
         ...state,
         loaded: false,
     };
 };
 
-const submittingForm = (state, action) => {
+const submittingForm = (state) => {
     return {
         ...state,
         submittingForm: !state.submittingForm,
@@ -67,7 +67,7 @@ const reducer = (state, action) => {
         case "SUBMITTING_FORM" : return submittingForm(state, action);
         case "LOGOUT_USER" : return initialState;
         default: return state;
-    };
+    }
 };
 
 export default reducer;
