@@ -3,3 +3,37 @@
     border: #2D5295;
     margin-bottom: 1rem;
 }
+
+.caret-up {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+}
+
+.caret-down {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.table thead th {
+    vertical-align: middle;
+}
+
+.table thead th div {
+    position: relative;
+}
+
+#transacting-table-date-column {
+    cursor: pointer;
+    padding-bottom: 1rem;
+}
+
+#transacting-table-amount-column {
+    cursor: pointer;
+    padding-bottom: 1rem;
+}

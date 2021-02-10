@@ -106,7 +106,7 @@ class Dashboard extends Component {
 
                 <DashboardCard
                     cardClass="transaction-card"
-                    content={ transactions.length ? transactions[0].amount : "N/A" }
+                    content={ transactions.length ? transactions[0].amount_with_currency : "N/A" }
                     icon="fas fa-exchange-alt fa-lg"
                     title="Last Transaction"
                 />

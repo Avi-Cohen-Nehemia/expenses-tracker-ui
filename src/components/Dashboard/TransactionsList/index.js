@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Table from 'react-bootstrap/Table';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Carets from "./Carets";
 
 class TransactionsList extends Component {
 
@@ -11,17 +12,53 @@ class TransactionsList extends Component {
         super(props);
 
         this.state = {
+            transactions: props.transactions,
             transactionsToDisplay: 5,
+            sortBy: "date",
+            direction: "desc"
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleTableOrder = this.handleTableOrder.bind(this);
     }
 
     handleClick() {
         this.setState({ transactionsToDisplay: this.state.transactionsToDisplay + 5 });
     }
 
+    handleTableOrder(column) {
+        const { direction, transactions } = this.state;
+        const orderedTransactions = transactions.sort((a, b) => {
+            if (column === "date") {
+
+                if (direction === "asc") {
+                    return new Date(b.unformatted_created_at) - new Date(a.unformatted_created_at);
+                } else {
+                    return new Date(a.unformatted_created_at) - new Date(b.unformatted_created_at);
+                }
+
+            } else {
+
+                if (direction === "asc") {
+                    return b[column] - a[column];
+                } else {
+                    return a[column] - b[column];
+                }
+
+            }
+        });
+
+        this.setState({
+            transactions: orderedTransactions,
+            sortBy: column,
+            direction: this.state.direction === "desc" ? "asc" : "desc"
+        });
+    }
+
     render() {
+
+        const { direction, transactions, transactionsToDisplay, sortBy } = this.state;
+
         return (
             <div className="transactions-table">
                 <Card className="shadow mb-3">
@@ -38,20 +75,46 @@ class TransactionsList extends Component {
                             <thead>
                                 <tr>
                                     <th>{ "#" }</th>
-                                    <th>{ "Date" }</th>
+                                    <th>
+                                        <span
+                                            id="transacting-table-date-column"
+                                            onClick={ () => this.handleTableOrder("date") }
+                                        >
+                                            <span>{ "Date" }</span>
+                                            <div>
+                                                <Carets
+                                                    direction={direction}
+                                                    sortBy={sortBy === "date"}
+                                                />
+                                            </div>
+                                        </span>
+                                    </th>
                                     <th>{ "Category" }</th>
-                                    <th>{ "Transaction Amount" }</th>
+                                    <th>
+                                        <span
+                                            id="transacting-table-amount-column"
+                                            onClick={ () => this.handleTableOrder("amount") }
+                                        >
+                                            <span>{ "Transaction Amount" }</span>
+                                            <div>
+                                                <Carets
+                                                    direction={direction}
+                                                    sortBy={sortBy === "amount"}
+                                                />
+                                            </div>
+                                        </span>
+                                    </th>
                                     <th>{ "Balance" }</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.props.transactions.map((transaction, index) => (
-                                    index < this.state.transactionsToDisplay ?
+                                { transactions.map((transaction, index) => (
+                                    index < transactionsToDisplay ?
                                         <tr key={index}>
                                             <td>{ index + 1 }</td>
                                             <td>{ transaction.created_at }</td>
                                             <td className="text-capitalize">{ transaction.category }</td>
-                                            <td>{ transaction.amount }</td>
+                                            <td>{ transaction.amount_with_currency }</td>
                                             <td>{ transaction.balance_at_the_time }</td>
                                         </tr>
                                     : null
@@ -76,15 +139,15 @@ class TransactionsList extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.props.transactions.map((transaction, index) => (
-                                    index < this.state.transactionsToDisplay ?
+                                { transactions.map((transaction, index) => (
+                                    index < transactionsToDisplay ?
                                         <tr key={index}>
                                             <td className="text-left pr-0">
                                                 <div className="text-capitalize">{ transaction.category }</div>
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.created_at }</div>
                                             </td>
                                             <td className="text-right pl-0">
-                                                <div>{ transaction.amount }</div>
+                                                <div>{ transaction.amount_with_currency }</div>
                                                 <div style={{ fontSize: "0.8rem" }}>{ transaction.balance_at_the_time }</div>
                                             </td>
                                         </tr>
@@ -94,7 +157,7 @@ class TransactionsList extends Component {
                         </Table>
                     </Card.Body>
                 </Card>
-                { this.state.transactionsToDisplay < this.props.transactions.length ?
+                { transactionsToDisplay < transactions.length ?
                     <Button
                         className="et-button"
                         onClick={ this.handleClick }
