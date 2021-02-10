@@ -27,3 +27,11 @@
 .table thead th div {
     position: relative;
 }
+
+#transacting-table-date-column {
+    cursor: pointer;
+}
+
+#transacting-table-amount-column {
+    cursor: pointer;
+}

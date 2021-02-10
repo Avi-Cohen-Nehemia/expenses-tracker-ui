@@ -31,13 +31,13 @@ class TransactionsList extends Component {
         const orderedTransactions = transactions.sort((a, b) => {
             if (column === "date") {
 
-                let aa = a.created_at.split('-').reverse().join();
-                let bb = b.created_at.split('-').reverse().join();
+                // let aa = a.created_at.split('-').reverse().join();
+                // let bb = b.created_at.split('-').reverse().join();
 
                 if (direction === "asc") {
-                    return new Date(bb) - new Date(aa);
+                    return new Date(b.unformatted_created_at) - new Date(a.unformatted_created_at);
                 } else {
-                    return new Date(aa) - new Date(bb);
+                    return new Date(a.unformatted_created_at) - new Date(b.unformatted_created_at);
                 }
 
             } else {
@@ -77,8 +77,8 @@ class TransactionsList extends Component {
                             <thead>
                                 <tr>
                                     <th>{ "#" }</th>
-                                    <th onClick={ () => this.handleTableOrder("date") }>
-                                        <span>{ "Date" }</span>
+                                    <th>
+                                        <span id="transacting-table-date-column" onClick={ () => this.handleTableOrder("date") }>{ "Date" }</span>
                                         <div>
                                             <Carets
                                                 direction={direction}
@@ -87,8 +87,8 @@ class TransactionsList extends Component {
                                         </div>
                                     </th>
                                     <th>{ "Category" }</th>
-                                    <th onClick={ () => this.handleTableOrder("amount") }>
-                                        <span>{ "Transaction Amount" }</span>
+                                    <th>
+                                        <span id="transacting-table-amount-column" onClick={ () => this.handleTableOrder("amount") }>{ "Transaction Amount" }</span>
                                         <div>
                                             <Carets
                                                 direction={direction}
