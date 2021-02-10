@@ -31,9 +31,6 @@ class TransactionsList extends Component {
         const orderedTransactions = transactions.sort((a, b) => {
             if (column === "date") {
 
-                // let aa = a.created_at.split('-').reverse().join();
-                // let bb = b.created_at.split('-').reverse().join();
-
                 if (direction === "asc") {
                     return new Date(b.unformatted_created_at) - new Date(a.unformatted_created_at);
                 } else {
@@ -43,10 +40,11 @@ class TransactionsList extends Component {
             } else {
 
                 if (direction === "asc") {
-                    return b.amount - a.amount;
+                    return b[column] - a[column];
                 } else {
-                    return a.amount - b.amount;
+                    return a[column] - b[column];
                 }
+
             }
         });
 
@@ -78,23 +76,33 @@ class TransactionsList extends Component {
                                 <tr>
                                     <th>{ "#" }</th>
                                     <th>
-                                        <span id="transacting-table-date-column" onClick={ () => this.handleTableOrder("date") }>{ "Date" }</span>
-                                        <div>
-                                            <Carets
-                                                direction={direction}
-                                                sortBy={sortBy === "date"}
-                                            />
-                                        </div>
+                                        <span
+                                            id="transacting-table-date-column"
+                                            onClick={ () => this.handleTableOrder("date") }
+                                        >
+                                            <span>{ "Date" }</span>
+                                            <div>
+                                                <Carets
+                                                    direction={direction}
+                                                    sortBy={sortBy === "date"}
+                                                />
+                                            </div>
+                                        </span>
                                     </th>
                                     <th>{ "Category" }</th>
                                     <th>
-                                        <span id="transacting-table-amount-column" onClick={ () => this.handleTableOrder("amount") }>{ "Transaction Amount" }</span>
-                                        <div>
-                                            <Carets
-                                                direction={direction}
-                                                sortBy={sortBy === "amount"}
-                                            />
-                                        </div>
+                                        <span
+                                            id="transacting-table-amount-column"
+                                            onClick={ () => this.handleTableOrder("amount") }
+                                        >
+                                            <span>{ "Transaction Amount" }</span>
+                                            <div>
+                                                <Carets
+                                                    direction={direction}
+                                                    sortBy={sortBy === "amount"}
+                                                />
+                                            </div>
+                                        </span>
                                     </th>
                                     <th>{ "Balance" }</th>
                                 </tr>

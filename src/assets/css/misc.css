@@ -30,8 +30,10 @@
 
 #transacting-table-date-column {
     cursor: pointer;
+    padding-bottom: 1rem;
 }
 
 #transacting-table-amount-column {
     cursor: pointer;
+    padding-bottom: 1rem;
 }
