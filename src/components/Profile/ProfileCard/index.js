@@ -11,7 +11,9 @@ const ProfileCard = ({ cardClass, content, title, icon }) => {
                 <span className="dashboard-card-header">{ title }</span>
                 <i className={ icon }/>
             </Card.Header>
-            <Card.Title>{}</Card.Title>
+            <Card.Title className="profile-card-title">
+                <i className="fas fa-pencil-alt fa-lg edit-icon"></i>
+            </Card.Title>
             <Card.Body className="d-flex justify-content-center align-items-center">
                 <h2 className="text-center text-capitalize">{ content }</h2>
             </Card.Body>
