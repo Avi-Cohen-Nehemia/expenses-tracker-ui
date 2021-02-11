@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 
 const Carets = ({ direction, sortBy }) => {
     return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                top: "4px",
-            }}
-        >
+        <div className="carets-container">
             {
                 sortBy ?
                     (direction === "desc" ?

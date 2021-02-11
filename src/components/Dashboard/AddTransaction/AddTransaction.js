@@ -90,7 +90,7 @@ class AddTransaction extends Component {
                         <Row>
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="add-transaction-type">
-                                    <Form.Label>{"Income or Expense"}</Form.Label>
+                                    <Form.Label>{ "Type" }</Form.Label>
                                     <Form.Control
                                         as="select"
                                         className="text-capitalize"

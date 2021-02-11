@@ -4,6 +4,12 @@
     margin-bottom: 1rem;
 }
 
+.carets-container {
+    display: flex;
+    justify-content: center;
+    top: 4px;
+}
+
 .caret-up {
     width: 0; 
     height: 0; 
