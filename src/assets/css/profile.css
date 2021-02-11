@@ -17,6 +17,12 @@
     grid-row: 2/4;
 }
 
+.email-card {
+    grid-column: 6/10;
+    grid-row: 2/4;
+    margin-right: 0.8rem;
+}
+
 .profile-card-title {
     position: relative
 }
@@ -45,7 +51,16 @@
     }
 
     .username-card {
-        grid-column: 2/9;
+        grid-column: 1/10;
         grid-row: 3/5;
+        margin-right: 0.8rem;
+        margin-left: 0.8rem;
+    }
+
+    .email-card {
+        grid-column: 1/10;
+        grid-row: 5/7;
+        margin-right: 0.8rem;
+        margin-left: 0.8rem;
     }
 }
