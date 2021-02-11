@@ -7,6 +7,7 @@ import history from "../../history";
 const mapStateToProps = (state) => {
     return {
         username: state.username,
+        email: state.email,
         loaded: state.loaded,
     };
 };

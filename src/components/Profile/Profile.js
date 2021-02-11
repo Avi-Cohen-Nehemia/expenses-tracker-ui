@@ -6,6 +6,16 @@ import ProfileCard from "./ProfileCard";
 
 class Profile extends Component {
 
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            username: props.username,
+            email: props.email,
+        }
+    }
+
     componentDidMount() {
         if (!this.props.loaded) {
             this.props.getUserStats();
@@ -14,7 +24,8 @@ class Profile extends Component {
 
     render() {
 
-        const { username, loaded, logoutUser } = this.props;
+        const { loaded, logoutUser } = this.props;
+        const { username, email } = this.state;
 
         return (
             loaded ?
@@ -30,6 +41,12 @@ class Profile extends Component {
                     icon="fas fa-user fa-lg"
                     title="Username"
                 />
+                <ProfileCard
+                    cardClass="email-card"
+                    content={ email ? email : "N/A" }
+                    icon="far fa-envelope fa-lg"
+                    title="Email"
+                />
             </div>
             : <Spinner />
         );
@@ -39,6 +56,7 @@ class Profile extends Component {
 Profile.propTypes = {
     getUserStats: PropTypes.func.isRequired,
     username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
     logoutUser: PropTypes.func.isRequired
 };
