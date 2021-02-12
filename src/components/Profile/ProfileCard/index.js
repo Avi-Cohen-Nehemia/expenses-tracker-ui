@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 class ProfileCard extends Component {
 
@@ -45,9 +46,9 @@ class ProfileCard extends Component {
                         ?
                         <h2 className="text-center text-capitalize">{ content }</h2>
                         :
-                        <Form style={{width: "100%"}}>
-                            <Row>
-                                <Col lg={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}>
+                        <Form style={{ width: "100%" }}>
+                            <Row className="align-items-center">
+                                <Col xs={{ span: 8, offset: 1 }}>
                                     <Form.Group controlId={ `edit-${title}` }>
                                         <Form.Label>{ `Enter new ${title}` }</Form.Label>
                                         <Form.Control
@@ -57,6 +58,9 @@ class ProfileCard extends Component {
                                             value={ inputValue }
                                         />
                                     </Form.Group>
+                                </Col>
+                                <Col xs={{ span: 2 }}>
+                                    <Button className="mt-3" type="submit">{"Submit"}</Button>
                                 </Col>
                             </Row>
                         </Form>
