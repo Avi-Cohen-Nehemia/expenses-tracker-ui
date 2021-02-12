@@ -26,6 +26,8 @@ const mostSpentOnCategory = (totalExpenseByCategory) => {
 
         return mostSpentOn.category;
     }
+
+    return "";
 };
 
 const getUserStats = (state, action) => {

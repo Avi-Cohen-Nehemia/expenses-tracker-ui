@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import homeImage from "../../assets/images/home-picture2.jpg";
 
 class Signup extends Component {
@@ -32,12 +33,18 @@ class Signup extends Component {
     handleSubmit(e) {
 
         const { username, password, confirmPassword } = this.state;
-        const formIsValid = username.length > 2 || password.length > 7 || password.length < 21 || (password === confirmPassword);
+        const formIsValid = username.length > 2 && password.length > 7 && password.length < 21 && (password === confirmPassword);
 
         e.preventDefault();
 
         if (formIsValid) {
             this.props.createNewUser(this.state);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid form submission',
+                text: 'Please fill out the form correctly',
+            });
         }
     }
 
@@ -137,7 +144,7 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-    createNewUser: PropTypes.string.isRequired,
+    createNewUser: PropTypes.func.isRequired,
 };
 
 export default Signup;
