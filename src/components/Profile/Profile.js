@@ -11,9 +11,11 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            username: props.username,
-            email: props.email,
+            usernameInput: props.username,
+            emailInput: props.email,
         }
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -22,10 +24,16 @@ class Profile extends Component {
         }
     }
 
+    handleChange(e, input) {
+        let change = {};
+        change[input] = e.currentTarget.value;
+        this.setState(change);
+    }
+
     render() {
 
-        const { loaded, logoutUser } = this.props;
-        const { username, email } = this.state;
+        const { email, loaded, logoutUser, username } = this.props;
+        const { emailInput, usernameInput } = this.state;
 
         return (
             loaded ?
@@ -38,13 +46,19 @@ class Profile extends Component {
                 <ProfileCard
                     cardClass="username-card"
                     content={ username }
+                    handleChange={ (e) => this.handleChange(e, "usernameInput") }
                     icon="fas fa-user fa-lg"
+                    inputType="text"
+                    inputValue={ usernameInput }
                     title="Username"
                 />
                 <ProfileCard
                     cardClass="email-card"
                     content={ email ? email : "N/A" }
+                    handleChange={ (e) => this.handleChange(e, "emailInput") }
                     icon="far fa-envelope fa-lg"
+                    inputType="email"
+                    inputValue={ emailInput }
                     title="Email"
                 />
             </div>

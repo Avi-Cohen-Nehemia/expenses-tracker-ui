@@ -24,7 +24,7 @@ class ProfileCard extends Component {
 
     render() {
 
-        const { cardClass, content, title, icon } = this.props;
+        const { cardClass, content, handleChange, title, icon, inputType, inputValue } = this.props;
 
         return (
             <Card className={ "shadow " + cardClass }>
@@ -48,14 +48,13 @@ class ProfileCard extends Component {
                         <Form style={{width: "100%"}}>
                             <Row>
                                 <Col lg={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}>
-                                    <Form.Group controlId={`edit-${content}`}>
-                                        <Form.Label>{ "Enter new..." }</Form.Label>
+                                    <Form.Group controlId={ `edit-${title}` }>
+                                        <Form.Label>{ `Enter new ${title}` }</Form.Label>
                                         <Form.Control
-                                            onChange={ this.handleClick }
-                                            // onChange={ (e) => this.handleChange(e, "transactionAmount") }
+                                            onChange={ handleChange }
                                             required
-                                            type="text"
-                                            value={ content }
+                                            type={ inputType }
+                                            value={ inputValue }
                                         />
                                     </Form.Group>
                                 </Col>
@@ -71,8 +70,11 @@ class ProfileCard extends Component {
 ProfileCard.propTypes = {
     cardClass: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
+    icon: PropTypes.string.isRequired,
+    inputType: PropTypes.string.isRequired,
+    inputValue: PropTypes.string
 };
 
 export default ProfileCard;
