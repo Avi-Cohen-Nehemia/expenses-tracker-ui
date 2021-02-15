@@ -11,11 +11,12 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            usernameInput: props.username,
-            emailInput: props.email,
+            name: props.userName,
+            email: props.userEmail,
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -30,10 +31,16 @@ class Profile extends Component {
         this.setState(change);
     }
 
+    handleSubmit(e, input) {
+        e.preventDefault();
+
+        this.props.editUserDetails(input, this.state[input]);
+    }
+
     render() {
 
-        const { email, loaded, logoutUser, username } = this.props;
-        const { emailInput, usernameInput } = this.state;
+        const { userEmail, loaded, logoutUser, userName, submittingForm } = this.props;
+        const { email, name } = this.state;
 
         return (
             loaded ?
@@ -43,36 +50,47 @@ class Profile extends Component {
                     selected="profile"
                 />
                 <h1 className="page-header display-3 p-0">{ "Profile" }</h1>
-                <ProfileCard
-                    cardClass="username-card"
-                    content={ username }
-                    handleChange={ (e) => this.handleChange(e, "usernameInput") }
-                    icon="fas fa-user fa-lg"
-                    inputType="text"
-                    inputValue={ usernameInput }
-                    title="Username"
-                />
-                <ProfileCard
-                    cardClass="email-card"
-                    content={ email ? email : "N/A" }
-                    handleChange={ (e) => this.handleChange(e, "emailInput") }
-                    icon="far fa-envelope fa-lg"
-                    inputType="email"
-                    inputValue={ emailInput }
-                    title="Email"
-                />
+                {
+                    submittingForm ?
+                    <Spinner stylingClasses="add-transaction-spinner"/> :
+                    <>
+                        <ProfileCard
+                            cardClass="username-card"
+                            content={ userName }
+                            handleChange={ (e) => this.handleChange(e, "name") }
+                            handleSubmit={ (e) => this.handleSubmit(e, "name")}
+                            icon="fas fa-user fa-lg"
+                            inputType="text"
+                            inputValue={ name }
+                            title="Username"
+                        />
+                        <ProfileCard
+                            cardClass="email-card"
+                            content={ userEmail ? userEmail : "N/A" }
+                            handleChange={ (e) => this.handleChange(e, "email") }
+                            handleSubmit={ (e) => this.handleSubmit(e, "email") }
+                            icon="far fa-envelope fa-lg"
+                            inputToSubmit="emailInput"
+                            inputType="email"
+                            inputValue={ email }
+                            title="Email"
+                        />
+                    </>
+                }
             </div>
-            : <Spinner />
+            : <Spinner stylingClasses="add-transaction-spinner"/>
         );
     }
 }
 
 Profile.propTypes = {
+    editUserDetails: PropTypes.func.isRequired,
     getUserStats: PropTypes.func.isRequired,
-    username: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    userEmail: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
 };
 
 export default Profile;
