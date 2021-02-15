@@ -16,6 +16,15 @@ const updateUserDetails = (state, action) => {
     };
 };
 
+const changeUserDetails = (state, action) => {
+    return {
+        ...state,
+        username: action.username,
+        email: action.email ? action.email : "",
+        loaded: true
+    };
+};
+
 const mostSpentOnCategory = (totalExpenseByCategory) => {
 
     if (totalExpenseByCategory.length) {
@@ -64,6 +73,7 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER" : return loginUser(state, action);
         case "UPDATE_USER_DETAILS" : return updateUserDetails(state, action);
+        case "CHANGE_USER_DETAILS" : return changeUserDetails(state, action);
         case "GET_USER_STATS" : return getUserStats(state, action);
         case "RELOAD_DASHBOARD" : return reloadDashboard(state, action);
         case "SUBMITTING_FORM" : return submittingForm(state, action);

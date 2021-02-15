@@ -23,7 +23,16 @@ export const updateUserDetails = (data) => {
         type: "UPDATE_USER_DETAILS",
         userID: data.id,
         username: data.name,
-        accessToken:data.access_token
+        accessToken:data.access_token,
+        email: data.email
+    };
+};
+
+export const changeUserDetails = (data) => {
+    return {
+        type: "CHANGE_USER_DETAILS",
+        username: data.name,
+        email: data.email
     };
 };
 

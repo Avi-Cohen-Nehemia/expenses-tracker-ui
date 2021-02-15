@@ -5,6 +5,7 @@ import { loginUser } from "./state";
 import { logoutUser } from "./state";
 import { reloadDashboard } from "./state";
 import { submittingForm } from "./state";
+import { changeUserDetails } from "./state";
 import history from "../../history";
 import Swal from "sweetalert2";
 
@@ -41,6 +42,39 @@ export const getUserStats = () => {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(({ data }) => {
             dispatch(updateUserStats(data.data));
+        });
+    };
+};
+
+export const editUserDetails = (property, value) => {
+    return (dispatch, getState) => {
+
+        const userID = getState().userID;
+        const accessToken = getState().accessToken;
+
+        dispatch(submittingForm());
+
+        axios.put(`users/${userID}`, {
+            [property]: value
+        }, {
+            headers: { Authorization: `Bearer ${accessToken}`}
+        }).then(() => {
+            axios.get(`users/${userID}`, {
+                headers: { Authorization: `Bearer ${accessToken}`}
+            }).then(({ data }) => {
+                dispatch(changeUserDetails(data.data));
+            }).then(() => {
+                dispatch(submittingForm());
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Personal details saved successfully',
+                    showConfirmButton: true,
+                });
+            }).catch(() => {
+                dispatch(submittingForm());
+            });
+        }).catch(() => {
+            dispatch(submittingForm());
         });
     };
 };
