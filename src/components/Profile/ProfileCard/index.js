@@ -37,7 +37,7 @@ class ProfileCard extends Component {
                 </Card.Header>
                 <Card.Title className="profile-card-title">
                     <i
-                        className="fas fa-pencil-alt fa-lg edit-icon"
+                        className={"fas fa-lg edit-icon " + (this.state.editValue ? "fa-times" : "fa-pencil-alt")}
                         onClick={ this.handleClick }
                     />
                 </Card.Title>
