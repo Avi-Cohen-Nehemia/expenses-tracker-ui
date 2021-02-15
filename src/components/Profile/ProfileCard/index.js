@@ -42,10 +42,8 @@ class ProfileCard extends Component {
                     />
                 </Card.Title>
                 <Card.Body className="d-flex justify-content-center align-items-center">
-                    { !this.state.editValue
-                        ?
-                        <h2 className="text-center text-capitalize">{ content }</h2>
-                        :
+                    { !this.state.editValue ?
+                        <h2 className="text-center text-capitalize">{ content }</h2> :
                         <Form style={{ width: "100%" }}>
                             <Row className="align-items-center">
                                 <Col xs={{ span: 8, offset: 1 }}>
