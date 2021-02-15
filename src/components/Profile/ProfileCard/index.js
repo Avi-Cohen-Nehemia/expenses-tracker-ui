@@ -20,12 +20,12 @@ class ProfileCard extends Component {
     }
 
     handleClick() {
-        this.setState({editValue: !this.state.editValue})
+        this.setState({editValue: !this.state.editValue});
     }
 
     render() {
 
-        const { cardClass, content, handleChange, title, icon, inputType, inputValue } = this.props;
+        const { cardClass, content, handleChange, handleSubmit, title, icon, inputType, inputValue } = this.props;
 
         return (
             <Card className={ "shadow " + cardClass }>
@@ -44,7 +44,10 @@ class ProfileCard extends Component {
                 <Card.Body className="d-flex justify-content-center align-items-center">
                     { !this.state.editValue ?
                         <h2 className="text-center text-capitalize">{ content }</h2> :
-                        <Form style={{ width: "100%" }}>
+                        <Form
+                            onSubmit={ handleSubmit }
+                            style={{ width: "100%" }}
+                        >
                             <Row className="align-items-center">
                                 <Col xs={{ span: 8, offset: 1 }}>
                                     <Form.Group controlId={ `edit-${title}` }>
@@ -58,7 +61,12 @@ class ProfileCard extends Component {
                                     </Form.Group>
                                 </Col>
                                 <Col xs={{ span: 2 }}>
-                                    <Button className="mt-3" type="submit">{"Submit"}</Button>
+                                    <Button
+                                        className="mt-3"
+                                        type="submit"
+                                    >
+                                        {"Submit"}
+                                    </Button>
                                 </Col>
                             </Row>
                         </Form>
@@ -73,6 +81,7 @@ ProfileCard.propTypes = {
     cardClass: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     inputType: PropTypes.string.isRequired,
