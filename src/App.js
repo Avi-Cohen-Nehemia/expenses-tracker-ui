@@ -15,25 +15,25 @@ const App = () => {
   return (
     <Router history={ history }>
         <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/dashboard">
-            <ProtectedRoute Component={ Dashboard } />
-          </Route>
-          <Route exact path="/profile">
-            <ProtectedRoute Component={ Profile } />
-          </Route>
-          <Route exact path="/add-transaction">
-            <ProtectedRoute Component={ AddTransaction } />
-          </Route>
-          <FourOhFour />
+            <Route exact path="/">
+                <LandingPage />
+            </Route>
+            <Route exact path="/signup">
+                <Signup />
+            </Route>
+            <Route exact path="/login">
+                <Login />
+            </Route>
+            <Route exact path="/dashboard">
+                <ProtectedRoute Component={ Dashboard } />
+            </Route>
+            <Route exact path="/profile">
+                <ProtectedRoute Component={ Profile } />
+            </Route>
+            <Route exact path="/add-transaction">
+                <ProtectedRoute Component={ AddTransaction } />
+            </Route>
+            <FourOhFour />
         </Switch>
     </Router>
   );
