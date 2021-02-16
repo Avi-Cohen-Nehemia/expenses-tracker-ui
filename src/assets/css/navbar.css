@@ -3,10 +3,12 @@
     width: 150px;
     background-color: #0B2D65;
     overflow-x: hidden;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    transition: height 1.5s;
 }
 
 .side-navbar-link {
@@ -47,8 +49,12 @@ hr {
 @media screen and (max-width: 768px){
 
     #mobile-side-navbar {
-        height: auto;
+        height: 550px;
         padding-bottom: 0.5rem;
+    }
+
+    #mobile-side-navbar .burger {
+        margin-top: 0.5rem;
     }
 
     .burger {
