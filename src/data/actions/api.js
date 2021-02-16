@@ -129,7 +129,6 @@ export const createNewUser = (data) => {
                 dispatch(loginUser());
                 dispatch(updateUserDetails(data));
             }).then(() => {
-                dispatch(reloadDashboard())
                 history.push("/dashboard");
             });
         }).catch(() => {
