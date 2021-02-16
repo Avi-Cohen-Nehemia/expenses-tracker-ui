@@ -118,6 +118,8 @@ export const createNewUser = (data) => {
 
     return (dispatch) => {
 
+        dispatch(submittingForm());
+
         axios.post("users", {
             name: data.username,
             password: data.password,
@@ -132,6 +134,7 @@ export const createNewUser = (data) => {
                 history.push("/dashboard");
             });
         }).catch(() => {
+            dispatch(submittingForm());
             Swal.fire({
                 icon: 'error',
                 title: 'Username already taken.',
