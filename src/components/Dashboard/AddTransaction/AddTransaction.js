@@ -53,6 +53,7 @@ class AddTransaction extends Component {
     render() {
 
         const { transactionAmount, transactionCategory, transactionType } = this.state;
+        const { logoutUser, submittingForm } = this.props;
         const incomeCategories = ["paycheck", "gift", "other"];
         const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "other"];
         const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
@@ -60,11 +61,11 @@ class AddTransaction extends Component {
         return(
             <div className="add-transaction-grid">
                 <Navbar
-                    handleLogout={ this.props.logoutUser }
+                    handleLogout={ logoutUser }
                     selected="add-transaction"
                 />
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
-                { this.props.submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
+                { submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
                     <div className="add-transaction-form">
                     <Form onSubmit={ this.handleSubmit }>
                         <FormInput
