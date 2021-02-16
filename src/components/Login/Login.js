@@ -18,7 +18,6 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            loggingIn: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -43,65 +42,67 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.login(this.state);
-        this.setState({ loggingIn: true });
     }
 
     render() {
 
-        const { username, password, loggingIn } = this.state;
+        const { username, password } = this.state;
+        const { submittingForm } = this.props;
 
         return(
-            loggingIn ? <Spinner stylingClasses="dashboard-spinner"/> :
             <div className="login-page">
-                <div className="my-auto login-form">
-                    <h2 className="text-center">{ "Log In" }</h2>
-                    <Form
-                        className="mt-3"
-                        onSubmit={ this.handleSubmit }
-                    >
-                        <Row>
+                { submittingForm  ? <Spinner stylingClasses="dashboard-spinner"/> :
+                    <div className="my-auto login-form">
+                        <h2 className="text-center">{ "Log In" }</h2>
+                        <Form
+                            className="mt-3"
+                            noValidate
+                            onSubmit={ this.handleSubmit }
+                        >
+                            <Row>
+                                <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                                    <Form.Group controlId="login-form-username">
+                                        <Form.Label>{ "Username" }</Form.Label>
+                                        <Form.Control
+                                            onChange={ (e) => this.handleChange(e, "username") }
+                                            required
+                                            type="text"
+                                            value={ username }
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                                    <Form.Group controlId="login-form-password">
+                                        <Form.Label>{ "Password" }</Form.Label>
+                                        <Form.Control
+                                            onChange={ (e) => this.handleChange(e, "password") }
+                                            required
+                                            type="password"
+                                            value={ password }
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                                    <Button type="submit" variant="primary">
+                                        { "Submit" }
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Form>
+
+                        <Row className="mt-4">
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="login-form-username">
-                                    <Form.Label>{ "Username" }</Form.Label>
-                                    <Form.Control
-                                        onChange={ (e) => this.handleChange(e, "username") }
-                                        required
-                                        type="text"
-                                        value={ username }
-                                    />
-                                </Form.Group>
+                                <Link to="/signup"><p>{ "Don't have an account? Sign up here" }</p></Link>
                             </Col>
                         </Row>
-
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="login-form-password">
-                                    <Form.Label>{ "Password" }</Form.Label>
-                                    <Form.Control
-                                        onChange={ (e) => this.handleChange(e, "password") }
-                                        required
-                                        type="password"
-                                        value={ password }
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Button type="submit" variant="primary">
-                                    { "Submit" }
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Form>
-
-                    <Row className="mt-4">
-                        <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                            <Link to="/signup"><p>{ "Don't have an account? Sign up here" }</p></Link>
-                        </Col>
-                    </Row>
-                </div>
+                    </div>
+                }
                 <div>
                     <img
                         alt="person counting money"
@@ -117,7 +118,8 @@ class Login extends Component {
 Login.propTypes = {
     accessToken: PropTypes.string.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
-    login: PropTypes.func.isRequired
+    login: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
 };
 
 export default Login;

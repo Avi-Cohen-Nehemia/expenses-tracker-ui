@@ -13,13 +13,17 @@ export const login = (data) => {
 
     return (dispatch) => {
 
+        dispatch(submittingForm());
+
         axios.post("login", {
             name: data.username,
             password: data.password,
         }).then(({ data }) => {
+            dispatch(submittingForm());
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
         }).catch(() => {
+            dispatch(submittingForm());
             Swal.fire({
                 icon: 'error',
                 title: 'Incorrect credentials',
