@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    transition: height 1.5s;
 }
 
 .side-navbar-link {
@@ -51,6 +50,7 @@ hr {
     #mobile-side-navbar {
         height: 550px;
         padding-bottom: 0.5rem;
+        transition: height 1.5s;
     }
 
     #mobile-side-navbar .burger {
