@@ -17,22 +17,12 @@ class AddTransaction extends Component {
         this.state = {
             transactionAmount: "",
             transactionType: "income",
-            transactionCategory: "paycheck",
-            submittingForm: props.submittingForm
+            transactionCategory: "paycheck"
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidUpdate(prevProps) {
-
-        const { submittingForm } = this.props;
-
-        if (submittingForm !== prevProps.submittingForm) {
-            this.setState({ submittingForm: submittingForm });
-        }
     }
 
     handleCategoryChange(input, value) {
@@ -62,7 +52,7 @@ class AddTransaction extends Component {
 
     render() {
 
-        const { transactionAmount, transactionCategory, transactionType, submittingForm } = this.state;
+        const { transactionAmount, transactionCategory, transactionType } = this.state;
         const incomeCategories = ["paycheck", "gift", "other"];
         const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "other"];
         const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
@@ -74,7 +64,7 @@ class AddTransaction extends Component {
                     selected="add-transaction"
                 />
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
-                { submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
+                { this.props.submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
                     <div className="add-transaction-form">
                     <Form onSubmit={ this.handleSubmit }>
                         <FormInput
