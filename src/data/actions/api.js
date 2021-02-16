@@ -75,6 +75,11 @@ export const editUserDetails = (property, value) => {
             });
         }).catch(() => {
             dispatch(submittingForm());
+            Swal.fire({
+                icon: 'error',
+                title: 'Username already taken.',
+                text: 'Please try a different username',
+            });
         });
     };
 };
