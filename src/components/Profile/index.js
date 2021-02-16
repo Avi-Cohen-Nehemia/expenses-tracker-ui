@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserStats } from "../../data/actions/api";
-import { editUserDetails } from "../../data/actions/api";
-import { logout } from "../../data/actions/api";
+import { getUserStats, editUserDetails, logout } from "../../data/actions/api";
 import history from "../../history";
 
 const mapStateToProps = (state) => {

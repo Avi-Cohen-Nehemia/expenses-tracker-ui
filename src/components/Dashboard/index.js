@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
-import { getUserStats } from "../../data/actions/api";
-import { logout } from "../../data/actions/api";
+import { getUserStats, logout } from "../../data/actions/api";
 import history from "../../history";
 
 const mapStateToProps = (state) => {
