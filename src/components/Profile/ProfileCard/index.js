@@ -26,6 +26,7 @@ class ProfileCard extends Component {
     render() {
 
         const { cardClass, content, handleChange, handleSubmit, title, icon, inputType, inputValue } = this.props;
+        const { editValue } = this.state;
 
         return (
             <Card className={ "shadow " + cardClass }>
@@ -37,12 +38,12 @@ class ProfileCard extends Component {
                 </Card.Header>
                 <Card.Title className="profile-card-title">
                     <i
-                        className={"fas fa-lg edit-icon " + (this.state.editValue ? "fa-times" : "fa-pencil-alt")}
+                        className={"fas fa-lg edit-icon " + (editValue ? "fa-times" : "fa-pencil-alt")}
                         onClick={ this.handleClick }
                     />
                 </Card.Title>
                 <Card.Body className="d-flex justify-content-center align-items-center">
-                    { !this.state.editValue ?
+                    { !editValue ?
                         <h2 className="profile-card-content">{ content }</h2> :
                         <Form
                             noValidate
