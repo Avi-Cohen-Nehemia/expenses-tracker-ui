@@ -34,18 +34,39 @@ class Signup extends Component {
     handleSubmit(e) {
 
         const { username, password, confirmPassword } = this.state;
-        const formIsValid = username.length > 2 && password.length > 7 && password.length < 21 && (password === confirmPassword);
+        let formIsValid =  true;
 
         e.preventDefault();
 
-        if (formIsValid) {
-            this.props.createNewUser(this.state);
-        } else {
+        if (username.length < 3 || username.length > 20) {
+            formIsValid = false;
             Swal.fire({
                 icon: 'error',
-                title: 'Invalid form submission',
-                text: 'Please fill out the form correctly',
+                title: 'Invalid form submission.',
+                text: 'Username must be between 3 and 20 characters long',
             });
+        }
+
+        if (password.length < 8 || password.length > 20) {
+            formIsValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid form submission.',
+                text: 'Password must be between 8 and 20 characters long',
+            });
+        }
+
+        if (password !== confirmPassword) {
+            formIsValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid form submission.',
+                text: 'Password confirmation does not match your password',
+            });
+        }
+
+        if (formIsValid) {
+            this.props.createNewUser(this.state);
         }
     }
 
@@ -61,6 +82,7 @@ class Signup extends Component {
                         <h2 className="text-center">{ "Sign Up" }</h2>
                         <Form
                             className="mt-4"
+                            noValidate
                             onSubmit={ this.handleSubmit }
                         >
                             <Row>
@@ -79,7 +101,7 @@ class Signup extends Component {
                                             id="password-description"
                                             muted
                                         >
-                                            { "Username must be at least 3 characters long" }
+                                            { "Username must be between 3 and 20 characters long" }
                                         </Form.Text>
                                     </Form.Group>
                                 </Col>
