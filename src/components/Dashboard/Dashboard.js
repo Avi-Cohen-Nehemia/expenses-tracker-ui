@@ -54,79 +54,82 @@ class Dashboard extends Component {
         } = this.props;
 
         return (
-            loaded ?
             <div className="dashboard-grid">
                 <Navbar
                     handleLogout={ logoutUser }
                     selected="dashboard"
                 />
                 <h1 className="page-header display-3">{ "Dashboard" }</h1>
-                <DashboardCard
-                    cardClass="balance-card"
-                    content={ balanceWithCurrency }
-                    icon="fas fa-balance-scale fa-lg"
-                    title="Balance"
-                />
-                <Card className={ "shadow comparison-card" }>
-                    <Card.Header
-                        className="d-flex justify-content-between align-items-center"
-                    >
-                        <span className="dashboard-card-header">{ "Compare" }</span>
-                        <i className={ "fas fa-chart-bar fa-lg" }/>
-                    </Card.Header>
-                    <Card.Body className="comparison-card-grid p-3">
-                            <h6 className="total-income-header m-0">{ "Total Income:" }</h6>
-                            <div className="total-income-stats">
-                                <h6 className="m-0">{ totalIncomeWithCurrency }</h6>
-                                <div className="income-bar">
-                                    <div
-                                        className="expense-bar"
-                                        style={{
-                                            width: this.calculateBarWidth(totalIncome),
-                                            backgroundColor: "green",
-                                        }}
-                                    />
+                { loaded ?
+                <>
+                    <DashboardCard
+                        cardClass="balance-card"
+                        content={ balanceWithCurrency }
+                        icon="fas fa-balance-scale fa-lg"
+                        title="Balance"
+                    />
+                    <Card className={ "shadow comparison-card" }>
+                        <Card.Header
+                            className="d-flex justify-content-between align-items-center"
+                        >
+                            <span className="dashboard-card-header">{ "Compare" }</span>
+                            <i className={ "fas fa-chart-bar fa-lg" }/>
+                        </Card.Header>
+                        <Card.Body className="comparison-card-grid p-3">
+                                <h6 className="total-income-header m-0">{ "Total Income:" }</h6>
+                                <div className="total-income-stats">
+                                    <h6 className="m-0">{ totalIncomeWithCurrency }</h6>
+                                    <div className="income-bar">
+                                        <div
+                                            className="expense-bar"
+                                            style={{
+                                                width: this.calculateBarWidth(totalIncome),
+                                                backgroundColor: "green",
+                                            }}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                            <h6 className="total-expense-header m-0">{ "Total Expense:" }</h6>
-                            <div className="total-expense-stats">
-                                <h6 className="m-0">{ totalExpenseWithCurrency }</h6>
-                                <div className="expense-bar-container">
-                                    <div
-                                        className="expense-bar"
-                                        style={{
-                                            width: this.calculateBarWidth(totalExpense),
-                                            backgroundColor: "red",
-                                        }}
-                                    />
+                                <h6 className="total-expense-header m-0">{ "Total Expense:" }</h6>
+                                <div className="total-expense-stats">
+                                    <h6 className="m-0">{ totalExpenseWithCurrency }</h6>
+                                    <div className="expense-bar-container">
+                                        <div
+                                            className="expense-bar"
+                                            style={{
+                                                width: this.calculateBarWidth(totalExpense),
+                                                backgroundColor: "red",
+                                            }}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                    </Card.Body>
-                </Card>
+                        </Card.Body>
+                    </Card>
 
-                <DashboardCard
-                    cardClass="transaction-card"
-                    content={ transactions.length ? transactions[0].amount_with_currency : "N/A" }
-                    icon="fas fa-exchange-alt fa-lg"
-                    title="Last Transaction"
-                />
+                    <DashboardCard
+                        cardClass="transaction-card"
+                        content={ transactions.length ? transactions[0].amount_with_currency : "N/A" }
+                        icon="fas fa-exchange-alt fa-lg"
+                        title="Last Transaction"
+                    />
 
-                <DashboardCard
-                    cardClass="category-card"
-                    content={ mostSpentOnCategory ? mostSpentOnCategory : "N/A" }
-                    icon="fas fa-search-dollar fa-lg"
-                    title="Most Spent On"
-                />
+                    <DashboardCard
+                        cardClass="category-card"
+                        content={ mostSpentOnCategory ? mostSpentOnCategory : "N/A" }
+                        icon="fas fa-search-dollar fa-lg"
+                        title="Most Spent On"
+                    />
 
-                <PieChartCard
-                    data={ totalExpenseByCategory }
-                />
+                    <PieChartCard
+                        data={ totalExpenseByCategory }
+                    />
 
-                <TransactionsList
-                    transactions={ transactions }
-                />
+                    <TransactionsList
+                        transactions={ transactions }
+                    />
+                </>
+                : <Spinner stylingClasses="new-dashboard-spinner"/>
+                }
             </div>
-            : <Spinner stylingClasses="dashboard-spinner"/>
         );
     }
 }

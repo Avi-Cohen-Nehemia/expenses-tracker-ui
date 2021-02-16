@@ -162,6 +162,13 @@
     height: 95vh;
 }
 
+.new-dashboard-spinner {
+    position: absolute;
+	top: 40%;
+	left: 56%;
+	transform: translate(-50%, -50%);
+}
+
 .add-transaction-spinner {
   	position: absolute;
 	top: 32%;
