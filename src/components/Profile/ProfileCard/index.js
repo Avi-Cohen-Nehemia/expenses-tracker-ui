@@ -50,7 +50,7 @@ class ProfileCard extends Component {
                             style={{ width: "100%" }}
                         >
                             <Row className="align-items-center">
-                                <Col xs={{ span: 8, offset: 1 }}>
+                                <Col xs={{ span: 8 }}>
                                     <Form.Group controlId={ `edit-${title}` }>
                                         <Form.Label>{ `Enter new ${title}` }</Form.Label>
                                         <Form.Control
@@ -61,7 +61,7 @@ class ProfileCard extends Component {
                                         />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={{ span: 2 }}>
+                                <Col xs={{ span: 4 }}>
                                     <Button
                                         className="mt-3"
                                         type="submit"
