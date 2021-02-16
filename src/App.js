@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
-import AddTransaction from "./components/Dashboard/AddTransaction";
+import AddTransaction from "./components/AddTransaction";
 import Profile from './components/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import FourOhFour from "./components/FourOhFour";
