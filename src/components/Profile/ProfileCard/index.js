@@ -43,7 +43,7 @@ class ProfileCard extends Component {
                 </Card.Title>
                 <Card.Body className="d-flex justify-content-center align-items-center">
                     { !this.state.editValue ?
-                        <h2 className="text-center">{ content }</h2> :
+                        <h2 className="profile-card-content">{ content }</h2> :
                         <Form
                             noValidate
                             onSubmit={ handleSubmit }

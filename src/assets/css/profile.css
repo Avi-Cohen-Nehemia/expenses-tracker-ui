@@ -27,6 +27,11 @@
     position: relative
 }
 
+.profile-card-content {
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
 .edit-icon {
     position: absolute;
     right: 1rem;
