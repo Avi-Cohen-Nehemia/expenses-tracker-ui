@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Spinner from "../Spinner";
 import Navbar from "../Navbar";
 import ProfileCard from "./ProfileCard";
+import Swal from "sweetalert2";
 
 class Profile extends Component {
 
@@ -32,9 +33,34 @@ class Profile extends Component {
     }
 
     handleSubmit(e, input) {
+
         e.preventDefault();
 
-        this.props.editUserDetails(input, this.state[input]);
+        const { email, name } = this.state;
+        let formIsValid = true;
+        let isEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (input === "name" && name.length < 3) {
+            formIsValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid form submission.',
+                text: 'Username must be at least 3 characters long',
+            });
+        }
+
+        if (input === "email" && !email.match(isEmail) ) {
+            formIsValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid form submission.',
+                text: 'Email must be a valid address',
+            });
+        }
+
+        if (formIsValid) {
+            this.props.editUserDetails(input, this.state[input]);
+        }
     }
 
     render() {
