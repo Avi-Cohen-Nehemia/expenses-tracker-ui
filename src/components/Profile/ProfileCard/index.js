@@ -8,25 +8,20 @@ import Button from "react-bootstrap/Button";
 
 class ProfileCard extends Component {
 
-    constructor(props) {
-
-        super(props);
-
-        this.state = {
-            editValue: false
-        };
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.setState({editValue: !this.state.editValue});
-    }
-
     render() {
 
-        const { cardClass, content, handleChange, handleSubmit, title, icon, inputType, inputValue } = this.props;
-        const { editValue } = this.state;
+        const {
+            cardClass,
+            content,
+            editingInput,
+            handleChange,
+            handleClick,
+            handleSubmit,
+            title,
+            icon,
+            inputType,
+            inputValue
+        } = this.props;
 
         return (
             <Card className={ "shadow " + cardClass }>
@@ -38,12 +33,12 @@ class ProfileCard extends Component {
                 </Card.Header>
                 <Card.Title className="profile-card-title">
                     <i
-                        className={"fas fa-lg edit-icon " + (editValue ? "fa-times" : "fa-pencil-alt")}
-                        onClick={ this.handleClick }
+                        className={"fas fa-lg edit-icon " + (editingInput ? "fa-times" : "fa-pencil-alt")}
+                        onClick={ handleClick }
                     />
                 </Card.Title>
                 <Card.Body className="d-flex justify-content-center align-items-center">
-                    { !editValue ?
+                    { !editingInput ?
                         <h2 className="profile-card-content">{ content }</h2> :
                         <Form
                             noValidate
@@ -82,7 +77,9 @@ class ProfileCard extends Component {
 ProfileCard.propTypes = {
     cardClass: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    editingInput: PropTypes.bool.isRequired,
     handleChange: PropTypes.func.isRequired,
+    handleClick: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,

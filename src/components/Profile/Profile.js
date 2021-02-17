@@ -14,8 +14,10 @@ class Profile extends Component {
         this.state = {
             name: props.userName,
             email: props.userEmail,
+            editingInput: 0
         }
 
+        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -24,6 +26,10 @@ class Profile extends Component {
         if (!this.props.loaded) {
             this.props.getUserStats();
         }
+    }
+
+    handleClick(num) {
+        this.setState({ editingInput: this.state.editingInput === num ? 0 : num })
     }
 
     handleChange(e, input) {
@@ -83,7 +89,9 @@ class Profile extends Component {
                         <ProfileCard
                             cardClass="username-card"
                             content={ userName }
+                            editingInput={ this.state.editingInput === 1 }
                             handleChange={ (e) => this.handleChange(e, "name") }
+                            handleClick ={ () => this.handleClick(1) }
                             handleSubmit={ (e) => this.handleSubmit(e, "name")}
                             icon="fas fa-user fa-lg"
                             inputType="text"
@@ -93,7 +101,9 @@ class Profile extends Component {
                         <ProfileCard
                             cardClass="email-card"
                             content={ userEmail ? userEmail : "N/A" }
+                            editingInput={ this.state.editingInput === 2 }
                             handleChange={ (e) => this.handleChange(e, "email") }
+                            handleClick ={ () => this.handleClick(2) }
                             handleSubmit={ (e) => this.handleSubmit(e, "email") }
                             icon="far fa-envelope fa-lg"
                             inputToSubmit="emailInput"
