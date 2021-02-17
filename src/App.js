@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import history from "./history"
 import "./assets/css/main.css";
 import Signup from "./components/Signup";
