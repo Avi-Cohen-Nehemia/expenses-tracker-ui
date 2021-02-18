@@ -20,6 +20,7 @@ This app is a personal project which I decided to build to keep my React and fro
 Create a tool where users record any transactions that they have made and are able to refer back to if needed.
 
 ## Additional Features Implemented
+- [x] All the information is being stored on and fetched from an API.
 - [x] Create dedicated dashboard displaying useful insights.
 - [x] Implement authentication (login/logout/signup).
 - [x] Users are able to sort transactions order by amount or date.
