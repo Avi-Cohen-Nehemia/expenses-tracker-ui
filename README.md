@@ -34,7 +34,7 @@ Create a tool where users record any transactions that they have made and are ab
 - Ability to delete a transaction.
 - Ability to delete an account.
 - allow users to change their password.
-- Add a "remember me" button to login/signup.
+- Add a "remember me" functionality to login/signup.
 - Add an option for users to filter transactions by date.
 - Add an option for users to present their transactions in different currencies.
 - Write unit tests for all the components.
