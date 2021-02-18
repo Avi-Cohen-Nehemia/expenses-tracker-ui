@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
@@ -52,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0"
   }
