@@ -15,7 +15,15 @@ const FourOhFour = () => {
                     style={{ maxWidth: "100%" }}
                 />
             </div>
-            <p onClick={ () => history.push("/") }>{ "Navigate back to safety" }</p>
+            <p
+                onClick={ () => history.push("/") }
+                style={{
+                    color: "blue",
+                    cursor: "pointer"
+                }}
+            >
+                { "Navigate back to safety" }
+            </p>
         </Container>
     );
 };
