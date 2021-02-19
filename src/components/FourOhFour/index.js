@@ -16,11 +16,8 @@ const FourOhFour = () => {
                 />
             </div>
             <p
+                className="back-to-safety"
                 onClick={ () => history.push("/") }
-                style={{
-                    color: "blue",
-                    cursor: "pointer"
-                }}
             >
                 { "Navigate back to safety" }
             </p>
