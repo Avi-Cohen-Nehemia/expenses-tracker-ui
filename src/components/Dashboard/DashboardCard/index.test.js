@@ -23,8 +23,12 @@ describe("<DashboardCard />", () => {
     });
 
     it("passes the icon and cardClasses to the correct elements", () => {
-        const { container } = render(<DashboardCard {...defaultProps}/>);
+        render(<DashboardCard {...defaultProps}/>);
 
-        expect(container.firstChild).toHaveClass(defaultProps.cardClass);
+        const cardContainer = document.querySelector(".card");
+        expect(cardContainer).toHaveClass(defaultProps.cardClass);
+
+        const cardIcon = document.querySelector("i");
+        expect(cardIcon).toHaveClass(defaultProps.icon);
     });
 });
