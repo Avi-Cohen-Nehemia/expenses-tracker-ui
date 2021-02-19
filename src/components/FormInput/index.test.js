@@ -35,4 +35,12 @@ describe("<FormInput />", () => {
         expect(input).toHaveAttribute("type", defaultProps.inputType);
         expect(input).toHaveAttribute("value", defaultProps.value);
     });
+
+    it("triggers onChange when the user types in the input", () => {
+        render(<FormInput {...defaultProps}/>);
+        const input = document.querySelector(".form-control");
+        userEvent.type(input, 'Hello, World!')
+
+        expect(defaultProps.onChange).toHaveBeenCalled();
+    });
 });
