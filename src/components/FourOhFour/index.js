@@ -1,7 +1,7 @@
 import React from "react";
 import fourOfFour from "../../assets/images/fourOhFour.png";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import history from "../../history";
 
 const FourOhFour = () => {
     return (
@@ -12,10 +12,10 @@ const FourOhFour = () => {
                 <img
                     alt="404 error"
                     src={ fourOfFour }
-                    style={{maxWidth: "100%"}}
+                    style={{ maxWidth: "100%" }}
                 />
             </div>
-            <Link to="/"><p>{ "Navigate back to safety" }</p></Link>
+            <p onClick={ () => history.push("/") }>{ "Navigate back to safety" }</p>
         </Container>
     );
 };
