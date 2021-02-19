@@ -15,4 +15,10 @@ describe("<FourOhFour />", () => {
         expect(getByText("We can't seem to find the page you are looking for.")).toBeInTheDocument();
         expect(getByText("Navigate back to safety")).toBeInTheDocument();
     });
+
+    it("displays a 404 image", () => {
+        const { getByRole } = render(<FourOhFour />);
+
+        expect(getByRole("img", {alt: "404 error"})).toBeInTheDocument();
+    });
 });
