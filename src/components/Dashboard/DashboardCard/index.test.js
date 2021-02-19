@@ -11,6 +11,10 @@ describe("<DashboardCard />", () => {
         icon: "wombat-icon"
     }
 
+    it("renders without errors or warnings", () => {
+        render(<DashboardCard {...defaultProps}/>);
+    });
+
     it("displays the content and title props as text", () => {
         const { getByText } = render(<DashboardCard {...defaultProps}/>);
 
@@ -20,7 +24,7 @@ describe("<DashboardCard />", () => {
 
     it("passes the icon and cardClasses to the correct elements", () => {
         const { container } = render(<DashboardCard {...defaultProps}/>);
-        
+
         expect(container.firstChild).toHaveClass(defaultProps.cardClass);
     });
 });
