@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
 
 const NavbarLink = ({ destination, icon, isVisible, text, altText, styling, iconClasses, selected, handleClick }) => {
     return (
-        <>
+        <Router>
             <Link
                 className={
                     "side-navbar-link text-decoration-none d-none d-md-flex"
@@ -23,7 +23,7 @@ const NavbarLink = ({ destination, icon, isVisible, text, altText, styling, icon
                 />
             </Link>
             <hr className={ "d-none d-md-block" + (isVisible ? " d-flex" : "") }/>
-        </>
+        </Router>
     );
 };
 
