@@ -93,4 +93,15 @@ describe("<AddTransaction />", () => {
             expect(option).toBeInTheDocument();
         })
     });
+
+    it("submits the form when submit is clicked",() => {
+        const { getByRole } = render(<AddTransaction {...defaultProps}/>);
+
+        // click the submit button
+        const button = getByRole("button", {type: "submit"});
+        fireEvent(button, new MouseEvent("click"));
+
+        // assert addTransaction() has been triggered
+        expect(defaultProps.addTransaction).toHaveBeenCalled();
+    })
 });
