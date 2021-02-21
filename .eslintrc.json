@@ -1,7 +1,8 @@
 {
     "env": {
         "es2021": true,
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -32,6 +33,7 @@
         }],
         "react/prop-types": ["warn", {
             "skipUndeclared": false
-        }]
+        }],
+        "no-unused-vars": "warn"
     }
 }

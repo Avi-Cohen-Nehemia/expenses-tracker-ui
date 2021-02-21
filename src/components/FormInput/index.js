@@ -28,7 +28,7 @@ class FormInput extends Component {
                         <Form.Control
                             aria-describedby={ descriptionID }
                             onChange={ onChange }
-                            placeholder={ inputPlaceholder ? inputPlaceholder : "" }
+                            placeholder={ inputPlaceholder }
                             required={required}
                             type={ inputType }
                             value={ inputValue }

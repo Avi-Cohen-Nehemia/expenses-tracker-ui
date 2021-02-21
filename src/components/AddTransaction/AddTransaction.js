@@ -8,7 +8,7 @@ import FormInput from "../FormInput";
 import Navbar from "../Navbar";
 import Spinner from "../Spinner";
 
-class AddTransaction extends Component {
+export class AddTransaction extends Component {
 
     constructor(props) {
 

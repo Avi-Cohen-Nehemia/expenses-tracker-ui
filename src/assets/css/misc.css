@@ -43,3 +43,8 @@
     cursor: pointer;
     padding-bottom: 1rem;
 }
+
+.back-to-safety {
+    color: blue;
+    cursor: pointer;
+}
