@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "@testing-library/react";
+import { render, within, fireEvent } from "@testing-library/react";
 import { AddTransaction } from "./AddTransaction";
 
 describe("<AddTransaction />", () => {
@@ -39,21 +39,38 @@ describe("<AddTransaction />", () => {
         expect(spinner).toBeInTheDocument();
     });
 
-    it("renders the form with the correct categories options", () => {
+    it("renders the form with the correct initial categories options", () => {
         render(<AddTransaction {...defaultProps}/>);
-        const categories = ["paycheck", "gift", "other"];
+        const incomeCategories = ["paycheck", "gift", "other"];
 
         const categoriesInput = document.querySelector("#add-transaction-category");
 
-        categories.forEach((category) => {
+        incomeCategories.forEach((category) => {
             const option = within(categoriesInput).getByText(category);
             expect(option).toBeInTheDocument();
         })
     });
 
-    // it("displays a 404 image", () => {
-    //     const { getByRole } = render(<AddTransaction />);
+    it("changes the available category list to expense categories when expense type is selected", () => {
+        render(<AddTransaction {...defaultProps}/>);
+        const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway"];
 
-    //     expect(getByRole("img", {alt: "404 error"})).toBeInTheDocument();
-    // });
+        // assert expense categories do not exist in the document initially
+        let categoriesInput = document.querySelector("#add-transaction-category");
+        expenseCategories.forEach((category) => {
+            const option = within(categoriesInput).queryByText(category)
+            expect(option).not.toBeInTheDocument();
+        })
+
+        // select "expense" in transaction type input
+        const typeInput = document.querySelector("#add-transaction-type");
+        fireEvent.change(typeInput, { target: { value: "expense" } })
+
+        // assert expense categories exist in the document
+        categoriesInput = document.querySelector("#add-transaction-category");
+        expenseCategories.forEach((category) => {
+            const option = within(categoriesInput).getByText(category);
+            expect(option).toBeInTheDocument();
+        })
+    });
 });
