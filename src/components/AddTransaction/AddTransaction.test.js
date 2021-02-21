@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, within } from "@testing-library/react";
 import { AddTransaction } from "./AddTransaction";
 
 describe("<AddTransaction />", () => {
@@ -37,6 +37,18 @@ describe("<AddTransaction />", () => {
 
         const spinner = document.querySelector(".add-transaction-spinner")
         expect(spinner).toBeInTheDocument();
+    });
+
+    it("renders the form with the correct categories options", () => {
+        render(<AddTransaction {...defaultProps}/>);
+        const categories = ["paycheck", "gift", "other"];
+
+        const categoriesInput = document.querySelector("#add-transaction-category");
+
+        categories.forEach((category) => {
+            const option = within(categoriesInput).getByText(category);
+            expect(option).toBeInTheDocument();
+        })
     });
 
     // it("displays a 404 image", () => {
