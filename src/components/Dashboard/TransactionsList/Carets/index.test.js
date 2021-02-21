@@ -22,4 +22,19 @@ describe("<Carets />", () => {
         expect(upCaret).toBeInTheDocument();
         expect(downCaret).toBeInTheDocument();
     });
+
+    it("renders only a down caret when sortBy is true and direction is desc", () => {
+        const newProps = {
+            direction: "desc",
+            sortBy: true,
+        }
+
+        render(<Carets {...newProps}/>);
+
+        const upCaret = document.querySelector(".caret-up");
+        const downCaret = document.querySelector(".caret-down");
+
+        expect(upCaret).not.toBeInTheDocument();
+        expect(downCaret).toBeInTheDocument();
+    });
 });
