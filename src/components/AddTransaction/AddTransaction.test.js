@@ -1,5 +1,6 @@
 import React from "react";
-import { render, within, fireEvent } from "@testing-library/react";
+import { render, within } from "@testing-library/react";
+import userEvent from '@testing-library/user-event'
 import { AddTransaction } from "./AddTransaction";
 
 describe("<AddTransaction />", () => {
@@ -48,13 +49,13 @@ describe("<AddTransaction />", () => {
 
         // select "expense" in type input
         const typeInput = document.querySelector("#add-transaction-type");
-        fireEvent.change(typeInput, { target: { value: "expense" } })
+        userEvent.selectOptions(typeInput, "expense");
 
         // assert category value changed to groceries automatically
         expect(categoriesInput.value).toBe("groceries");
 
         // select "income" in type input
-        fireEvent.change(typeInput, { target: { value: "income" } })
+        userEvent.selectOptions(typeInput, "income");
 
         // assert category value changed to groceries automatically
         expect(categoriesInput.value).toBe("paycheck");
@@ -85,7 +86,7 @@ describe("<AddTransaction />", () => {
 
         // select "expense" in transaction type input
         const typeInput = document.querySelector("#add-transaction-type");
-        fireEvent.change(typeInput, { target: { value: "expense" } })
+        userEvent.selectOptions(typeInput, "expense")
 
         // assert expense categories exist in the document
         expenseCategories.forEach((category) => {
@@ -99,7 +100,7 @@ describe("<AddTransaction />", () => {
 
         // click the submit button
         const button = getByRole("button", {type: "submit"});
-        fireEvent(button, new MouseEvent("click"));
+        userEvent.click(button);
 
         // assert addTransaction() has been triggered
         expect(defaultProps.addTransaction).toHaveBeenCalled();
