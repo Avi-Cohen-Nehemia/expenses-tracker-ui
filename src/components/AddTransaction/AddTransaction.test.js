@@ -14,13 +14,15 @@ describe("<AddTransaction />", () => {
         render(<AddTransaction {...defaultProps}/>);
     });
 
-    // it("displays all the text correctly", () => {
-    //     const { getByText } = render(<AddTransaction />);
+    it("displays a form while the form is not being submitted", () => {
+        render(<AddTransaction {...defaultProps}/>);
 
-    //     expect(getByText("Oops!")).toBeInTheDocument();
-    //     expect(getByText("We can't seem to find the page you are looking for.")).toBeInTheDocument();
-    //     expect(getByText("Navigate back to safety")).toBeInTheDocument();
-    // });
+        const form = document.querySelector("form");
+        expect(form).toBeInTheDocument();
+
+        const spinner = document.querySelector(".add-transaction-spinner")
+        expect(spinner).not.toBeInTheDocument();
+    });
 
     // it("displays a 404 image", () => {
     //     const { getByRole } = render(<AddTransaction />);
