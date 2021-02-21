@@ -24,6 +24,21 @@ describe("<AddTransaction />", () => {
         expect(spinner).not.toBeInTheDocument();
     });
 
+    it("displays a spinner while the form is being submitted", () => {
+        const newProps = {
+            ...defaultProps,
+            submittingForm: true
+        }
+
+        render(<AddTransaction {...newProps}/>);
+
+        const form = document.querySelector("form");
+        expect(form).not.toBeInTheDocument();
+
+        const spinner = document.querySelector(".add-transaction-spinner")
+        expect(spinner).toBeInTheDocument();
+    });
+
     // it("displays a 404 image", () => {
     //     const { getByRole } = render(<AddTransaction />);
 
