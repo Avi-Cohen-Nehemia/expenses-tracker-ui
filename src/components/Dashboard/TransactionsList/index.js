@@ -74,7 +74,6 @@ class TransactionsList extends Component {
                         >
                             <thead>
                                 <tr>
-                                    <th>{ "#" }</th>
                                     <th>
                                         <span
                                             id="transacting-table-date-column"
@@ -105,17 +104,18 @@ class TransactionsList extends Component {
                                         </span>
                                     </th>
                                     <th>{ "Balance" }</th>
+                                    <th>{ "" }</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 { transactions.map((transaction, index) => (
                                     index < transactionsToDisplay ?
-                                        <tr key={index}>
-                                            <td>{ index + 1 }</td>
+                                        <tr className="transaction-list-row" key={index}>
                                             <td>{ transaction.created_at }</td>
                                             <td className="text-capitalize">{ transaction.category }</td>
                                             <td>{ transaction.amount_with_currency }</td>
                                             <td>{ transaction.balance_at_the_time }</td>
+                                            <td><i className="fas fa-times delete-transaction-btn"></i></td>
                                         </tr>
                                     : null
                                 )) }
