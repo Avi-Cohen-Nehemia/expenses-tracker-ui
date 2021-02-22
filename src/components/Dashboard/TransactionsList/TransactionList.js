@@ -195,6 +195,7 @@ class TransactionsList extends Component {
 }
 
 TransactionsList.propTypes = {
+    deleteTransaction: PropTypes.func.isRequired,
     transactions: PropTypes.array,
 };
 

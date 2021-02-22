@@ -159,3 +159,38 @@ export const logout = () => {
         dispatch(logoutUser());
     };
 };
+
+export const deleteTransaction = () => {
+
+    return (dispatch, getState) => {
+
+        const userID = getState().userID;
+        const accessToken = getState().accessToken;
+
+        dispatch(submittingForm());
+
+        axios.delete("transactions", {
+            // amount: data.transactionAmount,
+            // type: data.transactionType,
+            // category: data.transactionCategory,
+            user_id: userID
+        }, {
+            headers: { Authorization: `Bearer ${accessToken}`}
+        }).then(() => {
+            dispatch(submittingForm());
+            dispatch(reloadDashboard());
+            Swal.fire({
+                icon: 'success',
+                title: 'Transaction saved successfully',
+                showConfirmButton: true,
+            });
+        }).catch(() => {
+            dispatch(submittingForm());
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please try again.',
+            });
+        });
+    };
+}
