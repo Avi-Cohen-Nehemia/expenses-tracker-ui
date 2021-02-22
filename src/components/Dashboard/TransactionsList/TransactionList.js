@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Carets from "./Carets";
+import Swal from "sweetalert2";
 
 class TransactionsList extends Component {
 
@@ -15,11 +16,12 @@ class TransactionsList extends Component {
             transactions: props.transactions,
             transactionsToDisplay: 5,
             sortBy: "date",
-            direction: "desc"
+            direction: "desc",
         };
 
         this.handleClick = this.handleClick.bind(this);
         this.handleTableOrder = this.handleTableOrder.bind(this);
+        this.handleDeleteTransaction = this.handleDeleteTransaction.bind(this);
     }
 
     handleClick() {
@@ -52,6 +54,21 @@ class TransactionsList extends Component {
             transactions: orderedTransactions,
             sortBy: column,
             direction: this.state.direction === "desc" ? "asc" : "desc"
+        });
+    }
+
+    handleDeleteTransaction(transactionID) {
+        Swal.fire({
+            title: 'Are you sure you want to delete this transaction?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.props.deleteTransaction(transactionID);
+            }
         });
     }
 
@@ -115,7 +132,12 @@ class TransactionsList extends Component {
                                             <td className="text-capitalize">{ transaction.category }</td>
                                             <td>{ transaction.amount_with_currency }</td>
                                             <td>{ transaction.balance_at_the_time }</td>
-                                            <td><i className="fas fa-times delete-transaction-btn"></i></td>
+                                            <td>
+                                                <i
+                                                    className="fas fa-times delete-transaction-btn"
+                                                    onClick={() => this.handleDeleteTransaction(transaction.transaction_id)}
+                                                />
+                                            </td>
                                         </tr>
                                     : null
                                 )) }
