@@ -42,6 +42,7 @@ const mostSpentOnCategory = (totalExpenseByCategory) => {
 const getUserStats = (state, action) => {
     return {
         ...state,
+        email: action.email ? action.email : "",
         balance: action.balance,
         balanceWithCurrency: action.balanceWithCurrency,
         totalIncome: action.totalIncome,
