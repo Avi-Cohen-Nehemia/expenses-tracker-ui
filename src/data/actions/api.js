@@ -160,32 +160,31 @@ export const logout = () => {
     };
 };
 
-export const deleteTransaction = () => {
+export const deleteTransaction = (transactionID) => {
 
     return (dispatch, getState) => {
 
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
-        dispatch(submittingForm());
+        dispatch(reloadDashboard());
 
-        axios.delete("transactions", {
-            // amount: data.transactionAmount,
-            // type: data.transactionType,
-            // category: data.transactionCategory,
-            user_id: userID
-        }, {
+        axios.delete(`transactions/${transactionID}`, {
             headers: { Authorization: `Bearer ${accessToken}`}
         }).then(() => {
-            dispatch(submittingForm());
-            dispatch(reloadDashboard());
             Swal.fire({
                 icon: 'success',
-                title: 'Transaction saved successfully',
+                title: 'Transaction deleted successfully',
                 showConfirmButton: true,
             });
+        }).then(() => {
+            axios.get(`users/${userID}`, {
+                headers: { Authorization: `Bearer ${accessToken}`}
+            }).then(({ data }) => {
+                dispatch(updateUserStats(data.data));
+            });
         }).catch(() => {
-            dispatch(submittingForm());
+            dispatch(reloadDashboard());
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
