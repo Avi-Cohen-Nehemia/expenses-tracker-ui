@@ -32,7 +32,7 @@ Create a tool where users record any transactions that they have made and are ab
 - [x] Add alerts for errors and successful actions.
 - [x] 404 page.
 - [x] Restrict access to certain pages for users who are not logged in.
-- [x] Ability to delete a transactions.
+- [x] Ability to delete transactions.
 
 ## Future Plans / Features
 - Ability to delete an account.
