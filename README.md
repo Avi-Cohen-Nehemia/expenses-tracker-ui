@@ -2,6 +2,7 @@
 
 ## Live Version
 visit -> https://avi-cohen-nehemia.github.io/expenses-tracker-ui/#/
+The app utilizes an API on the back-end, and the repository for this can be found [here](https://github.com/Avi-Cohen-Nehemia/expenses-tracker-api).
 
 ## Background
 This app is a personal project which I decided to build to keep my React and front-end skills fresh while also contributing to my personal portfolio. While this app's scale is not particularly massive, it is the biggest that I have developed by myself.
