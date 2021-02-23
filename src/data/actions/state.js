@@ -7,6 +7,7 @@ export const loginUser = () => {
 export const updateUserStats = (data) => {
     return {
         type: "GET_USER_STATS",
+        email: data.email,
         balance: data.balance,
         balanceWithCurrency: data.balance_with_currency,
         totalIncome: data.total_income,

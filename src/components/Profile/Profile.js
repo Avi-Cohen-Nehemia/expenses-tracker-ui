@@ -66,6 +66,7 @@ class Profile extends Component {
 
         if (formIsValid) {
             this.props.editUserDetails(input, this.state[input]);
+            this.setState({ editingInput: 0 });
         }
     }
 

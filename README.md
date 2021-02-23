@@ -1,4 +1,4 @@
-# Expenses Tracker - Personal Project
+# Expenses Tracker  :heavy_dollar_sign::mag: - Personal Project
 
 ## Live Version
 visit -> https://avi-cohen-nehemia.github.io/expenses-tracker-ui/#/
