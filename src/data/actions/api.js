@@ -140,6 +140,7 @@ export const createNewUser = (data) => {
                 dispatch(loginUser());
                 dispatch(updateUserDetails(data));
             }).then(() => {
+                dispatch(submittingForm());
                 history.push("/dashboard");
             });
         }).catch(() => {
