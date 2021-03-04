@@ -1,11 +1,13 @@
 import axios from "./../../axios";
-import { updateUserStats } from "./state";
-import { updateUserDetails } from "./state";
-import { loginUser } from "./state";
-import { logoutUser } from "./state";
-import { reloadDashboard } from "./state";
-import { submittingForm } from "./state";
-import { changeUserDetails } from "./state";
+import {
+    updateUserStats,
+    updateUserDetails,
+    loginUser,
+    logoutUser,
+    reloadDashboard,
+    submittingForm,
+    changeUserDetails
+} from "./state";
 import history from "../../history";
 import Swal from "sweetalert2";
 
