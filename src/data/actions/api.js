@@ -22,12 +22,30 @@ export const login = (data) => {
             dispatch(submittingForm());
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
-        }).catch(() => {
+        }).catch(({ response }) => {
+
+            const error = response.data.errors
+            let title = "";
+            let text = "Please fill out the form correctly"
+
+            if (error.password) {
+                title = error.password[0];
+            }
+
+            if (error.name) {
+                title = error.name[0];
+            }
+
+            if (error.error) {
+                title = error.error;
+                text = "Please try again"
+            }
+
             dispatch(submittingForm());
             Swal.fire({
                 icon: 'error',
-                title: 'Incorrect credentials',
-                text: 'Please try again',
+                title: title,
+                text: text
             });
         }).then(() => {
             history.push("/dashboard");
