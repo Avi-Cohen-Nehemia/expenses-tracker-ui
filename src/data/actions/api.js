@@ -13,15 +13,28 @@ export const login = (data) => {
 
     return (dispatch) => {
 
+        // dispatch this method to display a spinner to the user while
+        // they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // make a post request to the login controller
         axios.post("login", {
             name: data.username,
             password: data.password,
+
+        // if successful remove the spinner, log in the user and populate
+        // the global state with all of their details and stats.
         }).then(({ data }) => {
             dispatch(submittingForm());
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
+
+        // then redirect the user automatically to their dashboard
+        }).then(() => {
+            history.push("/dashboard");
+
+        // if an error occurred, remove the displayed spinner
+        // and figure out which error to display
         }).catch(({ response }) => {
 
             const error = response.data.errors
@@ -47,8 +60,6 @@ export const login = (data) => {
                 title: title,
                 text: text
             });
-        }).then(() => {
-            history.push("/dashboard");
         });
     };
 };
@@ -200,6 +211,7 @@ export const deleteTransaction = (transactionID) => {
                 title: data.message,
                 showConfirmButton: true,
             });
+
         // and update the user stats using the user id which is stored in the global state
         }).then(() => {
             axios.get(`users/${userID}`, {
@@ -207,6 +219,7 @@ export const deleteTransaction = (transactionID) => {
             }).then(({ data }) => {
                 dispatch(updateUserStats(data.data));
             });
+
         // if error occurred display an error message
         }).catch(() => {
             dispatch(reloadDashboard());
