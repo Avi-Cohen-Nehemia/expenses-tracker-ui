@@ -168,22 +168,28 @@ export const deleteTransaction = (transactionID) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // tell the dashboard it needs to reload
         dispatch(reloadDashboard());
 
+        // make a transaction delete request using the transaction id
         axios.delete(`transactions/${transactionID}`, {
             headers: { Authorization: `Bearer ${accessToken}`}
+
+        // if successful display a success message
         }).then(({ data }) => {
             Swal.fire({
                 icon: 'success',
                 title: data.message,
                 showConfirmButton: true,
             });
+        // and update the user stats using the user id which is stored in the global state
         }).then(() => {
             axios.get(`users/${userID}`, {
                 headers: { Authorization: `Bearer ${accessToken}`}
             }).then(({ data }) => {
                 dispatch(updateUserStats(data.data));
             });
+        // if error occurred display an error message
         }).catch(() => {
             dispatch(reloadDashboard());
             Swal.fire({
