@@ -172,10 +172,10 @@ export const deleteTransaction = (transactionID) => {
 
         axios.delete(`transactions/${transactionID}`, {
             headers: { Authorization: `Bearer ${accessToken}`}
-        }).then(() => {
+        }).then(({ data }) => {
             Swal.fire({
                 icon: 'success',
-                title: 'Transaction deleted successfully',
+                title: data.message,
                 showConfirmButton: true,
             });
         }).then(() => {
