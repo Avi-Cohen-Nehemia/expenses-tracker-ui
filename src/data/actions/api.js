@@ -58,7 +58,7 @@ export const login = (data) => {
 
             dispatch(submittingForm());
             Swal.fire({
-                icon: 'error',
+                icon: "error",
                 title: title,
                 text: text
             });
@@ -101,8 +101,8 @@ export const editUserDetails = (property, value) => {
             }).then(() => {
                 dispatch(submittingForm());
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Personal details saved successfully',
+                    icon: "success",
+                    title: "Personal details saved successfully",
                     showConfirmButton: true,
                 });
             }).catch(() => {
@@ -111,9 +111,9 @@ export const editUserDetails = (property, value) => {
         }).catch(() => {
             dispatch(submittingForm());
             Swal.fire({
-                icon: 'error',
-                title: 'Username already taken.',
-                text: 'Please try a different username',
+                icon: "error",
+                title: "Username already taken.",
+                text: "Please try a different username",
             });
         });
     };
@@ -139,16 +139,27 @@ export const addTransaction = (data) => {
             dispatch(submittingForm());
             dispatch(reloadDashboard());
             Swal.fire({
-                icon: 'success',
-                title: 'Transaction saved successfully',
+                icon: "success",
+                title: "Transaction saved successfully",
                 showConfirmButton: true,
             });
-        }).catch(() => {
+        }).catch(({ response }) => {
+
             dispatch(submittingForm());
+
+            const error = response.data.errors
+            let title = "Oops...";
+            let text = "Something went wrong! Please try again.";
+
+            if (error.amount) {
+                title = error.amount[0];
+                text = "Please fill out the form correctly";
+            }
+
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
+                icon: "error",
+                title: title,
+                text: text,
             });
         });
     };
@@ -177,9 +188,9 @@ export const createNewUser = (data) => {
         }).catch(() => {
             dispatch(submittingForm());
             Swal.fire({
-                icon: 'error',
-                title: 'Username already taken.',
-                text: 'Please try a different username',
+                icon: "error",
+                title: "Username already taken.",
+                text: "Please try a different username",
             });
         });
     };
@@ -209,7 +220,7 @@ export const deleteTransaction = (transactionID) => {
         // if successful display a success message
         }).then(({ data }) => {
             Swal.fire({
-                icon: 'success',
+                icon: "success",
                 title: data.message,
                 showConfirmButton: true,
             });
@@ -226,9 +237,9 @@ export const deleteTransaction = (transactionID) => {
         }).catch(() => {
             dispatch(reloadDashboard());
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong! Please try again.",
             });
         });
     };
