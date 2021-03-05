@@ -87,24 +87,31 @@ export const editUserDetails = (property, value) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // display a spinner to the user while they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // make a put request with property and the value provided from the form
+        // use the user id and access token stored in global state
         axios.put(`users/${userID}`, {
             [property]: value
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
+
+        // if successful, make a get request to get the new user details
         }).then(() => {
             axios.get(`users/${userID}`, {
                 headers: { Authorization: `Bearer ${accessToken}`}
             }).then(({ data }) => {
                 dispatch(changeUserDetails(data.data));
             }).then(() => {
+                // remove spinner and display a success alert
                 dispatch(submittingForm());
                 Swal.fire({
                     icon: "success",
                     title: "Personal details saved successfully",
                     showConfirmButton: true,
                 });
+            // if GET failed remove spinner and display an error alert
             }).catch(() => {
                 dispatch(submittingForm());
                 Swal.fire({
@@ -113,7 +120,11 @@ export const editUserDetails = (property, value) => {
                     text: "Something went wrong! Please try again.",
                 });
             });
+
+        // if the PUT request failed, remove the spinner and
+        // display the custom error message provided by the back end
         }).catch(({ response }) => {
+
             dispatch(submittingForm());
             const error = response.data.error
 
