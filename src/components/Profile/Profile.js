@@ -46,12 +46,12 @@ class Profile extends Component {
         let formIsValid = true;
         let isEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (input === "name" && name.length < 3) {
+        if (input === "name" && (name.length < 3 || name.length > 20)) {
             formIsValid = false;
             Swal.fire({
                 icon: 'error',
                 title: 'Invalid form submission.',
-                text: 'Username must be at least 3 characters long',
+                text: 'Username must be 3-20 characters long',
             });
         }
 
