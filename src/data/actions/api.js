@@ -1,11 +1,13 @@
 import axios from "./../../axios";
-import { updateUserStats } from "./state";
-import { updateUserDetails } from "./state";
-import { loginUser } from "./state";
-import { logoutUser } from "./state";
-import { reloadDashboard } from "./state";
-import { submittingForm } from "./state";
-import { changeUserDetails } from "./state";
+import {
+    updateUserStats,
+    updateUserDetails,
+    loginUser,
+    logoutUser,
+    reloadDashboard,
+    submittingForm,
+    changeUserDetails
+} from "./state";
 import history from "../../history";
 import Swal from "sweetalert2";
 
@@ -13,24 +15,53 @@ export const login = (data) => {
 
     return (dispatch) => {
 
+        // dispatch this method to display a spinner to the user while
+        // they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // make a post request to the login controller
         axios.post("login", {
             name: data.username,
             password: data.password,
+
+        // if successful remove the spinner, log in the user and populate
+        // the global state with all of their details and stats.
         }).then(({ data }) => {
             dispatch(submittingForm());
             dispatch(loginUser());
             dispatch(updateUserDetails(data));
-        }).catch(() => {
+
+        // then redirect the user automatically to their dashboard
+        }).then(() => {
+            history.push("/dashboard");
+
+        // if an error occurred, remove the displayed spinner
+        // and figure out which error to display
+        }).catch(({ response }) => {
+
+            const error = response.data.errors
+            let title = "";
+            let text = "Please fill out the form correctly"
+
+            if (error.password) {
+                title = error.password[0];
+            }
+
+            if (error.name) {
+                title = error.name[0];
+            }
+
+            if (error.error) {
+                title = error.error;
+                text = "Please try again"
+            }
+
             dispatch(submittingForm());
             Swal.fire({
                 icon: 'error',
-                title: 'Incorrect credentials',
-                text: 'Please try again',
+                title: title,
+                text: text
             });
-        }).then(() => {
-            history.push("/dashboard");
         });
     };
 };
@@ -140,6 +171,7 @@ export const createNewUser = (data) => {
                 dispatch(loginUser());
                 dispatch(updateUserDetails(data));
             }).then(() => {
+                dispatch(submittingForm());
                 history.push("/dashboard");
             });
         }).catch(() => {
@@ -167,22 +199,30 @@ export const deleteTransaction = (transactionID) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // tell the dashboard it needs to reload
         dispatch(reloadDashboard());
 
+        // make a transaction delete request using the transaction id
         axios.delete(`transactions/${transactionID}`, {
             headers: { Authorization: `Bearer ${accessToken}`}
-        }).then(() => {
+
+        // if successful display a success message
+        }).then(({ data }) => {
             Swal.fire({
                 icon: 'success',
-                title: 'Transaction deleted successfully',
+                title: data.message,
                 showConfirmButton: true,
             });
+
+        // and update the user stats using the user id which is stored in the global state
         }).then(() => {
             axios.get(`users/${userID}`, {
                 headers: { Authorization: `Bearer ${accessToken}`}
             }).then(({ data }) => {
                 dispatch(updateUserStats(data.data));
             });
+
+        // if error occurred display an error message
         }).catch(() => {
             dispatch(reloadDashboard());
             Swal.fire({
