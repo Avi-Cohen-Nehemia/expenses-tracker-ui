@@ -126,8 +126,11 @@ export const addTransaction = (data) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // display a spinner by triggering submittingForm
         dispatch(submittingForm());
 
+        // post the new transaction using the values from the form
+        // and the user id + token that are stored in globaL state
         axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
@@ -135,6 +138,8 @@ export const addTransaction = (data) => {
             user_id: userID
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
+
+        // if successful, remove the spinner and display a success alert
         }).then(() => {
             dispatch(submittingForm());
             dispatch(reloadDashboard());
@@ -143,6 +148,9 @@ export const addTransaction = (data) => {
                 title: "Transaction saved successfully",
                 showConfirmButton: true,
             });
+
+        // if an error occurred, remove the spinner and figure out which
+        // alert message to display to the user.
         }).catch(({ response }) => {
 
             dispatch(submittingForm());
