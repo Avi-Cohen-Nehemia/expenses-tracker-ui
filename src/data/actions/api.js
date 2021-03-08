@@ -212,11 +212,15 @@ export const createNewUser = (data) => {
 
     return (dispatch) => {
 
+        // display a spinner to the user while they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // create a new user using a post request and the data from the form
         axios.post("users", {
             name: data.username,
             password: data.password,
+
+        // if registration was successful, login the user and fetch their details and stats
         }).then(() => {
             axios.post("login", {
                 name: data.username,
@@ -224,10 +228,15 @@ export const createNewUser = (data) => {
             }).then(({ data }) => {
                 dispatch(loginUser());
                 dispatch(updateUserDetails(data));
+
+            // remove the spinner and redirect the user to their dashboard
             }).then(() => {
                 dispatch(submittingForm());
                 history.push("/dashboard");
             });
+
+        // if an error occurred, remove the spinner and figure out which
+        // alert message to display to the user.
         }).catch(({ response }) => {
             dispatch(submittingForm());
             const error = response.data.errors;
