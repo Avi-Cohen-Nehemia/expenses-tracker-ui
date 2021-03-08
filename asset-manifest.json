@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/expenses-tracker-ui/static/css/main.02451b57.chunk.css",
-    "main.js": "/expenses-tracker-ui/static/js/main.9a77ca54.chunk.js",
-    "main.js.map": "/expenses-tracker-ui/static/js/main.9a77ca54.chunk.js.map",
+    "main.js": "/expenses-tracker-ui/static/js/main.9d5279ff.chunk.js",
+    "main.js.map": "/expenses-tracker-ui/static/js/main.9d5279ff.chunk.js.map",
     "runtime-main.js": "/expenses-tracker-ui/static/js/runtime-main.feaee1b5.js",
     "runtime-main.js.map": "/expenses-tracker-ui/static/js/runtime-main.feaee1b5.js.map",
-    "static/js/2.c0ad4c8a.chunk.js": "/expenses-tracker-ui/static/js/2.c0ad4c8a.chunk.js",
-    "static/js/2.c0ad4c8a.chunk.js.map": "/expenses-tracker-ui/static/js/2.c0ad4c8a.chunk.js.map",
+    "static/js/2.b6df358d.chunk.js": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js",
+    "static/js/2.b6df358d.chunk.js.map": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js.map",
     "index.html": "/expenses-tracker-ui/index.html",
     "static/css/main.02451b57.chunk.css.map": "/expenses-tracker-ui/static/css/main.02451b57.chunk.css.map",
-    "static/js/2.c0ad4c8a.chunk.js.LICENSE.txt": "/expenses-tracker-ui/static/js/2.c0ad4c8a.chunk.js.LICENSE.txt",
+    "static/js/2.b6df358d.chunk.js.LICENSE.txt": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js.LICENSE.txt",
     "static/media/dashboard.8d7df01d.png": "/expenses-tracker-ui/static/media/dashboard.8d7df01d.png",
     "static/media/fourOhFour.fcd68d45.png": "/expenses-tracker-ui/static/media/fourOhFour.fcd68d45.png",
     "static/media/home-picture2.14a1c2f0.jpg": "/expenses-tracker-ui/static/media/home-picture2.14a1c2f0.jpg",
@@ -17,8 +17,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.feaee1b5.js",
-    "static/js/2.c0ad4c8a.chunk.js",
+    "static/js/2.b6df358d.chunk.js",
     "static/css/main.02451b57.chunk.css",
-    "static/js/main.9a77ca54.chunk.js"
+    "static/js/main.9d5279ff.chunk.js"
   ]
 }
