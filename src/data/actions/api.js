@@ -58,7 +58,7 @@ export const login = (data) => {
 
             dispatch(submittingForm());
             Swal.fire({
-                icon: 'error',
+                icon: "error",
                 title: title,
                 text: text
             });
@@ -87,33 +87,68 @@ export const editUserDetails = (property, value) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // display a spinner to the user while they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // make a put request with property and the value provided from the form
+        // use the user id and access token stored in global state
         axios.put(`users/${userID}`, {
             [property]: value
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
+
+        // if successful, make a get request to get the new user details
         }).then(() => {
             axios.get(`users/${userID}`, {
                 headers: { Authorization: `Bearer ${accessToken}`}
             }).then(({ data }) => {
                 dispatch(changeUserDetails(data.data));
             }).then(() => {
+                // remove spinner and display a success alert
                 dispatch(submittingForm());
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Personal details saved successfully',
+                    icon: "success",
+                    title: "Personal details saved successfully",
                     showConfirmButton: true,
                 });
+            // if GET failed remove spinner and display an error alert
             }).catch(() => {
                 dispatch(submittingForm());
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong! Please try again.",
+                });
             });
-        }).catch(() => {
+
+        // if the PUT request failed, remove the spinner and
+        // display the custom error message provided by the back end
+        }).catch(({ response }) => {
+
             dispatch(submittingForm());
+            const error = response.data.errors;
+            let title = "Oops...";
+            let text = "Something went wrong! Please try again.";
+
+            if (error.name) {
+                title = error.name[0];
+                text = "Please fill out the form correctly";
+            }
+
+            if (error.email) {
+                title = error.email[0];
+                text = "Please fill out the form correctly";
+            }
+
+            if (error.title) {
+                title = error.title;
+                text = error.text;
+            }
+
             Swal.fire({
-                icon: 'error',
-                title: 'Username already taken.',
-                text: 'Please try a different username',
+                icon: "error",
+                title: title,
+                text: text,
             });
         });
     };
@@ -126,8 +161,11 @@ export const addTransaction = (data) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
+        // display a spinner by triggering submittingForm
         dispatch(submittingForm());
 
+        // post the new transaction using the values from the form
+        // and the user id + token that are stored in globaL state
         axios.post("transactions", {
             amount: data.transactionAmount,
             type: data.transactionType,
@@ -135,20 +173,36 @@ export const addTransaction = (data) => {
             user_id: userID
         }, {
             headers: { Authorization: `Bearer ${accessToken}`}
+
+        // if successful, remove the spinner and display a success alert
         }).then(() => {
             dispatch(submittingForm());
             dispatch(reloadDashboard());
             Swal.fire({
-                icon: 'success',
-                title: 'Transaction saved successfully',
+                icon: "success",
+                title: "Transaction saved successfully",
                 showConfirmButton: true,
             });
-        }).catch(() => {
+
+        // if an error occurred, remove the spinner and figure out which
+        // alert message to display to the user.
+        }).catch(({ response }) => {
+
             dispatch(submittingForm());
+
+            const error = response.data.errors
+            let title = "Oops...";
+            let text = "Something went wrong! Please try again.";
+
+            if (error.amount) {
+                title = error.amount[0];
+                text = "Please fill out the form correctly";
+            }
+
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
+                icon: "error",
+                title: title,
+                text: text,
             });
         });
     };
@@ -158,11 +212,15 @@ export const createNewUser = (data) => {
 
     return (dispatch) => {
 
+        // display a spinner to the user while they are waiting for their request to be processed
         dispatch(submittingForm());
 
+        // create a new user using a post request and the data from the form
         axios.post("users", {
             name: data.username,
             password: data.password,
+
+        // if registration was successful, login the user and fetch their details and stats
         }).then(() => {
             axios.post("login", {
                 name: data.username,
@@ -170,16 +228,38 @@ export const createNewUser = (data) => {
             }).then(({ data }) => {
                 dispatch(loginUser());
                 dispatch(updateUserDetails(data));
+
+            // remove the spinner and redirect the user to their dashboard
             }).then(() => {
                 dispatch(submittingForm());
                 history.push("/dashboard");
             });
-        }).catch(() => {
+
+        // if an error occurred, remove the spinner and figure out which
+        // alert message to display to the user.
+        }).catch(({ response }) => {
             dispatch(submittingForm());
+            const error = response.data.errors;
+            let title = "";
+            let text = "Please fill out the form correctly"
+
+            if (error.name) {
+                title = error.name[0];
+            }
+
+            if (error.password) {
+                title = error.password[0];
+            }
+
+            if (error.title) {
+                title = error.title;
+                text = error.text;
+            }
+
             Swal.fire({
-                icon: 'error',
-                title: 'Username already taken.',
-                text: 'Please try a different username',
+                icon: "error",
+                title: title,
+                text: text,
             });
         });
     };
@@ -209,7 +289,7 @@ export const deleteTransaction = (transactionID) => {
         // if successful display a success message
         }).then(({ data }) => {
             Swal.fire({
-                icon: 'success',
+                icon: "success",
                 title: data.message,
                 showConfirmButton: true,
             });
@@ -226,9 +306,9 @@ export const deleteTransaction = (transactionID) => {
         }).catch(() => {
             dispatch(reloadDashboard());
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong! Please try again.",
             });
         });
     };

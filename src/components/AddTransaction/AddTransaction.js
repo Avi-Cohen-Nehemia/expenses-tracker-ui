@@ -67,7 +67,7 @@ export class AddTransaction extends Component {
                 <h1 className="add-transaction-page-header display-3">{"Add Transaction"}</h1>
                 { submittingForm ? <Spinner stylingClasses="add-transaction-spinner"/> :
                     <div className="add-transaction-form">
-                    <Form onSubmit={ this.handleSubmit }>
+                    <Form noValidate onSubmit={ this.handleSubmit }>
                         <FormInput
                             controlId="add-transaction-amount"
                             inputLabel="Amount"

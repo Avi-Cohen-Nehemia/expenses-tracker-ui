@@ -33,40 +33,18 @@ class Signup extends Component {
 
     handleSubmit(e) {
 
-        const { username, password, confirmPassword } = this.state;
-        let formIsValid =  true;
+        const { password, confirmPassword } = this.state;
 
         e.preventDefault();
 
-        if (username.length < 3 || username.length > 20) {
-            formIsValid = false;
-            Swal.fire({
-                icon: 'error',
-                title: 'Invalid form submission.',
-                text: 'Username must be between 3 and 20 characters long',
-            });
-        }
-
-        if (password.length < 8 || password.length > 20) {
-            formIsValid = false;
-            Swal.fire({
-                icon: 'error',
-                title: 'Invalid form submission.',
-                text: 'Password must be between 8 and 20 characters long',
-            });
-        }
-
-        if (password !== confirmPassword) {
-            formIsValid = false;
+        if (password === confirmPassword) {
+            this.props.createNewUser(this.state);
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Invalid form submission.',
                 text: 'Password confirmation does not match your password',
             });
-        }
-
-        if (formIsValid) {
-            this.props.createNewUser(this.state);
         }
     }
 
