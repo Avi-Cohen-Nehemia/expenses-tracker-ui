@@ -126,12 +126,29 @@ export const editUserDetails = (property, value) => {
         }).catch(({ response }) => {
 
             dispatch(submittingForm());
-            const error = response.data.error
+            const error = response.data.errors;
+            let title = "Oops...";
+            let text = "Something went wrong! Please try again.";
+
+            if (error.name) {
+                title = error.name;
+                text = "Please fill out the form correctly";
+            }
+
+            if (error.email) {
+                title = error.email;
+                text = "Please fill out the form correctly";
+            }
+
+            if (error.title) {
+                title = error.title;
+                text = error.text;
+            }
 
             Swal.fire({
                 icon: "error",
-                title: error.title,
-                text: error.text,
+                title: title,
+                text: text,
             });
         });
     };
