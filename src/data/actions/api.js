@@ -228,12 +228,29 @@ export const createNewUser = (data) => {
                 dispatch(submittingForm());
                 history.push("/dashboard");
             });
-        }).catch(() => {
+        }).catch(({ response }) => {
             dispatch(submittingForm());
+            const error = response.data.errors;
+            let title = "";
+            let text = "Please fill out the form correctly"
+
+            if (error.name) {
+                title = error.name[0];
+            }
+
+            if (error.password) {
+                title = error.password[0];
+            }
+
+            if (error.title) {
+                title = error.title;
+                text = error.text;
+            }
+
             Swal.fire({
                 icon: "error",
-                title: "Username already taken.",
-                text: "Please try a different username",
+                title: title,
+                text: text,
             });
         });
     };
