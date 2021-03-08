@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Spinner from "../Spinner";
 import Navbar from "../Navbar";
 import ProfileCard from "./ProfileCard";
-import Swal from "sweetalert2";
 
 class Profile extends Component {
 
