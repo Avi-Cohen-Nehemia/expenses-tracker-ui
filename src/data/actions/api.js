@@ -131,12 +131,12 @@ export const editUserDetails = (property, value) => {
             let text = "Something went wrong! Please try again.";
 
             if (error.name) {
-                title = error.name;
+                title = error.name[0];
                 text = "Please fill out the form correctly";
             }
 
             if (error.email) {
-                title = error.email;
+                title = error.email[0];
                 text = "Please fill out the form correctly";
             }
 
