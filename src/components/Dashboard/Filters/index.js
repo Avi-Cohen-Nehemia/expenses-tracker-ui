@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 
 class Filters extends Component {
 
@@ -9,18 +11,35 @@ class Filters extends Component {
         super(props);
 
         this.state = {
-            from: null,
-            to: null,
+            startDate: null,
+            endDate: null,
             newFiltersToApply: false
         };
+
+        this.handleDateRangeChange = this.handleDateRangeChange.bind(this);
+    }
+
+    handleDateRangeChange() {
+
     }
 
     render() {
+
+        const { endDate, startDate, filersHaveChanged } = this.state;
+
         return (
             <div>
+                <DatePicker
+                    endDate={ endDate }
+                    inline
+                    onChange={ this.handleDateRangeChange }
+                    selected={ startDate }
+                    selectsRange
+                    startDate={ startDate }
+                />
                 <Button
                     className="et-button"
-                    disabled={ !this.state.filersHaveChanged }
+                    disabled={ !filersHaveChanged }
                 >
                     {"Apply"}
                 </Button>
