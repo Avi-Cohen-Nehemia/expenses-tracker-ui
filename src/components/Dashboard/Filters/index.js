@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { formatDate } from "./../../../utilities/formatters";
 // import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
@@ -13,7 +14,7 @@ class Filters extends Component {
         this.state = {
             startDate: new Date(),
             endDate: "",
-            formattedStartDate: "",
+            formattedStartDate: formatDate(new Date()),
             formattedEndDate: "",
             filtersHaveChanged: false
         };
@@ -21,26 +22,12 @@ class Filters extends Component {
         this.handleDateRange = this.handleDateRange.bind(this);
     }
 
-    componentDidMount() {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = today.getMonth();
-        const day = today.getDate();
-
-        this.setState({
-            formattedStartDate: `${year}-${month + 1}-${day}`
-        });
-    }
-
     handleDateRange(date, type, formattedType) {
         const { startDate, endDate, filtersHaveChanged } = this.state;
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const day = date.getDate();
 
         this.setState({
             [type]: date,
-            [formattedType]: `${year}-${month + 1}-${day}`,
+            [formattedType]: formatDate(date),
             filtersHaveChanged: type === "endDate" ? true : filtersHaveChanged
         }, () => {
             if (Date.parse(endDate) < Date.parse(startDate)) {
