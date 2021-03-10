@@ -49,7 +49,7 @@ class Filters extends Component {
         const { endDate, startDate } = this.state;
 
         return (
-            <div>
+            <div className="d-flex justify-content-end align-items-center">
                 <DatePicker
                     endDate={ endDate }
                     onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
