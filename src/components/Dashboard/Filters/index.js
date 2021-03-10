@@ -27,7 +27,6 @@ class Filters extends Component {
         const month = today.getMonth();
         const day = today.getDate();
 
-        // add 1 to month as they are 0 indexed (e.g January displays 0)
         this.setState({
             formattedStartDate: `${year}-${month + 1}-${day}`
         });
