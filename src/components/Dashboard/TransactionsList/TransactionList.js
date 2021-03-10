@@ -181,7 +181,7 @@ class TransactionsList extends Component {
                 </Card>
                 { transactionsToDisplay < transactions.length ?
                     <Button
-                        className="et-button"
+                        className="et-button mb-3"
                         onClick={ this.handleClick }
                         size="sm"
                     >
