@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import TransactionsList from "./TransactionsList";
+import Navbar from "./../Navbar";
+import Filters from "./Filters";
 import DashboardCard from "./DashboardCard";
 import Card from 'react-bootstrap/Card';
-import Spinner from "../Spinner";
-import Navbar from "../Navbar";
+import Spinner from "./../Spinner";
 import PieChartCard from "./PieChartCard";
+import TransactionsList from "./TransactionsList";
 
 class Dashboard extends Component {
 
@@ -62,6 +63,7 @@ class Dashboard extends Component {
                 <h1 className="page-header display-3">{ "Dashboard" }</h1>
                 { loaded ?
                 <>
+                    <Filters />
                     <DashboardCard
                         cardClass="balance-card"
                         content={ balanceWithCurrency }

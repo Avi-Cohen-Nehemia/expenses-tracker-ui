@@ -49,7 +49,7 @@ class Filters extends Component {
         const { endDate, startDate, filtersHaveChanged } = this.state;
 
         return (
-            <div className="d-flex justify-content-end align-items-center">
+            <div className="d-flex justify-content-end align-items-center filters">
                 <div className="d-flex flex-column">
                     <label className="m-0">{"Start Date"}</label>
                     <DatePicker
