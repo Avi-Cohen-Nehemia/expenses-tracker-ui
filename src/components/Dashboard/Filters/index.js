@@ -46,28 +46,34 @@ class Filters extends Component {
 
     render() {
 
-        const { endDate, startDate } = this.state;
+        const { endDate, startDate, filtersHaveChanged } = this.state;
 
         return (
             <div className="d-flex justify-content-end align-items-center">
-                <DatePicker
-                    endDate={ endDate }
-                    onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
-                    selected={ startDate }
-                    selectsStart
-                    startDate={ startDate }
-                />
-                <DatePicker
-                    endDate={ endDate }
-                    minDate={ startDate }
-                    onChange={ (date) => this.handleDateRange(date, "endDate", "formattedEndDate") }
-                    selected={ endDate }
-                    selectsEnd
-                    startDate={ startDate }
-                />
+                <div className="d-flex flex-column">
+                    <label className="m-0">{"Start Date"}</label>
+                    <DatePicker
+                        endDate={ endDate }
+                        onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
+                        selected={ startDate }
+                        selectsStart
+                        startDate={ startDate }
+                    />
+                </div>
+                <div className="d-flex flex-column">
+                    <label className="m-0">{"End Date"}</label>
+                    <DatePicker
+                        endDate={ endDate }
+                        minDate={ startDate }
+                        onChange={ (date) => this.handleDateRange(date, "endDate", "formattedEndDate") }
+                        selected={ endDate }
+                        selectsEnd
+                        startDate={ startDate }
+                    />
+                </div>
                 <Button
                     className="et-button"
-                    disabled={ !this.state.filtersHaveChanged }
+                    disabled={ !filtersHaveChanged }
                 >
                     {"Apply"}
                 </Button>
