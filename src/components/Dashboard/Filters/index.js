@@ -22,22 +22,24 @@ class Filters extends Component {
         this.handleDateRange = this.handleDateRange.bind(this);
     }
 
+    componentDidUpdate() {
+        if (Date.parse(this.state.endDate) < Date.parse(this.state.startDate)) {
+            this.setState({
+                endDate: "",
+                formattedEndDate: "",
+                filtersHaveChanged: false
+            });
+        }
+    }
+
     handleDateRange(date, type, formattedType) {
 
-        const { startDate, endDate, filtersHaveChanged } = this.state;
+        const { filtersHaveChanged } = this.state;
 
         this.setState({
             [type]: date,
             [formattedType]: formatDate(date),
             filtersHaveChanged: type === "endDate" ? true : filtersHaveChanged
-        }, () => {
-            if (Date.parse(endDate) < Date.parse(startDate)) {
-                this.setState({
-                    endDate: "",
-                    formattedEndDate: "",
-                    filtersHaveChanged: false
-                });
-            }
         });
     }
 
