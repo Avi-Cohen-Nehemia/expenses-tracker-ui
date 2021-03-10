@@ -23,6 +23,7 @@ class Filters extends Component {
     }
 
     handleDateRange(date, type, formattedType) {
+
         const { startDate, endDate, filtersHaveChanged } = this.state;
 
         this.setState({
