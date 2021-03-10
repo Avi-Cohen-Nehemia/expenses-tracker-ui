@@ -72,7 +72,7 @@ class Filters extends Component {
                     />
                 </div>
                 <Button
-                    className="et-button"
+                    // className="et-button"
                     disabled={ !filtersHaveChanged }
                 >
                     {"Apply"}
