@@ -21,6 +21,7 @@ class Filters extends Component {
         };
 
         this.handleDateRange = this.handleDateRange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidUpdate() {
@@ -44,13 +45,16 @@ class Filters extends Component {
         });
     }
 
+    handleSubmit() {
+
+    }
 
     render() {
 
         const { endDate, startDate, filtersHaveChanged } = this.state;
 
         return (
-            <Form className="d-flex align-items-end filters">
+            <Form className="d-flex align-items-end filters" onSubmit={ this.handleSubmit }>
                 <div className="d-flex flex-column">
                     <label className="m-0">{"Start Date"}</label>
                     <DatePicker
@@ -75,6 +79,7 @@ class Filters extends Component {
                 <Button
                     className="et-button"
                     disabled={ !filtersHaveChanged }
+                    type="submit"
                 >
                     {"Apply"}
                 </Button>
