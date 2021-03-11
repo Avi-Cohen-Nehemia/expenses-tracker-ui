@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/expenses-tracker-ui/static/css/main.02451b57.chunk.css",
-    "main.js": "/expenses-tracker-ui/static/js/main.9d5279ff.chunk.js",
-    "main.js.map": "/expenses-tracker-ui/static/js/main.9d5279ff.chunk.js.map",
+    "main.css": "/expenses-tracker-ui/static/css/main.3a2916bf.chunk.css",
+    "main.js": "/expenses-tracker-ui/static/js/main.dd9691e8.chunk.js",
+    "main.js.map": "/expenses-tracker-ui/static/js/main.dd9691e8.chunk.js.map",
     "runtime-main.js": "/expenses-tracker-ui/static/js/runtime-main.feaee1b5.js",
     "runtime-main.js.map": "/expenses-tracker-ui/static/js/runtime-main.feaee1b5.js.map",
-    "static/js/2.b6df358d.chunk.js": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js",
-    "static/js/2.b6df358d.chunk.js.map": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js.map",
+    "static/css/2.d22f252f.chunk.css": "/expenses-tracker-ui/static/css/2.d22f252f.chunk.css",
+    "static/js/2.ddf23fb6.chunk.js": "/expenses-tracker-ui/static/js/2.ddf23fb6.chunk.js",
+    "static/js/2.ddf23fb6.chunk.js.map": "/expenses-tracker-ui/static/js/2.ddf23fb6.chunk.js.map",
     "index.html": "/expenses-tracker-ui/index.html",
-    "static/css/main.02451b57.chunk.css.map": "/expenses-tracker-ui/static/css/main.02451b57.chunk.css.map",
-    "static/js/2.b6df358d.chunk.js.LICENSE.txt": "/expenses-tracker-ui/static/js/2.b6df358d.chunk.js.LICENSE.txt",
+    "static/css/2.d22f252f.chunk.css.map": "/expenses-tracker-ui/static/css/2.d22f252f.chunk.css.map",
+    "static/css/main.3a2916bf.chunk.css.map": "/expenses-tracker-ui/static/css/main.3a2916bf.chunk.css.map",
+    "static/js/2.ddf23fb6.chunk.js.LICENSE.txt": "/expenses-tracker-ui/static/js/2.ddf23fb6.chunk.js.LICENSE.txt",
     "static/media/dashboard.8d7df01d.png": "/expenses-tracker-ui/static/media/dashboard.8d7df01d.png",
     "static/media/fourOhFour.fcd68d45.png": "/expenses-tracker-ui/static/media/fourOhFour.fcd68d45.png",
     "static/media/home-picture2.14a1c2f0.jpg": "/expenses-tracker-ui/static/media/home-picture2.14a1c2f0.jpg",
@@ -17,8 +19,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.feaee1b5.js",
-    "static/js/2.b6df358d.chunk.js",
-    "static/css/main.02451b57.chunk.css",
-    "static/js/main.9d5279ff.chunk.js"
+    "static/css/2.d22f252f.chunk.css",
+    "static/js/2.ddf23fb6.chunk.js",
+    "static/css/main.3a2916bf.chunk.css",
+    "static/js/main.dd9691e8.chunk.js"
   ]
 }
