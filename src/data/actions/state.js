@@ -54,3 +54,10 @@ export const logoutUser = () => {
         type: "LOGOUT_USER",
     }
 }
+
+export const updateUserTransactions = (data) => {
+    return {
+        type: "UPDATE_USER_TRANSACTIONS",
+        transactions: data
+    }
+}
