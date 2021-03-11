@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { formatDate } from "./../../../utilities/formatters";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -45,10 +45,12 @@ class Filters extends Component {
         });
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
 
+        e.preventDefault();
+
+        this.props.getFilteredTransactions(this.state)
     }
-
     render() {
 
         const { endDate, startDate, filtersHaveChanged } = this.state;
@@ -87,5 +89,9 @@ class Filters extends Component {
         );
     }
 }
+
+Filters.propTypes = {
+    getFilteredTransactions: PropTypes.func.isRequired
+};
 
 export default Filters;
