@@ -148,7 +148,8 @@ Dashboard.propTypes = {
     totalIncome: PropTypes.number.isRequired,
     totalIncomeWithCurrency: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
 };
 
 export default Dashboard;
