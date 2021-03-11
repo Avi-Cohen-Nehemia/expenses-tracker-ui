@@ -4,6 +4,7 @@ import { formatDate } from "./../../../utilities/formatters";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Form from 'react-bootstrap/Form'
 
 class Filters extends Component {
 
@@ -49,7 +50,7 @@ class Filters extends Component {
         const { endDate, startDate, filtersHaveChanged } = this.state;
 
         return (
-            <div className="d-flex align-items-end filters">
+            <Form className="d-flex align-items-end filters">
                 <div className="d-flex flex-column">
                     <label className="m-0">{"Start Date"}</label>
                     <DatePicker
@@ -77,7 +78,7 @@ class Filters extends Component {
                 >
                     {"Apply"}
                 </Button>
-            </div>
+            </Form>
         );
     }
 }
