@@ -58,8 +58,6 @@ export const logoutUser = () => {
 export const updateUserTransactions = (data) => {
     return {
         type: "UPDATE_USER_TRANSACTIONS",
-        balance: data.balance,
-        balanceWithCurrency: data.balance_with_currency,
         totalIncome: data.total_income,
         totalIncomeWithCurrency: data.total_income_with_currency,
         totalExpense: data.total_expense,
