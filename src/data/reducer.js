@@ -70,6 +70,13 @@ const submittingForm = (state) => {
     };
 };
 
+const updateUserTransactions = (state, action) => {
+    return {
+        ...state,
+        transactions: action.transactions
+    };
+};
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER" : return loginUser(state, action);
@@ -78,6 +85,7 @@ const reducer = (state, action) => {
         case "GET_USER_STATS" : return getUserStats(state, action);
         case "RELOAD_DASHBOARD" : return reloadDashboard(state, action);
         case "SUBMITTING_FORM" : return submittingForm(state, action);
+        case "UPDATE_USER_TRANSACTIONS" : return updateUserTransactions(state, action);
         case "LOGOUT_USER" : return initialState;
         default: return state;
     }

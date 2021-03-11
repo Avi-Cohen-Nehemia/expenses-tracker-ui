@@ -321,12 +321,10 @@ export const getFilteredTransactions = (data) => {
         const userID = getState().userID;
         const accessToken = getState().accessToken;
 
-        axios.get(`transactions/by-date-range`, {
-            user_id: userID,
-            from: data.formattedStartDate,
-            to: data.formattedEndDate
-        }, {
-            headers: { Authorization: `Bearer ${accessToken}`}
+        axios.get(`transactions/by-date-range?user_id=${userID}&from=${data.formattedStartDate}&to=${data.formattedEndDate}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
         }).then(({ data }) => {
             dispatch(updateUserTransactions(data.data));
         });
