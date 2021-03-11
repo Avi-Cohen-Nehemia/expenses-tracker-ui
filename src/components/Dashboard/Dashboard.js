@@ -51,7 +51,8 @@ class Dashboard extends Component {
             totalIncome,
             totalIncomeWithCurrency,
             loaded,
-            logoutUser
+            logoutUser,
+            submittingForm
         } = this.props;
 
         return (
@@ -61,7 +62,7 @@ class Dashboard extends Component {
                     selected="dashboard"
                 />
                 <h1 className="page-header display-3">{ "Dashboard" }</h1>
-                { loaded ?
+                { loaded && !submittingForm ?
                 <>
                     <Filters />
                     <DashboardCard

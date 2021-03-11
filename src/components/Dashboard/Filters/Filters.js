@@ -50,6 +50,7 @@ class Filters extends Component {
         e.preventDefault();
 
         this.props.getFilteredTransactions(this.state)
+        this.setState({ filtersHaveChanged: false });
     }
     render() {
 

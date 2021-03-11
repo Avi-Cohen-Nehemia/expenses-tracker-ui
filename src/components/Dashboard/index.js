@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
         totalExpenseByCategory: state.totalExpenseByCategory,
         mostSpentOnCategory: state.mostSpentOnCategory,
         transactions: state.transactions,
-        loaded: state.loaded
+        loaded: state.loaded,
+        submittingForm: state.submittingForm
     };
 };
 
