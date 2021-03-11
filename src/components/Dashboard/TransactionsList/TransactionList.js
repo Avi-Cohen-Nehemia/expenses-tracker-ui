@@ -13,7 +13,6 @@ class TransactionsList extends Component {
         super(props);
 
         this.state = {
-            transactions: props.transactions,
             transactionsToDisplay: 5,
             sortBy: "date",
             direction: "desc",
@@ -29,7 +28,8 @@ class TransactionsList extends Component {
     }
 
     handleTableOrder(column) {
-        const { direction, transactions } = this.state;
+        const { direction } = this.state;
+        const { transactions } = this.props;
         const orderedTransactions = transactions.sort((a, b) => {
             if (column === "date") {
 
@@ -74,7 +74,8 @@ class TransactionsList extends Component {
 
     render() {
 
-        const { direction, transactions, transactionsToDisplay, sortBy } = this.state;
+        const { direction, transactionsToDisplay, sortBy } = this.state;
+        const { transactions } = this.props;
 
         return (
             <div className="transactions-table">
@@ -181,7 +182,7 @@ class TransactionsList extends Component {
                 </Card>
                 { transactionsToDisplay < transactions.length ?
                     <Button
-                        className="et-button"
+                        className="et-button mb-3"
                         onClick={ this.handleClick }
                         size="sm"
                     >

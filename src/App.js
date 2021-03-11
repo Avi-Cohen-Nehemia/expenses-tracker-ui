@@ -10,6 +10,7 @@ import AddTransaction from "./components/AddTransaction";
 import Profile from './components/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import FourOhFour from "./components/FourOhFour";
+import Filters from "./components/Dashboard/Filters";
 
 const App = () => {
   return (
@@ -32,6 +33,9 @@ const App = () => {
             </Route>
             <Route exact path="/add-transaction">
                 <ProtectedRoute Component={ AddTransaction } />
+            </Route>
+            <Route exact path="/filters">
+                <Filters />
             </Route>
             <FourOhFour />
         </Switch>

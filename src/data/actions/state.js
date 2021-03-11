@@ -54,3 +54,15 @@ export const logoutUser = () => {
         type: "LOGOUT_USER",
     }
 }
+
+export const updateUserTransactions = (data) => {
+    return {
+        type: "UPDATE_USER_TRANSACTIONS",
+        totalIncome: data.total_income,
+        totalIncomeWithCurrency: data.total_income_with_currency,
+        totalExpense: data.total_expense,
+        totalExpenseWithCurrency: data.total_expense_with_currency,
+        transactions: data.transactions,
+        totalExpenseByCategory: data.total_expense_by_category
+    }
+}
