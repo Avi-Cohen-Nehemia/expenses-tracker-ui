@@ -62,9 +62,9 @@ class Dashboard extends Component {
                     selected="dashboard"
                 />
                 <h1 className="page-header display-3">{ "Dashboard" }</h1>
+                <Filters />
                 { loaded && !submittingForm ?
                 <>
-                    <Filters />
                     <DashboardCard
                         cardClass="balance-card"
                         content={ balanceWithCurrency }
