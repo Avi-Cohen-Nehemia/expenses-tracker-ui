@@ -1,7 +1,6 @@
 .et-button {
     background-color: #2D5295;
     border: #2D5295;
-    margin-bottom: 1rem;
 }
 
 .carets-container {
@@ -47,4 +46,8 @@
 .back-to-safety {
     color: blue;
     cursor: pointer;
+}
+
+.react-datepicker-wrapper {
+    margin-right: 1rem;
 }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import TransactionsList from "./TransactionsList";
+import Navbar from "./../Navbar";
+import Filters from "./Filters";
 import DashboardCard from "./DashboardCard";
 import Card from 'react-bootstrap/Card';
-import Spinner from "../Spinner";
-import Navbar from "../Navbar";
+import Spinner from "./../Spinner";
 import PieChartCard from "./PieChartCard";
+import TransactionsList from "./TransactionsList";
 
 class Dashboard extends Component {
 
@@ -50,7 +51,8 @@ class Dashboard extends Component {
             totalIncome,
             totalIncomeWithCurrency,
             loaded,
-            logoutUser
+            logoutUser,
+            submittingForm
         } = this.props;
 
         return (
@@ -60,7 +62,8 @@ class Dashboard extends Component {
                     selected="dashboard"
                 />
                 <h1 className="page-header display-3">{ "Dashboard" }</h1>
-                { loaded ?
+                <Filters />
+                { loaded && !submittingForm ?
                 <>
                     <DashboardCard
                         cardClass="balance-card"
@@ -145,7 +148,8 @@ Dashboard.propTypes = {
     totalIncome: PropTypes.number.isRequired,
     totalIncomeWithCurrency: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    submittingForm: PropTypes.bool.isRequired
 };
 
 export default Dashboard;

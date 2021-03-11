@@ -6,7 +6,8 @@ import {
     logoutUser,
     reloadDashboard,
     submittingForm,
-    changeUserDetails
+    changeUserDetails,
+    updateUserTransactions
 } from "./state";
 import history from "../../history";
 import Swal from "sweetalert2";
@@ -310,6 +311,26 @@ export const deleteTransaction = (transactionID) => {
                 title: "Oops...",
                 text: "Something went wrong! Please try again.",
             });
+        });
+    };
+}
+
+export const getFilteredTransactions = (data) => {
+    return (dispatch, getState) => {
+
+        const userID = getState().userID;
+        const accessToken = getState().accessToken;
+
+        dispatch(submittingForm());
+
+        axios.get(`transactions/by-date-range?user_id=${userID}&from=${data.formattedStartDate}&to=${data.formattedEndDate}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }).then(({ data }) => {
+            dispatch(updateUserTransactions(data.data));
+        }).then(() => {
+            dispatch(submittingForm());
         });
     };
 }
