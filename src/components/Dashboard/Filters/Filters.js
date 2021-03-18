@@ -25,6 +25,7 @@ class Filters extends Component {
 
         this.handleDateRange = this.handleDateRange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCurrency = this.handleCurrency.bind(this);
     }
 
     componentDidUpdate() {
@@ -59,9 +60,11 @@ class Filters extends Component {
         this.props.getFilteredTransactions(this.state)
         this.setState({ filtersHaveChanged: false });
     }
+
     render() {
 
         const { endDate, startDate, filtersHaveChanged } = this.state;
+        const currencies = ["GBP", "EUR", "USD"];
 
         return (
             <Form className="d-flex align-items-end filters" onSubmit={ this.handleSubmit }>
@@ -90,22 +93,13 @@ class Filters extends Component {
                     id="dropdown-item-button"
                     title={ this.state.currency }
                 >
-                    <Dropdown.Item
-                        as="button"
-                        onClick={() => this.handleCurrency("GBP")}
-                    >
+                    <Dropdown.Item onClick={() => this.handleCurrency("GBP")}>
                         {"GBP"}
                     </Dropdown.Item>
-                    <Dropdown.Item
-                        as="button"
-                        onClick={() => this.handleCurrency("EUR")}
-                    >
+                    <Dropdown.Item onClick={() => this.handleCurrency("EUR")}>
                         {"EUR"}
                     </Dropdown.Item>
-                    <Dropdown.Item
-                        as="button"
-                        onClick={() => this.handleCurrency("USD")}
-                    >
+                    <Dropdown.Item onClick={() => this.handleCurrency("USD")}>
                         {"USD"}
                     </Dropdown.Item>
                 </DropdownButton>
