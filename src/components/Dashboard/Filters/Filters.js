@@ -86,7 +86,10 @@ class Filters extends Component {
                         startDate={ startDate }
                     />
                 </div>
-                <DropdownButton id="dropdown-item-button" title={ this.state.currency }>
+                <DropdownButton
+                    id="dropdown-item-button"
+                    title={ this.state.currency }
+                >
                     <Dropdown.Item
                         as="button"
                         onClick={() => this.handleCurrency("GBP")}
