@@ -48,6 +48,10 @@ class Filters extends Component {
         });
     }
 
+    handleCurrency(currency) {
+        this.setState({ currency: currency });
+    }
+
     handleSubmit(e) {
 
         e.preventDefault();
@@ -85,16 +89,19 @@ class Filters extends Component {
                 <DropdownButton id="dropdown-item-button" title={ this.state.currency }>
                     <Dropdown.Item
                         as="button"
+                        onClick={() => this.handleCurrency("GBP")}
                     >
                         {"GBP"}
                     </Dropdown.Item>
                     <Dropdown.Item
                         as="button"
+                        onClick={() => this.handleCurrency("EUR")}
                     >
                         {"EUR"}
                     </Dropdown.Item>
                     <Dropdown.Item
                         as="button"
+                        onClick={() => this.handleCurrency("USD")}
                     >
                         {"USD"}
                     </Dropdown.Item>
