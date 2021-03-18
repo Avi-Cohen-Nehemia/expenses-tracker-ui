@@ -15,10 +15,10 @@ class Filters extends Component {
         super(props);
 
         this.state = {
-            startDate: new Date(),
-            endDate: "",
-            formattedStartDate: formatDate(new Date()),
-            formattedEndDate: "",
+            startDate: new Date("1-1-2021"),
+            endDate: new Date(),
+            formattedStartDate: formatDate(new Date("1-1-2021")),
+            formattedEndDate: formatDate(new Date()),
             currency: "GBP",
             filtersHaveChanged: false
         };
@@ -50,7 +50,10 @@ class Filters extends Component {
     }
 
     handleCurrency(currency) {
-        this.setState({ currency: currency });
+        this.setState({
+            currency: currency,
+            filtersHaveChanged: true
+        });
     }
 
     handleSubmit(e) {
