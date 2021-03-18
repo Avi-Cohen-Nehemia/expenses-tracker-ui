@@ -93,15 +93,14 @@ class Filters extends Component {
                     id="dropdown-item-button"
                     title={ this.state.currency }
                 >
-                    <Dropdown.Item onClick={() => this.handleCurrency("GBP")}>
-                        {"GBP"}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => this.handleCurrency("EUR")}>
-                        {"EUR"}
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => this.handleCurrency("USD")}>
-                        {"USD"}
-                    </Dropdown.Item>
+                    {currencies.map((currency, index) => (
+                        <Dropdown.Item
+                            key={index}
+                            onClick={() => this.handleCurrency(currency)}
+                        >
+                            { currency }
+                        </Dropdown.Item>
+                    ))}
                 </DropdownButton>
                 <Button
                     className="et-button"
