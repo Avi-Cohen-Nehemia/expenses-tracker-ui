@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { formatDate } from "./../../../utilities/formatters";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class Filters extends Component {
 
@@ -79,6 +81,11 @@ class Filters extends Component {
                         startDate={ startDate }
                     />
                 </div>
+                <DropdownButton id="dropdown-item-button" title="Dropdown button">
+                    <Dropdown.Item as="button">Action</Dropdown.Item>
+                    <Dropdown.Item as="button">Another action</Dropdown.Item>
+                    <Dropdown.Item as="button">Something else</Dropdown.Item>
+                </DropdownButton>
                 <Button
                     className="et-button"
                     disabled={ !filtersHaveChanged }
