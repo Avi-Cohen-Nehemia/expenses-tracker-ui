@@ -103,11 +103,11 @@ class Filters extends Component {
                     ))}
                 </DropdownButton>
                 <Button
-                    className="et-button"
+                    className="et-button filters-submit-button"
                     disabled={ !filtersHaveChanged }
                     type="submit"
                 >
-                    {"Apply"}
+                    {"APPLY"}
                 </Button>
             </Form>
         );

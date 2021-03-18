@@ -59,6 +59,19 @@
     font-weight: 600;
 }
 
+#dropdown-item-button {
+    background-color: #2D5295;
+    border: #2D5295;
+}
+
+.dropdown-menu {
+    min-width: 5rem;
+}
+
+.filters-submit-button {
+    margin-left: 1rem;
+}
+
 @media screen and (max-width: 1200px){
     .dashboard-grid {
         display: grid;
