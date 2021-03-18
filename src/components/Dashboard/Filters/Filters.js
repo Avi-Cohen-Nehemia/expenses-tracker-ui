@@ -19,6 +19,7 @@ class Filters extends Component {
             endDate: "",
             formattedStartDate: formatDate(new Date()),
             formattedEndDate: "",
+            currency: "GBP",
             filtersHaveChanged: false
         };
 
@@ -81,10 +82,22 @@ class Filters extends Component {
                         startDate={ startDate }
                     />
                 </div>
-                <DropdownButton id="dropdown-item-button" title="Dropdown button">
-                    <Dropdown.Item as="button">Action</Dropdown.Item>
-                    <Dropdown.Item as="button">Another action</Dropdown.Item>
-                    <Dropdown.Item as="button">Something else</Dropdown.Item>
+                <DropdownButton id="dropdown-item-button" title={ this.state.currency }>
+                    <Dropdown.Item
+                        as="button"
+                    >
+                        {"GBP"}
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                    >
+                        {"EUR"}
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                        as="button"
+                    >
+                        {"USD"}
+                    </Dropdown.Item>
                 </DropdownButton>
                 <Button
                     className="et-button"
