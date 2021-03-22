@@ -67,7 +67,7 @@ class Filters extends Component {
     render() {
 
         const { endDate, startDate, filtersHaveChanged } = this.state;
-        const currencies = ["GBP", "EUR", "USD"];
+        const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
 
         return (
             <Form className="d-flex align-items-end filters" onSubmit={ this.handleSubmit }>
