@@ -323,7 +323,11 @@ export const getFilteredTransactions = (data) => {
 
         dispatch(submittingForm());
 
-        axios.get(`transactions/by-date-range?user_id=${userID}&from=${data.formattedStartDate}&to=${data.formattedEndDate}`, {
+        axios.get(`transactions/by-date-range?
+            user_id=${userID}
+            &from=${data.formattedStartDate}
+            &to=${data.formattedEndDate}
+            &currency=${data.currency}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }

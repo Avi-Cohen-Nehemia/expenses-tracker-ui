@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { formatDate } from "./../../../utilities/formatters";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class Filters extends Component {
 
@@ -13,15 +15,17 @@ class Filters extends Component {
         super(props);
 
         this.state = {
-            startDate: new Date(),
-            endDate: "",
-            formattedStartDate: formatDate(new Date()),
-            formattedEndDate: "",
+            startDate: new Date("1-1-2021"),
+            endDate: new Date(),
+            formattedStartDate: formatDate(new Date("1-1-2021")),
+            formattedEndDate: formatDate(new Date()),
+            currency: "GBP",
             filtersHaveChanged: false
         };
 
         this.handleDateRange = this.handleDateRange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCurrency = this.handleCurrency.bind(this);
     }
 
     componentDidUpdate() {
@@ -45,6 +49,13 @@ class Filters extends Component {
         });
     }
 
+    handleCurrency(currency) {
+        this.setState({
+            currency: currency,
+            filtersHaveChanged: true
+        });
+    }
+
     handleSubmit(e) {
 
         e.preventDefault();
@@ -52,9 +63,11 @@ class Filters extends Component {
         this.props.getFilteredTransactions(this.state)
         this.setState({ filtersHaveChanged: false });
     }
+
     render() {
 
         const { endDate, startDate, filtersHaveChanged } = this.state;
+        const currencies = ["GBP", "EUR", "USD"];
 
         return (
             <Form className="d-flex align-items-end filters" onSubmit={ this.handleSubmit }>
@@ -79,12 +92,25 @@ class Filters extends Component {
                         startDate={ startDate }
                     />
                 </div>
+                <DropdownButton
+                    id="dropdown-item-button"
+                    title={ this.state.currency }
+                >
+                    {currencies.map((currency, index) => (
+                        <Dropdown.Item
+                            key={index}
+                            onClick={() => this.handleCurrency(currency)}
+                        >
+                            { currency }
+                        </Dropdown.Item>
+                    ))}
+                </DropdownButton>
                 <Button
-                    className="et-button"
+                    className="et-button filters-submit-button"
                     disabled={ !filtersHaveChanged }
                     type="submit"
                 >
-                    {"Apply"}
+                    {"APPLY"}
                 </Button>
             </Form>
         );
