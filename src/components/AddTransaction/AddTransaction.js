@@ -76,6 +76,8 @@ export class AddTransaction extends Component {
                             inputValue={ transactionAmount }
                             onChange={ (e) => this.handleChange(e, "transactionAmount") }
                             required
+                            tooltip
+                            tooltipMessage={"All transactions are saved in GBP and can be viewed later in other currencies"}
                         />
 
                         <Row>
