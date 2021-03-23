@@ -17,14 +17,24 @@ class FormInput extends Component {
             controlId,
             inputPlaceholder,
             onChange,
-            required
+            required,
+            tooltip,
+            tooltipMessage
         } = this.props;
 
         return(
             <Row>
                 <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                     <Form.Group controlId={ controlId }>
-                        <Form.Label>{ inputLabel }</Form.Label>
+                        <Form.Label className="d-flex justify-content-between">
+                            <span>{ inputLabel }</span>
+                            { tooltip ?
+                            <span>
+                                <i className="fas fa-exclamation-circle p-1"/>
+                                <p className={"tooltip-message"}>{ tooltipMessage }</p>
+                            </span>
+                            : null }
+                        </Form.Label>
                         <Form.Control
                             aria-describedby={ descriptionID }
                             onChange={ onChange }
@@ -50,7 +60,9 @@ FormInput.propTypes = {
     inputType: PropTypes.string.isRequired,
     inputPlaceholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    required: PropTypes.bool
+    required: PropTypes.bool,
+    tooltip: PropTypes.bool,
+    tooltipMessage: PropTypes.string
 };
 
 export default FormInput;
