@@ -19,7 +19,7 @@ This app is a personal project which I decided to build to keep my React and fro
 
 
 ## MVP
-Create a tool where users record any transactions that they have made and are able to refer back to if needed.
+Create a tool where users can record any transactions that they have made and are able to refer back to if needed.
 
 ## Additional Features Implemented
 - [x] All the information is being stored on and fetched from an API.
@@ -33,13 +33,14 @@ Create a tool where users record any transactions that they have made and are ab
 - [x] 404 page.
 - [x] Restrict access to certain pages for users who are not logged in.
 - [x] Ability to delete transactions.
+- [x] Users can filter transactions by date.
+- [x] Users can convert and display their transactions in different currencies.
 
 ## Future Plans / Features
 - Ability to delete an account.
 - allow users to change their password.
 - Add a "remember me" functionality to login/signup.
-- Add an option for users to filter transactions by date.
-- Add an option for users to present their transactions in different currencies.
+
 - Write unit tests for all the components.
 - Ability for users to add additional categories.
 
