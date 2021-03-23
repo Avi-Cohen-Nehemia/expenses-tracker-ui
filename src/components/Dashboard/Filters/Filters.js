@@ -70,7 +70,7 @@ class Filters extends Component {
         const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
 
         return (
-            <Form className="d-flex align-items-end filters" onSubmit={ this.handleSubmit }>
+            <Form className="d-flex flex-wrap align-items-end filters" onSubmit={ this.handleSubmit }>
                 <div className="d-flex flex-column">
                     <label className="m-0">{"Start Date"}</label>
                     <DatePicker
