@@ -193,13 +193,13 @@
     
     .pie-card {
         grid-column: 1/3;
-        grid-row: 9/11;
+        grid-row: 8/10;
         margin: 0 2rem;
     }
     
     .transactions-table {
         grid-column: 1/3;
-        grid-row: 11/13;
+        grid-row: 10/13;
         margin-bottom: auto;
         margin: 0 2rem 2rem 2rem;
     }
