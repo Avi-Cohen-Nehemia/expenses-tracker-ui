@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -8,18 +8,9 @@ import homeImage from "../../assets/images/home-picture2.jpg";
 import history from "../../history";
 import Swal from "sweetalert2";
 
-class LandingPage extends Component {
+const LandingPage = ({ accessToken, isLoggedIn, logoutUser, username }) => {
 
-    constructor(props) {
-
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-
-        const { accessToken, isLoggedIn, logoutUser, username } = this.props;
+    const handleClick = () => {
 
         if (isLoggedIn &&  accessToken) {
             Swal.fire({
@@ -46,50 +37,47 @@ class LandingPage extends Component {
         }
     }
 
-    render() {
-
-        return (
-            <div className="landing-page">
-                <div className="my-auto welcome">
-                    <h1 className="text-center">
-                        {"Welcome to Expenses Tracker"}
-                    </h1>
-                    <Row className="mt-4">
-                        <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                            <Link className="text-decoration-none" to="/login">
-                                <Button
-                                    block
-                                    size="lg"
-                                    variant="success"
-                                >
-                                    {"Log In"}
-                                </Button>
-                            </Link>
-                        </Col>
-                    </Row>
-                    <Row className="mt-4">
-                        <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+    return (
+        <div className="landing-page">
+            <div className="my-auto welcome">
+                <h1 className="text-center">
+                    {"Welcome to Expenses Tracker"}
+                </h1>
+                <Row className="mt-4">
+                    <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                        <Link className="text-decoration-none" to="/login">
                             <Button
-                                    block
-                                    onClick={ this.handleClick }
-                                    size="lg"
-                                    variant="primary"
-                                >
-                                    {"Sign Up"}
+                                block
+                                size="lg"
+                                variant="success"
+                            >
+                                {"Log In"}
                             </Button>
-                        </Col>
-                    </Row>
-                </div>
-                <div className="blah2">
-                    <img
-                        alt="person counting money"
-                        className="cover-image"
-                        src={ homeImage }
-                    />
-                </div>
+                        </Link>
+                    </Col>
+                </Row>
+                <Row className="mt-4">
+                    <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
+                        <Button
+                                block
+                                onClick={ handleClick }
+                                size="lg"
+                                variant="primary"
+                            >
+                                {"Sign Up"}
+                        </Button>
+                    </Col>
+                </Row>
             </div>
-        );
-    }
+            <div className="blah2">
+                <img
+                    alt="person counting money"
+                    className="cover-image"
+                    src={ homeImage }
+                />
+            </div>
+        </div>
+    );
 }
 
 LandingPage.propTypes = {
