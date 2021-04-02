@@ -2,7 +2,18 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { HashRouter as Router, Link } from "react-router-dom";
 
-const NavbarLink = ({ destination, icon, isVisible, text, altText, styling, iconClasses, selected, handleClick }) => {
+const NavbarLink = ({
+    destination,
+    icon,
+    isVisible,
+    text,
+    altText,
+    styling,
+    iconClasses,
+    selected,
+    handleClick
+}) => {
+
     return (
         <Router>
             <Link
