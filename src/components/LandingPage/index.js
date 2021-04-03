@@ -32,8 +32,7 @@ const LandingPage = () => {
     }
 
     const handleClick = () => {
-
-        if (isLoggedIn &&  accessToken) {
+        if (isLoggedIn && accessToken) {
             Swal.fire({
                 title: `You are already logged in as ${ username }`,
                 text: 'Would you like to logout?',
