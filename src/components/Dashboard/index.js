@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserStats, logout } from "../../data/actions/api";
-import Navbar from "./../Navbar";
-import Filters from "./Filters";
-import DashboardCard from "./DashboardCard";
-import Card from 'react-bootstrap/Card';
-import Spinner from "./../Spinner";
-import PieChartCard from "./PieChartCard";
-import TransactionsList from "./TransactionsList";
 import history from "../../history";
+
+// components used in Dashboard
+import Card from 'react-bootstrap/Card';
+import DashboardCard from "./DashboardCard";
+import Filters from "./Filters";
+import Navbar from "./../Navbar";
+import PieChartCard from "./PieChartCard";
+import Spinner from "./../Spinner";
+import TransactionsList from "./TransactionsList";
+
 
 const Dashboard = () => {
 
