@@ -1,10 +1,21 @@
-import { connect } from "react-redux";
-import ProtectedRoute from "./ProtectedRoute";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.isLoggedIn
-    };
+const ProtectedRoute = ({ Component }) => {
+
+    // import global state values using redux hooks
+    const { isLoggedIn } = useSelector((state) => state);
+
+    return isLoggedIn ? <Component /> : <Redirect to={{ pathname: "/login" }} />
+}
+
+ProtectedRoute.propTypes = {
+    Component: PropTypes.oneOfType([
+        PropTypes.func.isRequired,
+        PropTypes.object.isRequired,
+    ])
 };
 
-export default connect(mapStateToProps, null)(ProtectedRoute);
+export default ProtectedRoute;
