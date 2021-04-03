@@ -12,6 +12,7 @@ import history from "../../history";
 
 const Dashboard = () => {
 
+    // import global state values using redux hooks
     const {
         balanceWithCurrency,
         totalIncome,
@@ -23,9 +24,10 @@ const Dashboard = () => {
         transactions,
         loaded,
         submittingForm,
-    } = useSelector((state) => state)
+    } = useSelector((state) => state);
 
-    const dispatch = useDispatch()
+    // import redux dispatch using hooks
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!loaded) {
