@@ -16,53 +16,55 @@ const initialFormState = {
     transactionCategory: "paycheck"
 }
 
+const setInput = (state, action) => {
+    return {
+        ...state,
+        [action.input]: action.value
+    }
+}
+
+const setType = (state, action) => {
+    return {
+        ...state,
+        [action.input]: action.value,
+        transactionCategory: action.category
+    }
+}
+
 const reducer = (state, action) => {
     switch (action.type) {
-        case "HANDLE_CHANGE" :
-            return {
-                ...state,
-                [action.input]: action.value
-            }
-        case "HANDLE_CATEGORY_CHANGE" :
-            return {
-                ...state,
-                [action.input]: action.value
-            }
-        case "SUBMIT_FORM" :
-            return {
-                ...initialFormState
-            }
-
-        default: return;
+        case "HANDLE_CHANGE" : return setInput(state, action)
+        case "HANDLE_TYPE_CHANGE" : return setType(state, action)
+        case "SUBMIT_FORM" : return initialFormState
+        default : return;
     }
 };
 
 const AddTransaction = () => {
 
+    // React hook
     const [state, dispatch] = useReducer(reducer, initialFormState);
 
+    // Redux hooks
     const { submittingForm } = useSelector((state) => state);
     const reduxDispatch = useDispatch();
-
-    const handleCategoryChange = (input, value) => {
-        dispatch({
-            type: "HANDLE_CATEGORY_CHANGE",
-            input: input,
-            value: value === "income" ? "paycheck" : "groceries"
-        })
-    }
 
     const handleChange = (e, input) => {
 
         if (input === "transactionType") {
-            handleCategoryChange(input, e.currentTarget.value);
+            dispatch({
+                type: "HANDLE_TYPE_CHANGE",
+                input: input,
+                value: e.currentTarget.value,
+                category: e.currentTarget.value === "income" ? "paycheck" : "groceries"
+            })
+        } else {
+            dispatch({
+                type: "HANDLE_CHANGE",
+                input: input,
+                value: e.currentTarget.value
+            })
         }
-
-        dispatch({
-            type: "HANDLE_CHANGE",
-            input: input,
-            value: e.currentTarget.value
-        })
     }
 
     const handleSubmit = (e) => {
