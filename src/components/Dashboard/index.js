@@ -36,7 +36,7 @@ const Dashboard = () => {
         if (!loaded) {
             dispatch(getUserStats());
         }
-    });
+    }, []);
 
     const calculateBarWidth = (amount) => {
 
