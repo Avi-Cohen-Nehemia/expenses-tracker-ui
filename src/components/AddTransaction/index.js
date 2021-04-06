@@ -72,6 +72,9 @@ const AddTransaction = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         reduxDispatch(addTransaction(state));
+        dispatch({
+            type: "SUBMIT_FORM",
+        });
     }
 
     const logoutUser = () => {
