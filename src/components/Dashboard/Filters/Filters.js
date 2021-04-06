@@ -13,9 +13,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 // state + reducer
 const initialFiltersState = {
-    startDate: new Date("1-2-2021"),
+    startDate: new Date("2-1-2021"),
     endDate: new Date(),
-    formattedStartDate: formatDate(new Date("1-2-2021")),
+    formattedStartDate: formatDate(new Date("2-1-2021")),
     formattedEndDate: formatDate(new Date()),
     currency: "GBP",
     filtersHaveChanged: false
@@ -23,22 +23,7 @@ const initialFiltersState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "ILLOGICAL_DATE_ORDER" :
-            return {
-                ...state,
-                ...action.payload
-            };
-        case "CHANGE_DATES" :
-            return {
-                ...state,
-                ...action.payload
-            };
-        case "CHANGE_CURRENCY" :
-            return {
-                ...state,
-                ...action.payload
-            };
-        case "DISABLE_APPLY_BUTTON" :
+        case "APPLY_CHANGES" :
             return {
                 ...state,
                 ...action.payload
@@ -55,13 +40,13 @@ const Filters = () => {
     // Redux dispatch
     const reduxDispatch = useDispatch();
 
-    // componentDidUpdate
     const { endDate, startDate, filtersHaveChanged } = state;
 
     useEffect(() => {
+
         if (Date.parse(endDate) < Date.parse(startDate)) {
             dispatch({
-                type: "ILLOGICAL_DATE_ORDER",
+                type: "APPLY_CHANGES",
                 payload: {
                     endDate: "",
                     formattedEndDate: "",
@@ -69,22 +54,32 @@ const Filters = () => {
                 }
             });
         }
+
+        if (!startDate || !endDate) {
+            dispatch({
+                type: "APPLY_CHANGES",
+                payload: {
+                    filtersHaveChanged: false
+                }
+            });
+        }
+
     }, [endDate, startDate]);
 
     const handleDateRange = (date, type, formattedType) => {
         dispatch({
-            type: "CHANGE_DATES",
+            type: "APPLY_CHANGES",
             payload: {
                 [type]: date,
                 [formattedType]: formatDate(date),
-                filtersHaveChanged: startDate && type === "endDate" ? true : false
+                filtersHaveChanged: true
             }
         });
     }
 
     const handleCurrency = (currency) => {
         dispatch({
-            type: "CHANGE_CURRENCY",
+            type: "APPLY_CHANGES",
             payload: {
                 currency: currency,
                 filtersHaveChanged: startDate && endDate ? true : false
@@ -98,7 +93,7 @@ const Filters = () => {
 
         reduxDispatch(getFilteredTransactions(state));
         dispatch({
-            type: "DISABLE_APPLY_BUTTON",
+            type: "APPLY_CHANGES",
             payload: {
                 filtersHaveChanged: false
             }
