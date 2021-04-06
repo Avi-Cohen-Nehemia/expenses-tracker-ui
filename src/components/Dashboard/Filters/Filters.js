@@ -44,6 +44,7 @@ const Filters = () => {
 
     useEffect(() => {
 
+        // clear end date if dates are in illogical order
         if (Date.parse(endDate) < Date.parse(startDate)) {
             dispatch({
                 type: "APPLY_CHANGES",
@@ -55,6 +56,7 @@ const Filters = () => {
             });
         }
 
+        // make sure apply is enabled only when both dates are defined
         if (!startDate || !endDate) {
             dispatch({
                 type: "APPLY_CHANGES",
@@ -66,6 +68,7 @@ const Filters = () => {
 
     }, [endDate, startDate]);
 
+    // select dates
     const handleDateRange = (date, type, formattedType) => {
         dispatch({
             type: "APPLY_CHANGES",
@@ -77,6 +80,7 @@ const Filters = () => {
         });
     }
 
+    // select currency
     const handleCurrency = (currency) => {
         dispatch({
             type: "APPLY_CHANGES",
@@ -87,6 +91,7 @@ const Filters = () => {
         });
     }
 
+    // apply filters
     const handleSubmit = (e) => {
 
         e.preventDefault();
