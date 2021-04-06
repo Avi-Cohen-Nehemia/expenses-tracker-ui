@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addTransaction, logout } from "../../data/actions/api";
 import history from "../../history";
 
-// components used in Dashboard
+// components used
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";

@@ -1,57 +1,94 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useDispatch } from 'react-redux';
 import { formatDate } from "./../../../utilities/formatters";
 import { getFilteredTransactions } from "./../../../data/actions/api";
 import "react-datepicker/dist/react-datepicker.css";
 
+// components used
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import Form from "react-bootstrap/Form";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
+// state + reducer
 const initialFiltersState = {
-    startDate: new Date("1-1-2021"),
+    startDate: new Date("1-2-2021"),
     endDate: new Date(),
-    formattedStartDate: formatDate(new Date("1-1-2021")),
+    formattedStartDate: formatDate(new Date("1-2-2021")),
     formattedEndDate: formatDate(new Date()),
     currency: "GBP",
     filtersHaveChanged: false
 }
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "ILLOGICAL_DATE_ORDER" :
+            return {
+                ...state,
+                ...action.payload
+            };
+        case "CHANGE_DATES" :
+            return {
+                ...state,
+                ...action.payload
+            };
+        case "CHANGE_CURRENCY" :
+            return {
+                ...state,
+                ...action.payload
+            };
+        case "DISABLE_APPLY_BUTTON" :
+            return {
+                ...state,
+                ...action.payload
+            };
+        default : return;
+    }
+};
+
 const Filters = () => {
 
     // React hook
-    const [state, dispatch] = useReducer(reducer, initialFormState);
+    const [state, dispatch] = useReducer(reducer, initialFiltersState);
 
     // Redux dispatch
     const reduxDispatch = useDispatch();
 
-    const componentDidUpdate = () => {
-        if (Date.parse(state.endDate) < Date.parse(state.startDate)) {
-            this.setState({
-                endDate: "",
-                formattedEndDate: "",
-                filtersHaveChanged: false
+    // componentDidUpdate
+    const { endDate, startDate, filtersHaveChanged } = state;
+
+    useEffect(() => {
+        if (Date.parse(endDate) < Date.parse(startDate)) {
+            dispatch({
+                type: "ILLOGICAL_DATE_ORDER",
+                payload: {
+                    endDate: "",
+                    formattedEndDate: "",
+                    filtersHaveChanged: false
+                }
             });
         }
-    }
+    }, [endDate, startDate]);
 
     const handleDateRange = (date, type, formattedType) => {
-
-        const { filtersHaveChanged } = state;
-
-        this.setState({
-            [type]: date,
-            [formattedType]: formatDate(date),
-            filtersHaveChanged: type === "endDate" ? true : filtersHaveChanged
+        dispatch({
+            type: "CHANGE_DATES",
+            payload: {
+                [type]: date,
+                [formattedType]: formatDate(date),
+                filtersHaveChanged: startDate && type === "endDate" ? true : false
+            }
         });
     }
 
     const handleCurrency = (currency) => {
-        this.setState({
-            currency: currency,
-            filtersHaveChanged: true
+        dispatch({
+            type: "CHANGE_CURRENCY",
+            payload: {
+                currency: currency,
+                filtersHaveChanged: startDate && endDate ? true : false
+            }
         });
     }
 
@@ -60,10 +97,14 @@ const Filters = () => {
         e.preventDefault();
 
         reduxDispatch(getFilteredTransactions(state));
-        this.setState({ filtersHaveChanged: false });
+        dispatch({
+            type: "DISABLE_APPLY_BUTTON",
+            payload: {
+                filtersHaveChanged: false
+            }
+        });
     }
 
-    const { endDate, startDate, filtersHaveChanged } = state;
     const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
 
     return (
