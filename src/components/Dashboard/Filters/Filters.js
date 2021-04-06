@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { useReducer } from "react";
 import { formatDate } from "./../../../utilities/formatters";
+import { getFilteredTransactions } from "./../../../data/actions/api";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
@@ -8,27 +9,18 @@ import Form from "react-bootstrap/Form";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
-class Filters extends Component {
+const initialFiltersState = {
+    startDate: new Date("1-1-2021"),
+    endDate: new Date(),
+    formattedStartDate: formatDate(new Date("1-1-2021")),
+    formattedEndDate: formatDate(new Date()),
+    currency: "GBP",
+    filtersHaveChanged: false
+}
 
-    constructor(props) {
+const Filters = () => {
 
-        super(props);
-
-        this.state = {
-            startDate: new Date("1-1-2021"),
-            endDate: new Date(),
-            formattedStartDate: formatDate(new Date("1-1-2021")),
-            formattedEndDate: formatDate(new Date()),
-            currency: "GBP",
-            filtersHaveChanged: false
-        };
-
-        this.handleDateRange = this.handleDateRange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCurrency = this.handleCurrency.bind(this);
-    }
-
-    componentDidUpdate() {
+    const componentDidUpdate = () => {
         if (Date.parse(this.state.endDate) < Date.parse(this.state.startDate)) {
             this.setState({
                 endDate: "",
@@ -38,7 +30,7 @@ class Filters extends Component {
         }
     }
 
-    handleDateRange(date, type, formattedType) {
+    const handleDateRange = (date, type, formattedType) => {
 
         const { filtersHaveChanged } = this.state;
 
@@ -49,14 +41,14 @@ class Filters extends Component {
         });
     }
 
-    handleCurrency(currency) {
+    const handleCurrency = (currency) => {
         this.setState({
             currency: currency,
             filtersHaveChanged: true
         });
     }
 
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
 
         e.preventDefault();
 
@@ -64,57 +56,55 @@ class Filters extends Component {
         this.setState({ filtersHaveChanged: false });
     }
 
-    render() {
+    const { endDate, startDate, filtersHaveChanged } = this.state;
+    const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
 
-        const { endDate, startDate, filtersHaveChanged } = this.state;
-        const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
+    return (
+        <Form className="d-flex flex-wrap align-items-end filters" onSubmit={ this.handleSubmit }>
+            <div className="d-flex flex-column">
+                <label className="m-0">{"Start Date"}</label>
+                <DatePicker
+                    endDate={ endDate }
+                    onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
+                    selected={ startDate }
+                    selectsStart
+                    startDate={ startDate }
+                />
+            </div>
+            <div className="d-flex flex-column">
+                <label className="m-0">{"End Date"}</label>
+                <DatePicker
+                    endDate={ endDate }
+                    minDate={ startDate }
+                    onChange={ (date) => this.handleDateRange(date, "endDate", "formattedEndDate") }
+                    selected={ endDate }
+                    selectsEnd
+                    startDate={ startDate }
+                />
+            </div>
+            <DropdownButton
+                id="dropdown-item-button"
+                title={ this.state.currency }
+            >
+                {currencies.map((currency, index) => (
+                    <Dropdown.Item
+                        key={index}
+                        onClick={() => this.handleCurrency(currency)}
+                    >
+                        { currency }
+                    </Dropdown.Item>
+                ))}
+            </DropdownButton>
+            <Button
+                className="et-button filters-submit-button"
+                disabled={ !filtersHaveChanged }
+                type="submit"
+            >
+                {"APPLY"}
+            </Button>
+        </Form>
+    );
 
-        return (
-            <Form className="d-flex flex-wrap align-items-end filters" onSubmit={ this.handleSubmit }>
-                <div className="d-flex flex-column">
-                    <label className="m-0">{"Start Date"}</label>
-                    <DatePicker
-                        endDate={ endDate }
-                        onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
-                        selected={ startDate }
-                        selectsStart
-                        startDate={ startDate }
-                    />
-                </div>
-                <div className="d-flex flex-column">
-                    <label className="m-0">{"End Date"}</label>
-                    <DatePicker
-                        endDate={ endDate }
-                        minDate={ startDate }
-                        onChange={ (date) => this.handleDateRange(date, "endDate", "formattedEndDate") }
-                        selected={ endDate }
-                        selectsEnd
-                        startDate={ startDate }
-                    />
-                </div>
-                <DropdownButton
-                    id="dropdown-item-button"
-                    title={ this.state.currency }
-                >
-                    {currencies.map((currency, index) => (
-                        <Dropdown.Item
-                            key={index}
-                            onClick={() => this.handleCurrency(currency)}
-                        >
-                            { currency }
-                        </Dropdown.Item>
-                    ))}
-                </DropdownButton>
-                <Button
-                    className="et-button filters-submit-button"
-                    disabled={ !filtersHaveChanged }
-                    type="submit"
-                >
-                    {"APPLY"}
-                </Button>
-            </Form>
-        );
-    }
 }
 
 Filters.propTypes = {
