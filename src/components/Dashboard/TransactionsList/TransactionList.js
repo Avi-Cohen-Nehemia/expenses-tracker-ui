@@ -1,12 +1,16 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
+import { deleteTransaction } from "../../../data/actions/api";
+
+// components used in TransactionList
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Carets from "./Carets";
 import Swal from "sweetalert2";
 
+// component's initial state + reducer
 const initialTransactionListState = {
     transactionsToDisplay: 5,
     sortBy: "date",
@@ -36,12 +40,16 @@ const TransactionsList = ({ transactions }) => {
 
     // display more transactions
     const handleClick = () => {
-        this.setState({ transactionsToDisplay: this.state.transactionsToDisplay + 5 });
+        dispatch({
+            type: "APPLY_CHANGES",
+            payload: {
+                transactionsToDisplay: transactionsToDisplay + 5
+            }
+        });
     }
 
     const handleTableOrder = (column) => {
-        const { direction } = this.state;
-        const { transactions } = this.props;
+
         const orderedTransactions = transactions.sort((a, b) => {
             if (column === "date") {
 
@@ -62,10 +70,13 @@ const TransactionsList = ({ transactions }) => {
             }
         });
 
-        this.setState({
-            transactions: orderedTransactions,
-            sortBy: column,
-            direction: this.state.direction === "desc" ? "asc" : "desc"
+        dispatch({
+            type: "APPLY_CHANGES",
+            payload: {
+                transactions: orderedTransactions,
+                sortBy: column,
+                direction: direction === "desc" ? "asc" : "desc"
+            }
         });
     }
 
