@@ -2,6 +2,8 @@ import React, { useReducer } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addTransaction, logout } from "../../data/actions/api";
 import history from "../../history";
+
+// components used in Dashboard
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -10,6 +12,7 @@ import FormInput from "../FormInput";
 import Navbar from "../Navbar";
 import Spinner from "../Spinner";
 
+// state + reducer
 const initialFormState = {
     transactionAmount: "",
     transactionType: "income",
@@ -32,9 +35,9 @@ const typeChange = (state, action) => {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "HANDLE_CHANGE" : return setInput(state, action)
-        case "HANDLE_TYPE_CHANGE" : return typeChange(state, action)
-        case "SUBMIT_FORM" : return initialFormState
+        case "HANDLE_CHANGE" : return setInput(state, action);
+        case "HANDLE_TYPE_CHANGE" : return typeChange(state, action);
+        case "SUBMIT_FORM" : return initialFormState;
         default : return;
     }
 };
