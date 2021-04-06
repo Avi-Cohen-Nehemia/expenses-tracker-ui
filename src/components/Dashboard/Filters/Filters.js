@@ -1,10 +1,11 @@
 import React, { useReducer } from "react";
+import { useDispatch } from 'react-redux';
 import { formatDate } from "./../../../utilities/formatters";
 import { getFilteredTransactions } from "./../../../data/actions/api";
-import PropTypes from "prop-types";
+import "react-datepicker/dist/react-datepicker.css";
+
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Form from "react-bootstrap/Form";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -20,8 +21,14 @@ const initialFiltersState = {
 
 const Filters = () => {
 
+    // React hook
+    const [state, dispatch] = useReducer(reducer, initialFormState);
+
+    // Redux dispatch
+    const reduxDispatch = useDispatch();
+
     const componentDidUpdate = () => {
-        if (Date.parse(this.state.endDate) < Date.parse(this.state.startDate)) {
+        if (Date.parse(state.endDate) < Date.parse(state.startDate)) {
             this.setState({
                 endDate: "",
                 formattedEndDate: "",
@@ -32,7 +39,7 @@ const Filters = () => {
 
     const handleDateRange = (date, type, formattedType) => {
 
-        const { filtersHaveChanged } = this.state;
+        const { filtersHaveChanged } = state;
 
         this.setState({
             [type]: date,
@@ -52,20 +59,20 @@ const Filters = () => {
 
         e.preventDefault();
 
-        this.props.getFilteredTransactions(this.state)
+        reduxDispatch(getFilteredTransactions(state));
         this.setState({ filtersHaveChanged: false });
     }
 
-    const { endDate, startDate, filtersHaveChanged } = this.state;
+    const { endDate, startDate, filtersHaveChanged } = state;
     const currencies = ["GBP", "EUR", "USD", "AUD", "ILS"];
 
     return (
-        <Form className="d-flex flex-wrap align-items-end filters" onSubmit={ this.handleSubmit }>
+        <Form className="d-flex flex-wrap align-items-end filters" onSubmit={ handleSubmit }>
             <div className="d-flex flex-column">
                 <label className="m-0">{"Start Date"}</label>
                 <DatePicker
                     endDate={ endDate }
-                    onChange={ (date) => this.handleDateRange(date, "startDate", "formattedStartDate") }
+                    onChange={ (date) => handleDateRange(date, "startDate", "formattedStartDate") }
                     selected={ startDate }
                     selectsStart
                     startDate={ startDate }
@@ -76,7 +83,7 @@ const Filters = () => {
                 <DatePicker
                     endDate={ endDate }
                     minDate={ startDate }
-                    onChange={ (date) => this.handleDateRange(date, "endDate", "formattedEndDate") }
+                    onChange={ (date) => handleDateRange(date, "endDate", "formattedEndDate") }
                     selected={ endDate }
                     selectsEnd
                     startDate={ startDate }
@@ -84,12 +91,12 @@ const Filters = () => {
             </div>
             <DropdownButton
                 id="dropdown-item-button"
-                title={ this.state.currency }
+                title={ state.currency }
             >
                 {currencies.map((currency, index) => (
                     <Dropdown.Item
                         key={index}
-                        onClick={() => this.handleCurrency(currency)}
+                        onClick={() => handleCurrency(currency)}
                     >
                         { currency }
                     </Dropdown.Item>
@@ -106,9 +113,5 @@ const Filters = () => {
     );
 
 }
-
-Filters.propTypes = {
-    getFilteredTransactions: PropTypes.func.isRequired
-};
 
 export default Filters;
