@@ -23,10 +23,9 @@ const setInput = (state, action) => {
     }
 }
 
-const setType = (state, action) => {
+const typeChange = (state, action) => {
     return {
         ...state,
-        [action.input]: action.value,
         transactionCategory: action.category
     }
 }
@@ -34,7 +33,7 @@ const setType = (state, action) => {
 const reducer = (state, action) => {
     switch (action.type) {
         case "HANDLE_CHANGE" : return setInput(state, action)
-        case "HANDLE_TYPE_CHANGE" : return setType(state, action)
+        case "HANDLE_TYPE_CHANGE" : return typeChange(state, action)
         case "SUBMIT_FORM" : return initialFormState
         default : return;
     }
@@ -51,20 +50,20 @@ const AddTransaction = () => {
 
     const handleChange = (e, input) => {
 
+        const value = e.currentTarget.value;
+
         if (input === "transactionType") {
             dispatch({
                 type: "HANDLE_TYPE_CHANGE",
-                input: input,
-                value: e.currentTarget.value,
-                category: e.currentTarget.value === "income" ? "paycheck" : "groceries"
-            })
-        } else {
-            dispatch({
-                type: "HANDLE_CHANGE",
-                input: input,
-                value: e.currentTarget.value
-            })
+                category: value === "income" ? "paycheck" : "groceries"
+            });
         }
+
+        dispatch({
+            type: "HANDLE_CHANGE",
+            input: input,
+            value: value
+        });
     }
 
     const handleSubmit = (e) => {
@@ -77,9 +76,10 @@ const AddTransaction = () => {
         history.push("/");
     }
 
+    const { transactionAmount, transactionCategory, transactionType } = state;
     const incomeCategories = ["paycheck", "gift", "other"];
     const expenseCategories = ["groceries", "shopping", "rent", "bills", "entertainment", "fuel", "takeaway", "other"];
-    const displayedCategories = state.transactionType === "expense" ? expenseCategories : incomeCategories;
+    const displayedCategories = transactionType === "expense" ? expenseCategories : incomeCategories;
 
     return(
         <div className="add-transaction-grid">
@@ -96,7 +96,7 @@ const AddTransaction = () => {
                         inputLabel="Amount"
                         inputPlaceholder="Enter Amount"
                         inputType="number"
-                        inputValue={ state.transactionAmount }
+                        inputValue={ transactionAmount }
                         onChange={ (e) => handleChange(e, "transactionAmount") }
                         required
                         tooltip
@@ -112,7 +112,7 @@ const AddTransaction = () => {
                                     className="text-capitalize"
                                     onChange={ (e) => handleChange(e, "transactionType") }
                                     required
-                                    value={ state.transactionType }
+                                    value={ transactionType }
                                 >
                                     <option>{ "income" }</option>
                                     <option>{ "expense" }</option>
@@ -130,7 +130,7 @@ const AddTransaction = () => {
                                     className="text-capitalize"
                                     onChange={ (e) => handleChange(e, "transactionCategory") }
                                     required
-                                    value={ state.transactionCategory }
+                                    value={ transactionCategory }
                                 >
                                     { displayedCategories.map((category, index) => (
                                         <option key={ index }>
