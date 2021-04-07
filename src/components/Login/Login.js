@@ -34,9 +34,8 @@ class Login extends Component {
     }
 
     handleChange(e, input) {
-        let change = {};
-        change[input] = e.currentTarget.value;
-        this.setState(change);
+        let value = e.currentTarget.value;
+        this.setState({ [input]: value });
     }
 
     handleSubmit(e) {
