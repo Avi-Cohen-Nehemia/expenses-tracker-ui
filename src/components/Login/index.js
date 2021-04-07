@@ -81,20 +81,14 @@ const Login = () => {
                             onChange={ (e) => handleChange(e, "username") }
                             required
                         />
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="login-form-password">
-                                    <Form.Label>{ "Password" }</Form.Label>
-                                    <Form.Control
-                                        onChange={ (e) => handleChange(e, "password") }
-                                        required
-                                        type="password"
-                                        value={ password }
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-
+                        <FormInput
+                            controlId="login-form-password"
+                            inputLabel="Password"
+                            inputType="password"
+                            inputValue={ password }
+                            onChange={ (e) => handleChange(e, "password") }
+                            required
+                        />
                         <Row>
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Button type="submit" variant="primary">
