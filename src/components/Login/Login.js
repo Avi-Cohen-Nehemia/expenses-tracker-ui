@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import history from "../../history";
 import { login } from "../../data/actions/api";
 
@@ -32,12 +32,15 @@ const reducer = (state, action) => {
     }
 };
 
-const Login = ({ submittingForm, accessToken, isLoggedIn } ) => {
+const Login = () => {
 
+    // react hooks + local state
     const [state, dispatch] = useReducer(reducer, initialLoginState);
     const { username, password } = state;
 
+    // redux dispatch + global state
     const reduxDispatch = useDispatch();
+    const { submittingForm, accessToken, isLoggedIn } = useSelector((state) => state);
 
     useEffect(() => {
         if (isLoggedIn && accessToken) {
