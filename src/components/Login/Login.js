@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect, useReducer } from "react";
 import PropTypes from 'prop-types';
+import { useDispatch } from "react-redux";
 import history from "../../history";
 
 // components
@@ -19,9 +20,23 @@ const initialLoginState = {
     password: ""
 }
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "APPLY_CHANGES" :
+            return {
+                ...state,
+                ...action.payload
+            };
+        default : return;
+    }
+};
+
 const Login = ({ submittingForm } ) => {
 
+    const [state, dispatch] = useReducer(reducer, initialLoginState);
     const { username, password } = state;
+
+    const reduxDispatch = useDispatch();
 
     const componentDidMount = () => {
 
