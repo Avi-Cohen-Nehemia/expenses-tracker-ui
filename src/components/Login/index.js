@@ -9,7 +9,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Spinner from "../Spinner";
+import Spinner from "./../Spinner";
+import FormInput from "./../FormInput";
 
 // assets
 import homeImage from "../../assets/images/home-picture2.jpg"
@@ -72,20 +73,14 @@ const Login = () => {
                         noValidate
                         onSubmit={ handleSubmit }
                     >
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="login-form-username">
-                                    <Form.Label>{ "Username" }</Form.Label>
-                                    <Form.Control
-                                        onChange={ (e) => handleChange(e, "username") }
-                                        required
-                                        type="text"
-                                        value={ username }
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-
+                        <FormInput
+                            controlId="login-form-username"
+                            inputLabel="Username"
+                            inputType="text"
+                            inputValue={ username }
+                            onChange={ (e) => handleChange(e, "username") }
+                            required
+                        />
                         <Row>
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
                                 <Form.Group controlId="login-form-password">
