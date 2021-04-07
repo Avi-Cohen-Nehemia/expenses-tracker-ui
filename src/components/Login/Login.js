@@ -23,7 +23,7 @@ const initialLoginState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "APPLY_CHANGES" :
+        case "HANDLE_INPUT_CHANGE" :
             return {
                 ...state,
                 ...action.payload
@@ -47,7 +47,12 @@ const Login = ({ submittingForm, accessToken, isLoggedIn } ) => {
 
     const handleChange = (e, input) => {
         let value = e.currentTarget.value;
-        this.setState({ [input]: value });
+        dispatch({
+            type: "HANDLE_INPUT_CHANGE",
+            payload: {
+                [input]: value
+            }
+        });
     }
 
     const handleSubmit = (e) => {
