@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import history from "../../history";
+import { login } from "../../data/actions/api";
 
 // components
 import { Link } from "react-router-dom";
@@ -31,21 +32,18 @@ const reducer = (state, action) => {
     }
 };
 
-const Login = ({ submittingForm } ) => {
+const Login = ({ submittingForm, accessToken, isLoggedIn } ) => {
 
     const [state, dispatch] = useReducer(reducer, initialLoginState);
     const { username, password } = state;
 
     const reduxDispatch = useDispatch();
 
-    const componentDidMount = () => {
-
-        const { accessToken, isLoggedIn } = this.props;
-
+    useEffect(() => {
         if (isLoggedIn && accessToken) {
             history.push("/dashboard");
         }
-    }
+    }, [])
 
     const handleChange = (e, input) => {
         let value = e.currentTarget.value;
@@ -54,7 +52,7 @@ const Login = ({ submittingForm } ) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.login(this.state);
+        reduxDispatch(login(state));
     }
 
     return(
