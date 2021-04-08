@@ -82,7 +82,7 @@ const Signup = () => {
                         <FormInput
                             controlId="signup-form-username"
                             description="Username must be between 3 and 20 characters long"
-                            descriptionID="password-description"
+                            descriptionID="username-description"
                             inputLabel="Username"
                             inputType="text"
                             inputValue={ username }
@@ -90,38 +90,26 @@ const Signup = () => {
                             required
                             styling={{ border: username.length >= 3 ? "2px solid green" : "" }}
                         />
-
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="signup-form-password">
-                                    <Form.Label>{"Password"}</Form.Label>
-                                    <Form.Control
-                                        aria-describedby="password-description"
-                                        onChange={ (e) => handleChange(e, "password") }
-                                        required
-                                        style={{border: password.length > 7 && password.length < 21 ? "2px solid green" : ""}}
-                                        type="password"
-                                        value={ password }
-                                    />
-                                    <Form.Text id="password-description" muted>{"Password length must be between 8-20 characters"}</Form.Text>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="signup-form-confirm-password">
-                                    <Form.Label>{ "Confirm Password" }</Form.Label>
-                                    <Form.Control
-                                        onChange={ (e) => handleChange(e, "confirmPassword") }
-                                        required
-                                        style={{border: confirmPassword.length > 7 && confirmPassword === password ? "2px solid green" : ""}}
-                                        type="password"
-                                        value={ confirmPassword }
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
+                        <FormInput
+                            controlId="signup-form-password"
+                            description="Password length must be between 8-20 characters"
+                            descriptionID="password-description"
+                            inputLabel="Password"
+                            inputType="password"
+                            inputValue={ password }
+                            onChange={ (e) => handleChange(e, "password") }
+                            required
+                            styling={{border: password.length > 7 && password.length < 21 ? "2px solid green" : ""}}
+                        />
+                        <FormInput
+                            controlId="signup-form-confirm-password"
+                            inputLabel="Confirm Password"
+                            inputType="password"
+                            inputValue={ confirmPassword }
+                            onChange={ (e) => handleChange(e, "confirmPassword") }
+                            required
+                            styling={{border: confirmPassword.length > 7 && confirmPassword === password ? "2px solid green" : ""}}
+                        />
 
                         <Row>
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
