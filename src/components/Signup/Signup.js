@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import Swal from "sweetalert2";
+
+// components
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
-import Swal from "sweetalert2";
+
+// assets
 import homeImage from "../../assets/images/home-picture2.jpg";
+
 
 class Signup extends Component {
 
