@@ -51,3 +51,28 @@
 .react-datepicker-wrapper {
     margin-right: 1rem;
 }
+
+.fa-exclamation-circle {
+    cursor: pointer;
+}
+
+.tooltip-message {
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    width: 10rem;
+    right: 1rem;
+    top: 1.5rem;
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+}
+
+.fa-exclamation-circle:hover + .tooltip-message {
+    opacity: 1;
+}

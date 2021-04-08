@@ -31,6 +31,7 @@ class PieChartCard extends Component {
             return {
                 title: dataPoint.category,
                 value: dataPoint.amount,
+                formattedValue: dataPoint.amount_with_currency,
                 color: colors[index]
             };
         });
@@ -67,11 +68,11 @@ class PieChartCard extends Component {
                         animate
                         animationDuration={ 800 }
                         data={ chartData }
-                        label={({ dataEntry }) => this.state.showPercentValues ? `${ Math.round(dataEntry.percentage) }%` : `£${ dataEntry.value.toFixed(2) }`}
+                        label={({ dataEntry }) => this.state.showPercentValues ? `${ Math.round(dataEntry.percentage) }%` : dataEntry.formattedValue}
                         labelPosition={ 60 }
                         labelStyle={{
                             color: "black",
-                            fontSize: chartData.length > 5 ? "0.4rem" : "0.5rem",
+                            fontSize: chartData.length > 5 ? "0.3rem" : "0.5rem",
                             fontWeight: "bold",
                             textTransform: "capitalize"
                         }}

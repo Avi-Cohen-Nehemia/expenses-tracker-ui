@@ -73,6 +73,8 @@ const submittingForm = (state) => {
 const updateUserTransactions = (state, action) => {
     return {
         ...state,
+        balance: action.balance,
+        balanceWithCurrency: action.balanceWithCurrency,
         totalIncome: action.totalIncome,
         totalIncomeWithCurrency: action.totalIncomeWithCurrency,
         totalExpense: action.totalExpense,
