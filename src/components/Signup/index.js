@@ -124,7 +124,7 @@ const Signup = () => {
                                     <Form.Control
                                         onChange={ (e) => handleChange(e, "confirmPassword") }
                                         required
-                                        style={{border: confirmPassword.length > 0 && confirmPassword === password ? "2px solid green" : ""}}
+                                        style={{border: confirmPassword.length > 7 && confirmPassword === password ? "2px solid green" : ""}}
                                         type="password"
                                         value={ confirmPassword }
                                     />
