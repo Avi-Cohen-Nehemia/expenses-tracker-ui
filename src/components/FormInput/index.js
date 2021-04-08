@@ -14,6 +14,7 @@ const FormInput = ({
     inputPlaceholder,
     onChange,
     required,
+    styling,
     tooltip,
     tooltipMessage
 }) => {
@@ -35,7 +36,8 @@ const FormInput = ({
                         aria-describedby={ descriptionID }
                         onChange={ onChange }
                         placeholder={ inputPlaceholder }
-                        required={required}
+                        required={ required }
+                        style={ styling }
                         type={ inputType }
                         value={ inputValue }
                     />
@@ -56,6 +58,7 @@ FormInput.propTypes = {
     inputPlaceholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     required: PropTypes.bool,
+    styling: PropTypes.object,
     tooltip: PropTypes.bool,
     tooltipMessage: PropTypes.string
 };
