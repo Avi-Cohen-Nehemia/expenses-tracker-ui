@@ -37,7 +37,7 @@ const FormInput = ({
                         onChange={ onChange }
                         placeholder={ inputPlaceholder }
                         required={ required }
-                        style={ styling }
+                        style={{ ...styling }}
                         type={ inputType }
                         value={ inputValue }
                     />

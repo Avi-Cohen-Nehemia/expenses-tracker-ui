@@ -6,6 +6,7 @@ import { createNewUser } from "../../data/actions/api";
 // components
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import FormInput from "./../FormInput";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -78,27 +79,17 @@ const Signup = () => {
                         noValidate
                         onSubmit={ handleSubmit }
                     >
-                        <Row>
-                            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-                                <Form.Group controlId="signup-form-username">
-                                    <Form.Label>{ "Username" }</Form.Label>
-                                    <Form.Control
-                                        aria-describedby="password-description"
-                                        onChange={ (e) => handleChange(e, "username") }
-                                        required
-                                        style={{border: username.length >= 3 ? "2px solid green" : ""}}
-                                        type="text"
-                                        value={ username }
-                                    />
-                                    <Form.Text
-                                        id="password-description"
-                                        muted
-                                    >
-                                        { "Username must be between 3 and 20 characters long" }
-                                    </Form.Text>
-                                </Form.Group>
-                            </Col>
-                        </Row>
+                        <FormInput
+                            controlId="signup-form-username"
+                            description="Username must be between 3 and 20 characters long"
+                            descriptionID="password-description"
+                            inputLabel="Username"
+                            inputType="text"
+                            inputValue={ username }
+                            onChange={ (e) => handleChange(e, "username") }
+                            required
+                            styling={{ border: username.length >= 3 ? "2px solid green" : "" }}
+                        />
 
                         <Row>
                             <Col lg={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
